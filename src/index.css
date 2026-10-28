@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Archivo", "Inter", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --color-brand-green-900: #00491f;
+  --color-brand-green-800: #0b3d2c;
+  --color-brand-green-700: #145236;
+  --color-brand-green-100: #e5efe7;
+
+  --color-brand-coral: #f26539;
+  --color-brand-coral-light: #ff7f57;
+  --color-brand-gold: #fcaf17;
+  --color-brand-gold-light: #ffc41d;
+  --color-brand-sky: #8fe2ff;
+  --color-brand-sky-deep: #14b1e7;
+  --color-brand-lime: #9aca3c;
+  --color-brand-lime-light: #c1da6d;
+  --color-brand-magenta: #cf3d96;
+
+  --color-ink: #19231d;
+  --color-paper: #fbfaf6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background-color: var(--color-paper);
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hide scrollbar for carousel tracks while keeping scroll functionality */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-brand-gold);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
