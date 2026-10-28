@@ -1,9 +1,9 @@
-# Marvelous Greatness Schools (MGGS) — Website
+# Marvellous Greatness Group of Schools (MGGS) — Website
 
-A React + Vite + Tailwind implementation of the Marvelous Greatness Schools website.
-MGGS is a school in the **Akobo–Ojurin** area of **Ibadan, Oyo State, Nigeria**.
-Its motto is **“Towards Greatness.”** and its guiding values are **Discipline**,
-**Dedication** and **Excellent Performance**.
+A React + Vite + Tailwind implementation of the Marvellous Greatness Group of
+Schools (MGGS) website. MGGS is a school in the **Akobo–Ojurin** area of
+**Ibadan, Oyo State, Nigeria**. Its motto is **“Towards Greatness.”** and its
+guiding values are **Discipline**, **Dedication** and **Excellent Performance**.
 
 The design system, layouts, animations, transitions, responsive behaviour and
 component architecture are retained from the original build; the school-specific
@@ -20,22 +20,20 @@ npm run preview  # preview the production build
 
 ## Hero media (film + image sequence)
 
-The homepage hero plays the school film first, then crossfades through five
-still frames and loops back to the film. It is driven by `src/data/hero.ts`
-and rendered by `src/components/sections/HeroBackdrop.tsx`.
+The homepage hero plays a 15-second school film — a slow aerial push-in over
+the campus that resolves on the MGGS badge, the school name and the motto — then
+crossfades through five still frames and loops back to the film. It is driven by
+`src/data/hero.ts` and rendered by `src/components/sections/HeroBackdrop.tsx`.
 
-To add the film:
-
-1. Save it as **`public/media/mggs-hero.mp4`** (H.264/MP4), optionally
-   `public/media/mggs-hero.webm`. See `public/media/README.md` for guidance.
-2. That's all — the hero loads it automatically and moves to the still frames
-   when it ends. Edit `heroFrames` / `heroImageDuration` in `src/data/hero.ts`
-   to change the pictures or timing.
-
-Until the file is present (or if it cannot be decoded), the hero gracefully runs
-the still-frame sequence on its own, so nothing ever renders blank. With
-`prefers-reduced-motion: reduce`, the hero holds on one frame and does not
-autoplay the film. Every interior page also carries a hero image.
+- Film: `public/media/mggs-hero.mp4`, poster `public/media/mggs-hero-poster.jpg`.
+- Rebuild it with `python3 scripts/render-hero-video.py` (see
+  `public/media/README.md`); the same script generates the MGGS badge
+  (`public/images/mggs-logo.png`) used by the header/footer and the favicon.
+- To use the school's own footage instead, replace the MP4 — no code changes.
+- If the film is missing or cannot be decoded, the hero runs the still-frame
+  sequence on its own, so nothing ever renders blank. Under
+  `prefers-reduced-motion: reduce` the hero holds one frame and does not
+  autoplay. Every interior page also carries a hero image.
 
 ## Where the content lives
 
@@ -46,6 +44,7 @@ autoplay the film. Every interior page also carries a hero image.
 | `src/data/news.ts` | News and announcement examples, filter types/topics |
 | `src/data/genericPages.ts` | Summary copy plus hero image for the long-tail navigation routes |
 | `src/data/hero.ts` | Homepage hero film and still-frame sequence |
+| `scripts/render-hero-video.py` | Builds the hero film, poster, badge and favicon |
 | `src/pages/**` | Bespoke page templates (Home, About, Admissions, Values…) |
 
 ## Content still to be supplied by the school
@@ -76,8 +75,10 @@ school confirms them:
    design. Replace with photographs of the MGGS campus when available. Every
    page hero uses one of these images; swap the `src` values in
    `src/data/hero.ts` and `src/data/genericPages.ts` to change them.
-10. **Hero film** — the video itself has not been added: save it as
-    `public/media/mggs-hero.mp4`.
+10. **Hero film and logo** — the current film, campus image and MGGS badge are
+    placeholders produced for this build. Supply the school's own footage and
+    official logo artwork when available (`public/media/mggs-hero.mp4`,
+    `public/images/mggs-logo.png`).
 
 ## Notes
 

@@ -11,7 +11,7 @@ export default function ContactUs() {
       <InteriorHero
         eyebrow="About MGGS"
         title="Contact Us"
-        description={`Marvelous Greatness Schools, ${location.area}, ${location.city}, ${location.state}. We are always glad to hear from families.`}
+        description={`Marvellous Greatness Group of Schools, ${location.area}, ${location.city}, ${location.state}. We are always glad to hear from families.`}
         trail={[{ label: "About", to: "/about/the-mggs-difference" }, { label: "Contact Us" }]}
         tone="sky"
         image="/images/campus-courtyard.jpg"

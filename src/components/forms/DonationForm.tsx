@@ -51,7 +51,7 @@ export function DonationForm() {
   return (
     <form onSubmit={handleSubmit} noValidate className="rounded-lg bg-white p-6 shadow-xl sm:p-8">
       <p className="font-display text-sm font-bold uppercase tracking-wide text-brand-gold">Make a gift today</p>
-      <h3 className="font-display mt-1 text-2xl font-extrabold text-brand-green-900">Support Marvelous Greatness Schools</h3>
+      <h3 className="font-display mt-1 text-2xl font-extrabold text-brand-green-900">Support Marvellous Greatness Group of Schools</h3>
 
       <fieldset className="mt-6">
         <legend className="mb-2 text-sm font-semibold text-brand-green-900">Gift Amount (NGN)</legend>

@@ -10,7 +10,7 @@ export default function OurStory() {
       <InteriorHero
         eyebrow="About MGGS"
         title="Our Story"
-        description={`Marvelous Greatness Schools serves families in ${siteInfo.location.area}, ${siteInfo.location.city}, with one consistent purpose: to help every pupil move towards greatness.`}
+        description={`Marvellous Greatness Group of Schools serves families in ${siteInfo.location.area}, ${siteInfo.location.city}, with one consistent purpose: to help every pupil move towards greatness.`}
         trail={[{ label: "About", to: "/about/the-mggs-difference" }, { label: "Our Story" }]}
         tone="green"
         image="/images/hero-campus.jpg"
@@ -77,7 +77,7 @@ export default function OurStory() {
 
       <CTABanner
         tone="coral"
-        title="Meet Marvelous Greatness Schools"
+        title="Meet Marvellous Greatness Group of Schools"
         description="Visit us to see the school at work and to talk with the people who will teach your child."
         actions={
           <LinkButton to="/admissions/how-to-apply" variant="outline-white">

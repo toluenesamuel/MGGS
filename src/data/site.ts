@@ -1,11 +1,11 @@
-// School identity and shared content for Marvelous Greatness Schools (MGGS).
+// School identity and shared content for Marvellous Greatness Group of Schools (MGGS).
 // Only details supplied by the school are stated as fact. Anything the school
 // still needs to confirm (street address, telephone, email, fee schedule,
 // social accounts) is kept as a clearly identifiable placeholder so it can be
 // filled in without touching layout or components.
 
 export const siteInfo = {
-  name: "Marvelous Greatness Schools",
+  name: "Marvellous Greatness Group of Schools",
   shortName: "MGGS",
   monogram: "MGGS",
   motto: "Towards Greatness.",

@@ -11,7 +11,7 @@ export default function MGGSDifference() {
       <InteriorHero
         eyebrow="About MGGS"
         title="The MGGS Difference"
-        description="Marvelous Greatness Schools combines academic seriousness with moral instruction and character formation — so that pupils leave us well prepared for further study, for work and for life."
+        description="Marvellous Greatness Group of Schools combines academic seriousness with moral instruction and character formation — so that pupils leave us well prepared for further study, for work and for life."
         trail={[{ label: "The MGGS Difference" }]}
         tone="coral"
         image="/images/students-collaborating.jpg"

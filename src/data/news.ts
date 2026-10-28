@@ -1,4 +1,4 @@
-// News and announcement examples for Marvelous Greatness Schools.
+// News and announcement examples for Marvellous Greatness Group of Schools.
 // These are illustrative, evergreen notices that reflect the school's stated
 // values and purpose. No dates, results, fees or statistics are stated as fact;
 // the school can replace each entry with its own confirmed news.
@@ -21,7 +21,7 @@ export const newsArticles: NewsArticle[] = [
     topic: "Community",
     readTime: "2 min read",
     excerpt:
-      "A warm welcome to every returning family and every new family joining Marvelous Greatness Schools this term. Our staff have been preparing classrooms, lesson plans and activities so that learning begins the moment our pupils arrive.",
+      "A warm welcome to every returning family and every new family joining Marvellous Greatness Group of Schools this term. Our staff have been preparing classrooms, lesson plans and activities so that learning begins the moment our pupils arrive.",
     image: "/images/students-collaborating.jpg",
   },
   {

@@ -1,4 +1,4 @@
-// Hero media for Marvelous Greatness Schools.
+// Hero media for Marvellous Greatness Group of Schools.
 //
 // The hero plays a short school film first, then crossfades through a sequence
 // of still frames and loops. To use the school's own video:
@@ -22,7 +22,7 @@ export interface HeroFrame {
 export const heroVideo = "/media/mggs-hero.mp4";
 export const heroVideoWebm = "/media/mggs-hero.webm";
 /** Shown while the video loads, and used as the backdrop if the video fails. */
-export const heroVideoPoster = "/images/aerial-campus.jpg";
+export const heroVideoPoster = "/media/mggs-hero-poster.jpg";
 /** How long each still frame stays on screen (milliseconds). */
 export const heroImageDuration = 7000;
 

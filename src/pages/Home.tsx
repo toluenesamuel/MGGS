@@ -59,7 +59,7 @@ export default function Home() {
       <section className="hero-entrance relative overflow-hidden bg-brand-green-900 text-white">
         <HeroBackdrop />
         <Container className="relative flex min-h-[70svh] flex-col justify-end pb-14 pt-24 sm:pb-20 lg:min-h-[78svh]">
-          <p className="hero-item hero-eyebrow font-display text-[11px] font-bold uppercase tracking-[0.15em] text-brand-gold sm:text-xs">
+          <p className="hero-item hero-eyebrow font-display max-w-[20ch] text-[10px] font-bold uppercase leading-snug tracking-[0.1em] text-brand-gold sm:text-xs sm:tracking-[0.14em]">
             {siteInfo.name}
           </p>
           <h1 className="hero-item hero-heading font-display mt-3 max-w-3xl text-5xl font-extrabold uppercase leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
@@ -99,7 +99,7 @@ export default function Home() {
           <div className="admissions-copy order-1 pb-4 md:order-2 md:pb-20">
             <p className="text-sm font-bold uppercase tracking-wider">Your journey starts here</p>
             <h2 className="font-display mt-3 text-4xl font-extrabold uppercase leading-none sm:text-5xl lg:text-6xl">Join the MGGS Family</h2>
-            <p className="mt-5 max-w-lg text-base leading-relaxed">Explore what Marvelous Greatness Schools offers your child. Learn about our school, arrange a visit or ask us about joining.</p>
+            <p className="mt-5 max-w-lg text-base leading-relaxed">Explore what Marvellous Greatness Group of Schools offers your child. Learn about our school, arrange a visit or ask us about joining.</p>
             <div className="mt-7 flex flex-wrap gap-3">
               <LinkButton to="/admissions/how-to-apply" variant="solid-green">How to Apply</LinkButton>
               <LinkButton to="/admissions/visit-us" variant="outline-green">Visit Us</LinkButton>
@@ -121,7 +121,7 @@ export default function Home() {
         }
       >
         <p>
-          Every pupil at Marvelous Greatness Schools is taught a well-planned curriculum, with careful
+          Every pupil at Marvellous Greatness Group of Schools is taught a well-planned curriculum, with careful
           attention to literacy, numeracy and reasoning. Regular assessment and constructive feedback make
           sure that progress is real and that no child is left quietly behind.
         </p>
@@ -206,7 +206,7 @@ export default function Home() {
         tone="green"
         eyebrow="Support our pupils"
         title="Every child deserves the chance to do well."
-        description="Friends of Marvelous Greatness Schools help us strengthen teaching resources, learning materials and the school environment our pupils depend on."
+        description="Friends of Marvellous Greatness Group of Schools help us strengthen teaching resources, learning materials and the school environment our pupils depend on."
         image="/images/giving-community.jpg"
         actions={
           <LinkButton to="/giving/donate-now" variant="solid-coral">

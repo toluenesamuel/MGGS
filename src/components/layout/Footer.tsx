@@ -36,8 +36,8 @@ export function Footer() {
         <div className="grid gap-10 border-b border-white/15 pb-10 lg:grid-cols-[1.2fr_2.8fr]">
           <div>
             <Link to="/" className="focus-ring inline-flex items-center gap-2.5">
-              <span className="font-display flex h-10 w-10 items-center justify-center rounded-full bg-white text-[10px] font-extrabold tracking-tight text-brand-green-900 sm:text-[11px]">
-                {siteInfo.monogram}
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white p-0.5">
+                <img src="/images/mggs-logo.png" alt="" width={40} height={40} className="h-full w-full rounded-full" />
               </span>
               <span className="font-display text-sm font-extrabold uppercase tracking-wide">
                 {siteInfo.name}

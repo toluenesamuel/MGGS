@@ -1,4 +1,4 @@
-// Navigation for Marvelous Greatness Schools. The interaction model (grouped
+// Navigation for Marvellous Greatness Group of Schools. The interaction model (grouped
 // nav, sub-lists, footer columns) is unchanged from the existing design — only
 // the section labels and destinations have been adapted for MGGS.
 

@@ -29,7 +29,7 @@ export default function StartHere() {
 
       <ImageTextSplit
         id="why-mggs"
-        eyebrow="Why choose Marvelous Greatness Schools"
+        eyebrow="Why choose Marvellous Greatness Group of Schools"
         title="A School That Takes Your Child's Future Seriously"
         image="/images/classroom-science.jpg"
         imageAlt="A teacher helping pupils with an interactive classroom activity."

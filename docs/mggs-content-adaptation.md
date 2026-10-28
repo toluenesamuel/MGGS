@@ -1,9 +1,9 @@
 # MGGS Content Adaptation
 
-This project began as a design/animation study. It now presents **Marvelous
-Greatness Schools (MGGS)** — a school in Akobo–Ojurin, Ibadan, Oyo State,
-Nigeria — with the motto **“Towards Greatness.”** and the values **Discipline**,
-**Dedication** and **Excellent Performance**.
+This project began as a design/animation study. It now presents the
+**Marvellous Greatness Group of Schools (MGGS)** — a school in Akobo–Ojurin,
+Ibadan, Oyo State, Nigeria — with the motto **“Towards Greatness.”** and the
+values **Discipline**, **Dedication** and **Excellent Performance**.
 
 **Nothing about the visual implementation changed:** layouts, section
 components, colour and type scales, scroll-reveal and hero motion, menu/search
@@ -83,6 +83,12 @@ News article URLs (`/mggs-news/<slug>`) are generated from `src/data/news.ts`.
 - `SectionPage` — the internal “shared content template” note became a
   school-facing “this page is being completed” note, and now passes the
   page's hero image through.
+- Brand lockups now use the generated MGGS badge (`public/images/mggs-logo.png`)
+  in the header and footer, plus a favicon; the header wordmark is two lines
+  ("Marvellous Greatness" / "Group of Schools") to fit the longer official name,
+  and the homepage hero eyebrow wraps on narrow screens.
+- `scripts/render-hero-video.py` (new) renders the hero film, poster, badge and
+  favicon from `scripts/assets/hero-aerial.png`.
 - `HeroBackdrop` (new, `src/components/sections/` ) — the homepage hero
   backdrop plays the school film, then crossfades through five still frames and
   loops, using the existing `hero-visual` reveal animation plus a new

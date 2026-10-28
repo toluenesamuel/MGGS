@@ -10,7 +10,7 @@ export default function VisitUs() {
       <InteriorHero
         eyebrow="Admissions"
         title="Visit Us"
-        description={`Come and see Marvelous Greatness Schools for yourself. We welcome prospective families to ${siteInfo.location.area}, ${siteInfo.location.city}.`}
+        description={`Come and see Marvellous Greatness Group of Schools for yourself. We welcome prospective families to ${siteInfo.location.area}, ${siteInfo.location.city}.`}
         trail={[{ label: "Admissions", to: "/admissions/start-here" }, { label: "Visit Us" }]}
         tone="gold"
         image="/images/campus-courtyard.jpg"

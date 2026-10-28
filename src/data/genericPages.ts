@@ -1,6 +1,6 @@
 // Short, honestly-scoped content for the long-tail navigation routes. Each
 // entry describes the purpose of the section in neutral wording that reflects
-// Marvelous Greatness Schools' stated values. No dates, fees, statistics,
+// Marvellous Greatness Group of Schools' stated values. No dates, fees, statistics,
 // facilities or results are invented — where a detail is still to be confirmed
 // the copy says so plainly.
 
@@ -24,7 +24,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     tone: "green",
     image: "/images/campus-courtyard.jpg",
     summary:
-      "Marvelous Greatness Schools is led by its school leadership team, which is responsible for academic standards, staff development, pastoral care and the day-to-day running of the school. Leadership works in close partnership with teachers and families so that decisions are made in the best interests of our pupils.",
+      "Marvellous Greatness Group of Schools is led by its school leadership team, which is responsible for academic standards, staff development, pastoral care and the day-to-day running of the school. Leadership works in close partnership with teachers and families so that decisions are made in the best interests of our pupils.",
     relatedLabel: "Related pages",
     related: [
       { label: "The MGGS Difference", to: "/about/the-mggs-difference" },
@@ -68,7 +68,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     tone: "coral",
     image: "/images/admissions-student.png",
     summary:
-      "Have a question about joining Marvelous Greatness Schools? Share a few details about your child and our school office will follow up with the information you need.",
+      "Have a question about joining Marvellous Greatness Group of Schools? Share a few details about your child and our school office will follow up with the information you need.",
     relatedLabel: "Related pages",
     related: [
       { label: "Start Here", to: "/admissions/start-here" },
@@ -256,7 +256,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     tone: "coral",
     image: "/images/portrait-student-duotone.jpg",
     summary:
-      "Stories of our pupils and former pupils show what a Marvelous Greatness Schools education looks like in real life — steady progress, good character and the confidence to aim higher. New stories will be added as the school shares them.",
+      "Stories of our pupils and former pupils show what a Marvellous Greatness Group of Schools education looks like in real life — steady progress, good character and the confidence to aim higher. New stories will be added as the school shares them.",
     relatedLabel: "Related pages",
     related: [
       { label: "MGGS News", to: "/mggs-news" },
@@ -284,7 +284,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     tone: "green",
     image: "/images/hero-campus.jpg",
     summary:
-      "Marvelous Greatness Schools is located in the Akobo–Ojurin area of Ibadan, Oyo State. Our school site is arranged to give pupils an orderly, safe environment for learning, with details of the campus added here as they are confirmed by the school.",
+      "Marvellous Greatness Group of Schools is located in the Akobo–Ojurin area of Ibadan, Oyo State. Our school site is arranged to give pupils an orderly, safe environment for learning, with details of the campus added here as they are confirmed by the school.",
     relatedLabel: "Related pages",
     related: [
       { label: "Getting to School", to: "/campus/getting-to-school" },
@@ -341,7 +341,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     tone: "sky",
     image: "/images/giving-community.jpg",
     summary:
-      "Families, alumni and friends can support Marvelous Greatness Schools through financial contributions, books and learning materials, equipment or professional expertise. The school office will confirm current giving options.",
+      "Families, alumni and friends can support Marvellous Greatness Group of Schools through financial contributions, books and learning materials, equipment or professional expertise. The school office will confirm current giving options.",
     relatedLabel: "Related pages",
     related: [
       { label: "Donate Now", to: "/giving/donate-now" },
