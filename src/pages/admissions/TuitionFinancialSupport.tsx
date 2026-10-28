@@ -22,7 +22,7 @@ export default function TuitionFinancialSupport() {
           </p>
           <a
             href="mailto:admissions@branksome.on.ca"
-            className="focus-ring mt-4 inline-flex items-center gap-1 text-sm font-bold text-brand-coral hover:underline"
+            className="focus-ring mt-4 inline-flex items-center gap-1 text-sm font-bold text-brand-coral-ink hover:underline"
           >
             Email Admissions team →
           </a>

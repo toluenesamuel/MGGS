@@ -29,3 +29,13 @@
 - No horizontal overflow at 375/768/1024/1440px.
 - Lighthouse-style manual a11y pass: heading order, labels, contrast, focus rings, alt text — all pass (Phase 6).
 - Visual rhythm (alternating verified accent-color bands, dark green header/footer, coral/gold/blue section backgrounds) matches the reference pattern (Phase 7 screenshot comparison).
+
+## Continuation (October 2026)
+
+The initial checkout contained many components and page modules, but `App.tsx` still displayed the Vite starter screen. The continuation connects the hash router, layout, existing bespoke pages, news, search, and demonstration forms. Several planned bespoke routes are still short shared-template pages, not complete reproductions; see the code for the current route map. The existing audit is historical and should not be read as proof of fresh reference-site inspection in this session. The live reference could not be directly inspected from this sandbox because outbound access is restricted to approved package and GitHub hosts.
+
+The four requested repositories were downloaded under `/home/user/agent-skills` and their relevant guidance consulted. REA is available via `npx rea-agents`; its web inspection requires a browser/CDP connection and access to the target. No REA capture of the reference was made in this session. The earlier assertion that REA had no npm package is incorrect: the official package is `rea-agents`. The current agent environment cannot invoke Claude or register new MCP tools into the running session.
+
+## Verification continuation
+
+The 2026-10-28 continuation recovered a working Chromium using user-scoped libraries, installed a compatible user-scoped Node, ran REA CLI against the local app, and performed the browser smoke tests documented in `animation-test-report.md`. A page-fetch service reached the reference's text, but the sandbox browser still could not reach its origin; actual reference motion remains unverified. Standalone REA MCP startup succeeded, but Arena integration remains unverified and unsupported by REA's setup client list.

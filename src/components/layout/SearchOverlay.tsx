@@ -1,27 +1,39 @@
+import { useExitPresence } from "@/hooks/useExitPresence";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "@/router/router";
 
 export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const present = useExitPresence(open);
   const { navigate } = useRouter();
   const [value, setValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!open) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
     if (open) {
       document.body.style.overflow = "hidden";
       inputRef.current?.focus();
     }
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") onClose();
+      if (e.key === "Tab" && dialogRef.current) {
+        const items = dialogRef.current.querySelectorAll<HTMLElement>('button:not([disabled]), input, a[href]');
+        const first = items[0], last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
+      }
     }
     document.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
       document.removeEventListener("keydown", onKey);
+      previousFocus?.focus();
     };
   }, [open, onClose]);
 
-  if (!open) return null;
+  if (!present) return null;
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -31,9 +43,9 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
   }
 
   return (
-    <div className="fixed inset-0 z-50" role="dialog" aria-modal="true" aria-label="Search the site">
-      <div className="absolute inset-0 bg-brand-green-900/70" onClick={onClose} aria-hidden="true" />
-      <div className="relative mx-auto mt-24 w-[92%] max-w-2xl rounded-xl bg-white p-6 shadow-2xl sm:p-8">
+    <div ref={dialogRef} className={`fixed inset-0 z-50 ${!open ? "motion-closing pointer-events-none" : ""}`} inert={!open} aria-hidden={!open} role="dialog" aria-modal={open ? "true" : undefined} aria-label="Search the site">
+      <div className="motion-overlay absolute inset-0 bg-brand-green-900/70" onClick={onClose} aria-hidden="true" />
+      <div className="motion-menu relative mx-auto mt-24 w-[92%] max-w-2xl rounded-xl bg-white p-6 shadow-2xl sm:p-8">
         <div className="mb-3 flex items-center justify-between">
           <h2 className="font-display text-lg font-bold text-brand-green-900">Search Branksome Hall (reconstruction)</h2>
           <button

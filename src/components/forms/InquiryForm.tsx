@@ -118,7 +118,7 @@ export function InquiryForm({
           <option>Boarding Program</option>
         </select>
         {errors.studentGrade && (
-          <p id="studentGrade-error" role="alert" className="mt-1 text-xs font-medium text-brand-coral">
+          <p id="studentGrade-error" role="alert" className="mt-1 text-xs font-medium text-brand-coral-ink">
             {errors.studentGrade}
           </p>
         )}
@@ -143,7 +143,7 @@ export function InquiryForm({
               ))}
             </select>
             {errors[f.id] && (
-              <p role="alert" className="mt-1 text-xs font-medium text-brand-coral">
+              <p role="alert" className="mt-1 text-xs font-medium text-brand-coral-ink">
                 {errors[f.id]}
               </p>
             )}
@@ -162,7 +162,7 @@ export function InquiryForm({
               className="focus-ring w-full rounded border border-brand-green-900/20 px-3 py-2.5 text-sm"
             />
             {errors[f.id] && (
-              <p role="alert" className="mt-1 text-xs font-medium text-brand-coral">
+              <p role="alert" className="mt-1 text-xs font-medium text-brand-coral-ink">
                 {errors[f.id]}
               </p>
             )}
@@ -207,7 +207,7 @@ function Field({
         className="focus-ring w-full rounded border border-brand-green-900/20 px-3 py-2.5 text-sm"
       />
       {error && (
-        <p id={`${id}-error`} role="alert" className="mt-1 text-xs font-medium text-brand-coral">
+        <p id={`${id}-error`} role="alert" className="mt-1 text-xs font-medium text-brand-coral-ink">
           {error}
         </p>
       )}

@@ -12,33 +12,33 @@ import { newsArticles } from "@/data/news";
 const storyCards = [
   {
     name: "Elpida",
-    role: "Grade 12, Prefect",
-    blurb: "On finding her voice through the IB Diploma and the Model UN programme.",
-    image: "/images/portrait-student-duotone.jpg",
+    role: "Student",
+    blurb: "She built two apps by Grade 6. Her next big idea is already loading.",
+    image: "/images/story-cutout.png",
     tone: "sky" as const,
     to: "/community/alums/alum-stories",
   },
   {
     name: "Jaime",
-    role: "Alum, Class of 2016",
-    blurb: "On how Branksome's Noodle accelerator shaped her path into entrepreneurship.",
-    image: "/images/portrait-student-duotone.jpg",
+    role: "Alum",
+    blurb: "She leads on the water and in the community. Duke is just the beginning.",
+    image: "/images/story-alum-cutout.png",
     tone: "gold" as const,
     to: "/community/alums/alum-stories",
   },
   {
-    name: "Little",
-    role: "Grade 9, Clan Captain",
-    blurb: "On what the Clan system taught her about leadership and belonging.",
-    image: "/images/portrait-student-duotone.jpg",
-    tone: "lime" as const,
+    name: "Titoluwa",
+    role: "Student",
+    blurb: "She built a home away from home, and a voice that reaches far beyond it.",
+    image: "/images/story-student-alt-cutout.png",
+    tone: "green" as const,
     to: "/community/alums/alum-stories",
   },
   {
-    name: "Tiffany",
-    role: "Alum, Class of 2004",
-    blurb: "On staying true to yourself long after graduation.",
-    image: "/images/portrait-student-duotone.jpg",
+    name: "Milla",
+    role: "Alum",
+    blurb: "Her goal is to become one of the few female pilots in the industry.",
+    image: "/images/story-alum-cutout.png",
     tone: "coral" as const,
     to: "/community/alums/alum-stories",
   },
@@ -47,24 +47,22 @@ const storyCards = [
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden bg-brand-green-900 text-white">
+      <section className="hero-entrance relative overflow-hidden bg-brand-green-900 text-white">
         <div className="absolute inset-0">
-          <img src="/images/hero-campus.jpg" alt="" className="h-full w-full object-cover opacity-35" />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-green-900 via-brand-green-900/80 to-brand-green-900/40" />
+          <img src="/images/aerial-campus.jpg" alt="" className="hero-visual h-full w-full object-cover" fetchPriority="high" />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-green-900 via-brand-green-900/70 to-brand-green-900/30" />
         </div>
-        <Container className="relative py-20 sm:py-28 lg:py-36">
-          <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-brand-gold">
-            Leading the way in girls' education
+        <Container className="relative flex min-h-[70svh] flex-col justify-end pb-14 pt-24 sm:pb-20 lg:min-h-[78svh]">
+          <p className="hero-item hero-eyebrow font-display text-xs font-bold uppercase tracking-[0.2em] text-brand-gold">
+            Branksome Hall
           </p>
-          <h1 className="font-display mt-3 max-w-3xl text-4xl font-extrabold uppercase leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            A Toronto IB World School, Reimagined as a Design Study
+          <h1 className="hero-item hero-heading font-display mt-3 max-w-3xl text-5xl font-extrabold uppercase leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
+            Leading the Way in Girls' Education
           </h1>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
-            This reconstruction is informed by publicly observable content and design patterns from
-            branksome.on.ca — Toronto's leading independent IB World School for girls — rebuilt here as a
-            front-end architecture and accessibility case study.
+          <p className="hero-item hero-copy mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
+            An independent IB World School for girls, where curiosity, creativity and a global perspective make way for extraordinary possibilities.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="hero-item hero-actions mt-8 flex flex-wrap gap-4">
             <LinkButton to="/about/the-branksome-difference" variant="solid-coral">
               Why Branksome Hall
             </LinkButton>
@@ -75,7 +73,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="bg-paper py-16 sm:py-20">
+      <section data-reveal className="bg-paper py-16 sm:py-20">
         <Container className="max-w-3xl text-center">
           <SectionHeading
             eyebrow="Welcome to Branksome Hall"
@@ -86,8 +84,25 @@ export default function Home() {
         </Container>
       </section>
 
+      <section data-reveal className="admissions-feature overflow-hidden bg-[#1db8e0] text-brand-green-900">
+        <Container className="grid items-end gap-5 pt-12 md:grid-cols-2 md:gap-10 md:pt-16">
+          <div className="admissions-visual order-2 mx-auto w-full max-w-md md:order-1">
+            <img src="/images/admissions-cutout.png" alt="" className="block h-72 w-full object-contain object-bottom sm:h-96 md:h-[32rem]" loading="lazy" />
+          </div>
+          <div className="admissions-copy order-1 pb-4 md:order-2 md:pb-20">
+            <p className="text-sm font-bold uppercase tracking-wider">Your journey starts here</p>
+            <h2 className="font-display mt-3 text-4xl font-extrabold uppercase leading-none sm:text-5xl lg:text-6xl">Applications for 2027–28 now open!</h2>
+            <p className="mt-5 max-w-lg text-base leading-relaxed">Explore all that Branksome has to offer. Learn about our school, join an event or take a virtual tour.</p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <LinkButton to="/admissions/how-to-apply" variant="solid-green">How to Apply</LinkButton>
+              <LinkButton to="/admissions/visit-us" variant="outline-green">Visit Us</LinkButton>
+            </div>
+          </div>
+        </Container>
+      </section>
+
       <ImageTextSplit
-        eyebrow="Applications for 2027–28 now open"
+        eyebrow="The IB advantage"
         title="Discover Our IB Program"
         image="/images/classroom-science.jpg"
         imageAlt="Students working together on a hands-on science project in a bright classroom."
@@ -118,7 +133,7 @@ export default function Home() {
           <div key={p.title} className="bg-white p-8">
             <h3 className="font-display text-lg font-bold text-brand-green-900">{p.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-ink/70">{p.copy}</p>
-            <Link to={p.to} className="focus-ring mt-4 inline-flex items-center gap-1 text-sm font-bold text-brand-coral hover:underline">
+            <Link to={p.to} className="focus-ring mt-4 inline-flex items-center gap-1 text-sm font-bold text-brand-coral-ink hover:underline">
               Learn More →
             </Link>
           </div>
@@ -153,11 +168,11 @@ export default function Home() {
         cards={storyCards}
       />
 
-      <section className="bg-paper py-16 sm:py-20">
+      <section data-reveal className="bg-paper py-16 sm:py-20">
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <SectionHeading eyebrow="Branksome news" title="Headlines from Campus" />
-            <Link to="/branksome-news" className="focus-ring text-sm font-bold text-brand-coral hover:underline">
+            <Link to="/branksome-news" className="focus-ring text-sm font-bold text-brand-coral-ink hover:underline">
               View All →
             </Link>
           </div>
@@ -187,7 +202,7 @@ export default function Home() {
         title="Start Your Journey"
         description="From important dates, entry grades and details on the application process by grade, find everything you need to get ready to apply to Branksome Hall."
         actions={
-          <LinkButton to="/admissions/how-to-apply" variant="outline-white">
+          <LinkButton to="/admissions/how-to-apply" variant="outline-green" className="border-ink text-ink">
             How to Apply
           </LinkButton>
         }

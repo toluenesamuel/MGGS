@@ -7,14 +7,14 @@ type Size = "sm" | "md";
 
 const variantClasses: Record<Variant, string> = {
   "solid-coral":
-    "bg-brand-coral text-white hover:bg-brand-coral-light focus-visible:ring-brand-green-900",
+    "bg-brand-coral text-ink hover:bg-brand-coral-light focus-visible:ring-brand-green-900",
   "solid-green":
     "bg-brand-green-900 text-white hover:bg-brand-green-700 focus-visible:ring-brand-gold",
   "outline-white":
     "border-2 border-white text-white hover:bg-white hover:text-brand-green-900",
   "outline-green":
     "border-2 border-brand-green-900 text-brand-green-900 hover:bg-brand-green-900 hover:text-white",
-  text: "text-brand-green-900 hover:text-brand-coral underline-offset-4 hover:underline px-0",
+  text: "text-brand-green-900 hover:text-brand-coral-ink underline-offset-4 hover:underline px-0",
 };
 
 const sizeClasses: Record<Size, string> = {

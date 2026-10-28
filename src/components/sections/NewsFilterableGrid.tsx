@@ -92,7 +92,7 @@ export function NewsFilterableGrid({ initialQuery = "" }: { initialQuery?: strin
             </div>
           </fieldset>
           {(types.length > 0 || topics.length > 0 || query) && (
-            <button type="button" onClick={resetFilters} className="focus-ring text-sm font-bold text-brand-coral hover:underline">
+            <button type="button" onClick={resetFilters} className="focus-ring text-sm font-bold text-brand-coral-ink hover:underline">
               Clear filters
             </button>
           )}
@@ -106,7 +106,7 @@ export function NewsFilterableGrid({ initialQuery = "" }: { initialQuery?: strin
           {pageItems.length === 0 ? (
             <div className="rounded-lg border border-dashed border-brand-green-900/30 p-10 text-center">
               <p className="font-display text-lg font-bold text-brand-green-900">No articles match these filters</p>
-              <button type="button" onClick={resetFilters} className="focus-ring mt-3 text-sm font-bold text-brand-coral hover:underline">
+              <button type="button" onClick={resetFilters} className="focus-ring mt-3 text-sm font-bold text-brand-coral-ink hover:underline">
                 Reset filters
               </button>
             </div>

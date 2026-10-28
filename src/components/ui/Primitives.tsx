@@ -17,7 +17,7 @@ export function Eyebrow({ children, className }: { children: ReactNode; classNam
   return (
     <p
       className={cn(
-        "font-display text-xs font-bold uppercase tracking-[0.18em] text-brand-coral",
+        "font-display text-xs font-bold uppercase tracking-[0.18em] text-brand-coral-ink",
         className,
       )}
     >
@@ -77,7 +77,7 @@ export function Tag({
   tone?: "coral" | "green" | "gold" | "outline";
 }) {
   const tones: Record<string, string> = {
-    coral: "bg-brand-coral text-white",
+    coral: "bg-brand-coral text-ink",
     green: "bg-brand-green-900 text-white",
     gold: "bg-brand-gold text-brand-green-900",
     outline: "border border-brand-green-900 text-brand-green-900",
@@ -105,7 +105,7 @@ export function ColorBand({
 }) {
   const tones: Record<string, string> = {
     green: "bg-brand-green-900 text-white",
-    coral: "bg-brand-coral text-white",
+    coral: "bg-brand-coral text-ink",
     sky: "bg-brand-sky text-brand-green-900",
     gold: "bg-brand-gold text-brand-green-900",
     lime: "bg-brand-lime text-brand-green-900",

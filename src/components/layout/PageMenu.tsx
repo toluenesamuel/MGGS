@@ -12,7 +12,7 @@ export function PageMenu({ items }: { items: PageMenuItem[] }) {
   function handleJump(id: string) {
     setOpen(false);
     const el = document.getElementById(id);
-    el?.scrollIntoView({ behavior: "smooth", block: "start" });
+    el?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "start" });
   }
 
   return (

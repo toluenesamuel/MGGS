@@ -18,12 +18,12 @@ export function CTABanner({
   image?: string;
 }) {
   const toneClasses: Record<string, string> = {
-    coral: "bg-brand-coral text-white",
+    coral: "bg-brand-coral text-ink",
     green: "bg-brand-green-900 text-white",
     gold: "bg-brand-gold text-brand-green-900",
   };
   return (
-    <section className={cn(toneClasses[tone])}>
+    <section data-reveal className={cn(toneClasses[tone])}>
       <Container className={cn("grid items-center gap-8 py-14 sm:py-16", image && "lg:grid-cols-[1.4fr_1fr]")}>
         <div>
           {eyebrow && <p className="font-display text-xs font-bold uppercase tracking-[0.18em] opacity-80">{eyebrow}</p>}

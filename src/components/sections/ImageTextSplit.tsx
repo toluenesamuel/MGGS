@@ -27,18 +27,18 @@ export function ImageTextSplit({
     white: "bg-paper text-ink",
     green: "bg-brand-green-900 text-white",
     sky: "bg-brand-sky text-brand-green-900",
-    coral: "bg-brand-coral text-white",
+    coral: "bg-brand-coral text-ink",
     gold: "bg-brand-gold text-brand-green-900",
   };
   return (
-    <section id={id} className={cn("py-16 sm:py-20 scroll-mt-24", toneClasses[tone])}>
+    <section data-reveal id={id} className={cn("py-16 sm:py-20 scroll-mt-24", toneClasses[tone])}>
       <Container>
         <div className={cn("grid items-center gap-10 lg:grid-cols-2", reverse && "lg:[&>*:first-child]:order-2")}>
           <div className="overflow-hidden rounded-lg">
             <img src={image} alt={imageAlt} className="h-64 w-full object-cover sm:h-80 lg:h-[26rem]" loading="lazy" />
           </div>
           <div>
-            {eyebrow && <Eyebrow className={tone !== "white" ? "text-current opacity-80" : undefined}>{eyebrow}</Eyebrow>}
+            {eyebrow && <Eyebrow className={tone !== "white" ? "text-current" : undefined}>{eyebrow}</Eyebrow>}
             <h2 className="font-display mt-2 text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl lg:text-4xl">
               {title}
             </h2>

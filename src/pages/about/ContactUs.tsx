@@ -29,7 +29,7 @@ export default function ContactUs() {
               href="https://www.google.com/maps/place/10+Elm+Ave,+Toronto,+ON+M4W+1N4,+Canada"
               target="_blank"
               rel="noreferrer"
-              className="focus-ring mt-4 inline-flex items-center gap-1 text-sm font-bold text-brand-coral hover:underline"
+              className="focus-ring mt-4 inline-flex items-center gap-1 text-sm font-bold text-brand-coral-ink hover:underline"
             >
               Get Directions →
             </a>
@@ -54,7 +54,7 @@ export default function ContactUs() {
                 href="https://branksome.myschoolapp.com/app/#login"
                 target="_blank"
                 rel="noreferrer"
-                className="focus-ring mt-2 inline-flex items-center gap-1 text-sm font-bold text-brand-coral hover:underline"
+                className="focus-ring mt-2 inline-flex items-center gap-1 text-sm font-bold text-brand-coral-ink hover:underline"
               >
                 Log in to the Portal →
               </a>
@@ -63,7 +63,7 @@ export default function ContactUs() {
               <h3 className="font-display text-lg font-bold text-brand-green-900">Security</h3>
               <p className="mt-2 text-sm text-ink/70">
                 To contact Security, please call{" "}
-                <a href={`tel:${siteInfo.phoneSecurity}`} className="font-bold text-brand-coral hover:underline">
+                <a href={`tel:${siteInfo.phoneSecurity}`} className="font-bold text-brand-coral-ink hover:underline">
                   {siteInfo.phoneSecurity}
                 </a>
                 .
@@ -73,7 +73,7 @@ export default function ContactUs() {
               <h3 className="font-display text-lg font-bold text-brand-green-900">Careers</h3>
               <p className="mt-2 text-sm text-ink/70">
                 To join our employee community of global thinkers and innovators, please visit{" "}
-                <Link to="/about/career-opportunities" className="font-bold text-brand-coral hover:underline">
+                <Link to="/about/career-opportunities" className="font-bold text-brand-coral-ink hover:underline">
                   Career Opportunities
                 </Link>
                 .
@@ -83,7 +83,7 @@ export default function ContactUs() {
               <h3 className="font-display text-lg font-bold text-brand-green-900">Location Rentals</h3>
               <p className="mt-2 text-sm text-ink/70">
                 To inquire about fees and availability, please visit the{" "}
-                <Link to="/the-campus/venue-rentals" className="font-bold text-brand-coral hover:underline">
+                <Link to="/the-campus/venue-rentals" className="font-bold text-brand-coral-ink hover:underline">
                   Venues page
                 </Link>
                 .

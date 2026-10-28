@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+@font-face { font-family: "Archivo"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/archivo-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Archivo"; font-style: normal; font-weight: 500; font-display: swap; src: url("/fonts/archivo-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Archivo"; font-style: normal; font-weight: 600; font-display: swap; src: url("/fonts/archivo-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Archivo"; font-style: normal; font-weight: 700; font-display: swap; src: url("/fonts/archivo-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Archivo"; font-style: normal; font-weight: 800; font-display: swap; src: url("/fonts/archivo-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/inter-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("/fonts/inter-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("/fonts/inter-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 700; font-display: swap; src: url("/fonts/inter-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 800; font-display: swap; src: url("/fonts/inter-latin-800-normal.woff2") format("woff2"); }
+
 @theme {
   --font-display: "Archivo", "Inter", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
@@ -10,6 +21,7 @@
   --color-brand-green-100: #e5efe7;
 
   --color-brand-coral: #f26539;
+  --color-brand-coral-ink: #a83a18;
   --color-brand-coral-light: #ff7f57;
   --color-brand-gold: #fcaf17;
   --color-brand-gold-light: #ffc41d;
@@ -72,3 +84,95 @@ h4,
   outline-offset: 2px;
   border-radius: 2px;
 }
+
+/* Motion is progressive enhancement: content is visible before and without JS. */
+:root {
+  --motion-fast: 160ms;
+  --motion-menu: 240ms;
+  --motion-reveal: 600ms;
+  --motion-ease: cubic-bezier(.22, 1, .36, 1);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-visual { animation: motion-visual 800ms var(--motion-ease) both; }
+  .hero-item { animation: motion-rise 700ms var(--motion-ease) both; }
+  .hero-eyebrow { animation-delay: 40ms; }
+  .hero-heading { animation-delay: 100ms; }
+  .hero-copy { animation-delay: 160ms; }
+  .hero-actions { animation-delay: 220ms; }
+  [data-reveal].is-revealed { animation: motion-rise var(--motion-reveal) var(--motion-ease) both; }
+  .motion-menu { animation: motion-menu-in var(--motion-menu) var(--motion-ease) both; }
+  .motion-overlay { animation: motion-fade var(--motion-menu) ease both; }
+  .motion-drawer { animation: motion-drawer-in 300ms var(--motion-ease) both; }
+  @media (hover: hover) {
+    article img { transition: transform 500ms var(--motion-ease); }
+    article:hover img { transform: scale(1.025); }
+  }
+}
+@keyframes motion-rise { from { opacity: .86; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes motion-visual { from { opacity: .75; } to { opacity: 1; } }
+@keyframes motion-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes motion-menu-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes motion-drawer-in { from { opacity: .7; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+@media (prefers-reduced-motion: no-preference) {
+  .motion-closing .motion-overlay { animation: motion-fade 200ms ease reverse both; }
+  .motion-closing .motion-drawer { animation: motion-drawer-in 220ms ease reverse both; }
+  .motion-closing .motion-menu { animation: motion-menu-in 200ms ease reverse both; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-actions { animation-name: motion-shift; }
+}
+@keyframes motion-shift { from { transform: translateY(12px); } to { transform: translateY(0); } }
+
+/* Evidence-led hero sequence: prompt headline first, then the campus image. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-visual { animation: campus-reveal 1100ms ease 200ms both; }
+  .admissions-feature.is-revealed .admissions-visual { animation: motion-rise 650ms var(--motion-ease) 80ms both; }
+  .admissions-feature.is-revealed .admissions-copy { animation: motion-rise 550ms var(--motion-ease) both; }
+}
+@keyframes campus-reveal { from { opacity: 0; } to { opacity: 1; } }
+
+@font-face { font-family: "Anton"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/anton-latin-400-normal.woff2") format("woff2"); }
+.site-menu-link { font-family: "Anton", "Archivo", sans-serif; font-size: clamp(2rem, 4vw, 3.6rem); line-height: 1.08; letter-spacing: -.02em; }
+.site-menu-arrow { font-family: Arial, sans-serif; font-size: .65em; font-weight: 400; transition: transform 180ms ease; }
+.site-menu-link:hover .site-menu-arrow, .site-menu-arrow.is-active { transform: translateX(8px); }
+.site-menu-link:hover { color: #ffc41d; }
+.site-menu-image { opacity: .95; }
+@media (prefers-reduced-motion: no-preference) {
+  .site-menu-body { animation: site-menu-enter 360ms var(--motion-ease) both; }
+  .site-menu-image { animation: site-menu-image-in 600ms var(--motion-ease) both; }
+  .site-menu-item { animation: site-menu-item-in 420ms var(--motion-ease) both; animation-delay: calc(35ms * var(--item-index)); }
+  .site-menu-submenu { animation: site-menu-item-in 240ms var(--motion-ease) both; }
+  .site-menu.is-closing .site-menu-body { animation: site-menu-exit 220ms ease both; }
+  .site-menu.is-closing .site-menu-item, .site-menu.is-closing .site-menu-image { animation: none; }
+}
+@keyframes site-menu-enter { from { opacity: .92; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes site-menu-item-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes site-menu-image-in { from { opacity: 0; transform: translateX(18px); } to { opacity: .95; transform: translateX(0); } }
+@keyframes site-menu-exit { from { opacity: 1; } to { opacity: 0; } }
+
+/* Story section: editorial intro beside a staggered, manually controlled carousel. */
+.story-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; padding-left: max(1.25rem, calc((100vw - 1195px) / 2)); }
+.story-intro { padding-right: 1.25rem; }
+.story-section-title { font-family: "Anton", "Archivo", sans-serif; color: var(--color-brand-green-900); font-size: clamp(2.3rem, 3.4vw, 3.4rem); line-height: 1.03; text-transform: uppercase; max-width: 22rem; }
+.story-track { --story-width: min(78vw, 20rem); gap: 1.5rem; padding-right: max(0px, calc(100% - var(--story-width))); padding-bottom: .25rem; align-items: end; overscroll-behavior-inline: contain; }
+.story-card { width: var(--story-width); height: 30.25rem; display: flex; align-items: end; }
+.story-card-panel { position: relative; overflow: hidden; width: 100%; height: 100%; transform: scale(.78); transform-origin: bottom left; transition: transform 450ms var(--motion-ease); }
+.story-card-panel.is-active { transform: scale(1); }
+.story-portrait { position: absolute; width: 76%; height: 70%; top: 4%; right: -3%; object-fit: contain; object-position: center bottom; filter: drop-shadow(2px 0 0 white) drop-shadow(-2px 0 0 white) drop-shadow(0 2px 0 white) drop-shadow(0 -2px 0 white); }
+.story-card-content { position: absolute; z-index: 1; bottom: 0; left: 0; width: 100%; padding: 0 1.2rem 1.5rem; }
+.story-card-title { font-family: "Anton", "Archivo", sans-serif; font-size: clamp(3.4rem, 4vw, 4.4rem); line-height: .97; text-transform: uppercase; overflow-wrap: anywhere; }
+.story-card-copy { max-width: 18rem; margin-top: 1.05rem; font-size: .85rem; line-height: 1.4; }
+.story-card-link { display: inline-flex; align-items: center; gap: .8rem; margin-top: 1rem; min-height: 2.75rem; font-size: .8rem; font-weight: 800; text-transform: uppercase; }
+.story-card-link span { font-size: 1.6rem; line-height: 1; transition: transform 180ms ease; }
+.story-card-link:hover span { transform: translateX(5px); }
+.story-controls { display: flex; align-items: center; gap: 1rem; padding: .8rem 1.25rem 0 0; }
+.story-progress { display: flex; flex: 1; min-width: 0; }
+.story-progress-button { display: flex; align-items: center; flex: 1; height: 2.75rem; }
+.story-progress-segment { height: 3px; width: 100%; background: #b4c9bb; transition: background-color 200ms ease; }
+.story-progress-segment.is-active { background: var(--color-brand-green-900); }
+.story-arrow { display: flex; align-items: center; justify-content: center; height: 2.75rem; width: 2.75rem; flex-shrink: 0; border: 1px solid var(--color-brand-green-900); color: var(--color-brand-green-900); font-size: 1.5rem; transition: background-color 160ms ease, color 160ms ease; }
+.story-arrow:hover:not(:disabled) { background: var(--color-brand-green-900); color: white; }
+.story-arrow:disabled { background: #b4c9bb; border-color: #b4c9bb; color: #fff; }
+@media (min-width: 900px) { .story-layout { grid-template-columns: minmax(270px, 34%) minmax(0, 1fr); gap: 2rem; } .story-intro { padding-top: .2rem; } .story-track { --story-width: 20rem; } }
+@media (max-width: 599px) { .story-card { height: 27rem; } .story-track { gap: .8rem; } .story-card-panel { transform: scale(.88); } .story-card-panel.is-active { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .story-card-panel, .story-card-link span, .story-progress-segment, .story-arrow { transition: none; } }

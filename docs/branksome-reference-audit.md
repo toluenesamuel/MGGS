@@ -54,3 +54,5 @@ See `docs/route-inventory.md` for the full list extracted from the homepage link
 - No real form was submitted, no donation/payment flow was exercised beyond inspecting its markup.
 - No authentication-gated areas (parent/student portal) were accessed or bypassed.
 - No private source, server config, or backend code was claimed to be "recovered" — all evidence is from publicly rendered HTML/CSS/behavior.
+
+> Continuation note (2026-10-28): This document records historical claims from the inherited project. The referenced `docs/reference-screens/` files are not present in this checkout, and this session could not reach the reference to independently verify them. It is not evidence of observed animation. See `motion-audit.md` for the current limitations.

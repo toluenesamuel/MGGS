@@ -50,7 +50,7 @@ export function DonationForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="rounded-lg bg-white p-6 shadow-xl sm:p-8">
-      <p className="font-display text-sm font-bold uppercase tracking-wide text-brand-coral">Make a gift today</p>
+      <p className="font-display text-sm font-bold uppercase tracking-wide text-brand-gold">Make a gift today</p>
       <h3 className="font-display mt-1 text-2xl font-extrabold text-brand-green-900">Support Branksome Hall</h3>
 
       <fieldset className="mt-6">
@@ -67,7 +67,7 @@ export function DonationForm() {
               className={cn(
                 "focus-ring rounded border py-2.5 text-sm font-bold",
                 amount === value
-                  ? "border-brand-coral bg-brand-coral text-white"
+                  ? "border-brand-coral bg-brand-coral text-ink"
                   : "border-brand-green-900/20 text-brand-green-900 hover:border-brand-coral",
               )}
             >
@@ -92,7 +92,7 @@ export function DonationForm() {
           className="focus-ring mt-1 w-full rounded border border-brand-green-900/20 px-3 py-2 text-sm"
         />
         {errors.amount && (
-          <p role="alert" className="mt-1 text-xs font-medium text-brand-coral">
+          <p role="alert" className="mt-1 text-xs font-medium text-brand-gold">
             {errors.amount}
           </p>
         )}
@@ -127,7 +127,7 @@ export function DonationForm() {
             className="focus-ring w-full rounded border border-brand-green-900/20 px-3 py-2.5 text-sm"
           />
           {errors.name && (
-            <p role="alert" className="mt-1 text-xs font-medium text-brand-coral">
+            <p role="alert" className="mt-1 text-xs font-medium text-brand-gold">
               {errors.name}
             </p>
           )}
@@ -145,7 +145,7 @@ export function DonationForm() {
             className="focus-ring w-full rounded border border-brand-green-900/20 px-3 py-2.5 text-sm"
           />
           {errors.email && (
-            <p role="alert" className="mt-1 text-xs font-medium text-brand-coral">
+            <p role="alert" className="mt-1 text-xs font-medium text-brand-gold">
               {errors.email}
             </p>
           )}

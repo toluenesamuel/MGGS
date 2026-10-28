@@ -62,7 +62,7 @@ export function Accordion({
               id={panelId}
               role="region"
               aria-labelledby={buttonId}
-              className={cn("grid transition-all duration-200", isOpen ? "grid-rows-[1fr] pb-5 opacity-100" : "grid-rows-[0fr] opacity-0")}
+              className={cn("grid transition-[grid-template-rows,opacity,padding] duration-200", isOpen ? "grid-rows-[1fr] pb-5 opacity-100" : "grid-rows-[0fr] opacity-0")}
             >
               <div className="overflow-hidden">
                 <p className={cn("text-sm leading-relaxed sm:text-base", dark ? "text-white/75" : "text-ink/75")}>

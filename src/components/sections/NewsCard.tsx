@@ -4,8 +4,8 @@ import type { NewsArticle } from "@/data/news";
 
 export function NewsCard({ article }: { article: NewsArticle }) {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-lg border border-black/5 bg-white shadow-sm transition-shadow hover:shadow-md">
-      <Link to={`/branksome-news/${article.slug}`} className="focus-ring block">
+    <article data-reveal className="flex h-full flex-col overflow-hidden rounded-lg border border-black/5 bg-white shadow-sm transition-shadow hover:shadow-md">
+      <Link to={`/branksome-news/${article.slug}`} className="focus-ring block" aria-label={article.title}>
         <div className="aspect-[16/10] w-full overflow-hidden bg-brand-green-100">
           <img src={article.image} alt="" className="h-full w-full object-cover" loading="lazy" />
         </div>
@@ -14,17 +14,17 @@ export function NewsCard({ article }: { article: NewsArticle }) {
         <div className="flex flex-wrap items-center gap-2">
           <Tag tone="gold">{article.category}</Tag>
           {article.topic && <Tag tone="outline">{article.topic}</Tag>}
-          <span className="ml-auto text-xs font-medium text-ink/50">{article.readTime}</span>
+          <span className="ml-auto text-xs font-medium text-ink/70">{article.readTime}</span>
         </div>
         <h3 className="font-display mt-3 text-base font-bold leading-snug text-brand-green-900">
-          <Link to={`/branksome-news/${article.slug}`} className="focus-ring hover:text-brand-coral">
+          <Link to={`/branksome-news/${article.slug}`} className="focus-ring hover:text-brand-coral-ink">
             {article.title}
           </Link>
         </h3>
         <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink/70">{article.excerpt}</p>
         <Link
           to={`/branksome-news/${article.slug}`}
-          className="focus-ring mt-4 inline-flex items-center gap-1 text-sm font-bold text-brand-coral hover:underline"
+          className="focus-ring mt-4 inline-flex items-center gap-1 text-sm font-bold text-brand-coral-ink hover:underline"
         >
           Read More
           <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3.5 w-3.5">
