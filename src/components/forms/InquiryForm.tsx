@@ -28,7 +28,7 @@ export function InquiryForm({
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
       next.email = "Please enter a valid email address.";
     }
-    if (!values.studentGrade?.trim()) next.studentGrade = "Please select a grade of interest.";
+    if (!values.studentGrade?.trim()) next.studentGrade = "Please tell us the class you have in mind.";
     extraFields?.forEach((f) => {
       if (f.type !== "textarea-optional" && !values[f.id]?.trim()) {
         next[f.id] = `Please complete ${f.label.toLowerCase()}.`;
@@ -99,30 +99,13 @@ export function InquiryForm({
         />
       </div>
 
-      <div>
-        <label htmlFor="studentGrade" className="mb-1 block text-sm font-semibold text-brand-green-900">
-          Grade of Interest
-        </label>
-        <select
-          id="studentGrade"
-          value={values.studentGrade ?? ""}
-          onChange={(e) => update("studentGrade", e.target.value)}
-          aria-invalid={Boolean(errors.studentGrade)}
-          aria-describedby={errors.studentGrade ? "studentGrade-error" : undefined}
-          className="focus-ring w-full rounded border border-brand-green-900/20 px-3 py-2.5 text-sm"
-        >
-          <option value="">Select a grade…</option>
-          <option>Junior Kindergarten – Grade 6</option>
-          <option>Grades 7–10 (Middle Years)</option>
-          <option>Grades 11–12 (Diploma / IB Select)</option>
-          <option>Boarding Program</option>
-        </select>
-        {errors.studentGrade && (
-          <p id="studentGrade-error" role="alert" className="mt-1 text-xs font-medium text-brand-coral-ink">
-            {errors.studentGrade}
-          </p>
-        )}
-      </div>
+      <Field
+        id="studentGrade"
+        label="Class of Interest"
+        value={values.studentGrade ?? ""}
+        onChange={update}
+        error={errors.studentGrade}
+      />
 
       {extraFields?.map((f) =>
         f.type === "select" ? (

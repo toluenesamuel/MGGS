@@ -2,17 +2,17 @@ import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/utils/cn";
 
-const presetAmounts = [100, 250, 500, 1000];
+const presetAmounts = [5000, 10000, 25000, 50000];
 const designations = [
   "Area of Greatest Need",
-  "Financial Assistance & Scholarships",
-  "The Make Way Campaign",
-  "iCAST — Innovation Centre & Studio Theatre",
-  "Annual Fund",
+  "Teaching & Learning Resources",
+  "Books & Learning Materials",
+  "School Environment & Upkeep",
+  "Family Support Fund",
 ];
 
 export function DonationForm() {
-  const [amount, setAmount] = useState<number | null>(250);
+  const [amount, setAmount] = useState<number | null>(presetAmounts[0]);
   const [customAmount, setCustomAmount] = useState("");
   const [designation, setDesignation] = useState(designations[0]);
   const [name, setName] = useState("");
@@ -25,7 +25,7 @@ export function DonationForm() {
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const next: Record<string, string> = {};
-    if (!effectiveAmount || effectiveAmount <= 0) next.amount = "Please choose or enter a gift amount greater than $0.";
+    if (!effectiveAmount || effectiveAmount <= 0) next.amount = "Please choose or enter a gift amount greater than ₦0.";
     if (!name.trim()) next.name = "Please enter your name.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) next.email = "Please enter a valid email address.";
     setErrors(next);
@@ -38,7 +38,7 @@ export function DonationForm() {
         <p className="font-display text-2xl font-extrabold">Thank you, {name.split(" ")[0]}!</p>
         <p className="mt-2 text-sm text-white/85">
           This is a safe, demonstration-only donation form — <strong>no payment was processed</strong> and no real
-          transaction occurred. Your simulated gift of ${effectiveAmount.toLocaleString()} would have supported{" "}
+          transaction occurred. Your simulated gift of ₦{effectiveAmount.toLocaleString()} would have supported{" "}
           {designation}.
         </p>
         <Button variant="outline-white" size="sm" className="mt-5" onClick={() => setSubmitted(false)}>
@@ -51,10 +51,10 @@ export function DonationForm() {
   return (
     <form onSubmit={handleSubmit} noValidate className="rounded-lg bg-white p-6 shadow-xl sm:p-8">
       <p className="font-display text-sm font-bold uppercase tracking-wide text-brand-gold">Make a gift today</p>
-      <h3 className="font-display mt-1 text-2xl font-extrabold text-brand-green-900">Support Branksome Hall</h3>
+      <h3 className="font-display mt-1 text-2xl font-extrabold text-brand-green-900">Support Marvelous Greatness Schools</h3>
 
       <fieldset className="mt-6">
-        <legend className="mb-2 text-sm font-semibold text-brand-green-900">Gift Amount (CAD)</legend>
+        <legend className="mb-2 text-sm font-semibold text-brand-green-900">Gift Amount (NGN)</legend>
         <div className="grid grid-cols-4 gap-2">
           {presetAmounts.map((value) => (
             <button
@@ -71,7 +71,7 @@ export function DonationForm() {
                   : "border-brand-green-900/20 text-brand-green-900 hover:border-brand-coral",
               )}
             >
-              ${value}
+              ₦{value.toLocaleString()}
             </button>
           ))}
         </div>
@@ -88,7 +88,7 @@ export function DonationForm() {
             setCustomAmount(e.target.value);
             setAmount(null);
           }}
-          placeholder="$"
+          placeholder="₦"
           className="focus-ring mt-1 w-full rounded border border-brand-green-900/20 px-3 py-2 text-sm"
         />
         {errors.amount && (
@@ -153,7 +153,7 @@ export function DonationForm() {
       </div>
 
       <Button type="submit" className="mt-6 w-full">
-        Give ${effectiveAmount || 0} (demo)
+        Give ₦{(effectiveAmount || 0).toLocaleString()} (demo)
       </Button>
       <p className="mt-3 text-center text-xs text-ink/50">
         Demonstration form only. No payment processor is connected and no real donation will be made.

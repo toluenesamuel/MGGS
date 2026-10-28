@@ -16,8 +16,9 @@ export default function SectionPage({ content }: { content: GenericPageContent }
         <Container className="max-w-3xl">
           <p className="text-base leading-relaxed text-ink/80 sm:text-lg">{content.summary}</p>
           <p className="mt-6 rounded border border-dashed border-brand-green-900/25 bg-brand-green-100/60 p-4 text-xs leading-relaxed text-ink/60">
-            This section uses a shared content template in this reconstruction rather than a fully bespoke
-            layout — see <code>docs/route-inventory.md</code> for which routes received a bespoke design pass.
+            This page is being completed. Further details — including any dates, arrangements or contacts
+            specific to this part of school life — will be added as soon as they are confirmed by the school
+            office.
           </p>
           <h2 className="font-display mt-10 text-lg font-bold text-brand-green-900">{content.relatedLabel}</h2>
           <ul className="mt-4 flex flex-wrap gap-3">

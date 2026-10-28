@@ -4,6 +4,10 @@ import { cn } from "@/utils/cn";
 
 export interface StoryCard {
   name: string;
+  /** Optional card heading. Falls back to "Meet {name}". */
+  title?: string;
+  /** Optional link label. Falls back to "Meet {role}". */
+  linkLabel?: string;
   role: string;
   blurb: string;
   image: string;
@@ -70,9 +74,9 @@ export function StoryCarousel({ title, description, cards }: { title: string; de
                 <div className={cn("story-card-panel", toneClasses[card.tone], i === index && "is-active")}>
                   <img src={card.image} alt="" className="story-portrait" loading="lazy" />
                   <div className="story-card-content">
-                    <p className="story-card-title">Meet {card.name}</p>
+                    <p className="story-card-title">{card.title ?? `Meet ${card.name}`}</p>
                     <p className="story-card-copy">{card.blurb}</p>
-                    <Link to={card.to} className="focus-ring story-card-link">Meet {card.role} <span aria-hidden="true">→</span></Link>
+                    <Link to={card.to} className="focus-ring story-card-link">{card.linkLabel ?? `Meet ${card.role}`} <span aria-hidden="true">→</span></Link>
                   </div>
                 </div>
               </li>
@@ -80,7 +84,7 @@ export function StoryCarousel({ title, description, cards }: { title: string; de
           </ul>
           <div className="story-controls">
             <div className="story-progress" role="group" aria-label="Story slides">
-              {cards.map((card, i) => <button key={card.name} type="button" onClick={() => scrollToIndex(i)} aria-label={`Go to ${card.name}`} aria-current={i === index ? "true" : undefined} className="story-progress-button focus-ring"><span className={cn("story-progress-segment", i <= index && "is-active")} /></button>)}
+              {cards.map((card, i) => <button key={card.name} type="button" onClick={() => scrollToIndex(i)} aria-label={`Go to ${card.title ?? card.name}`} aria-current={i === index ? "true" : undefined} className="story-progress-button focus-ring"><span className={cn("story-progress-segment", i <= index && "is-active")} /></button>)}
             </div>
             <button type="button" onClick={() => scrollToIndex(index - 1)} disabled={index === 0} aria-label="Previous story" className="story-arrow focus-ring">←</button>
             <button type="button" onClick={() => scrollToIndex(index + 1)} disabled={atEnd} aria-label="Next story" className="story-arrow focus-ring">→</button>

@@ -1,8 +1,7 @@
-// Headlines, categories, topics, read-times and excerpts reproduced verbatim
-// from https://branksome.on.ca/branksome-news/ (fetched Phase 2). Full body
-// copy for the detail view is a short, honestly-labelled summary expansion
-// of the public excerpt — not an invented narrative — since full article
-// bodies were not scraped.
+// News and announcement examples for Marvelous Greatness Schools.
+// These are illustrative, evergreen notices that reflect the school's stated
+// values and purpose. No dates, results, fees or statistics are stated as fact;
+// the school can replace each entry with its own confirmed news.
 
 export interface NewsArticle {
   slug: string;
@@ -16,122 +15,132 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
-    slug: "nytimes-journalist-elizabeth-dias04-returns-to-branksome",
-    title: "NYTimes Journalist Elizabeth DIAS'04 Returns to Branksome for PrincipalED Season 3 Premiere",
-    category: "News",
-    topic: "Community Engagement",
+    slug: "welcome-to-the-new-school-year",
+    title: "Welcome Back: A New Year Towards Greatness",
+    category: "Announcements",
+    topic: "Community",
     readTime: "2 min read",
     excerpt:
-      "In the Season 3 premiere of PrincipalED, Principal Grace McCallum sits down with Elizabeth DIAS'04 — national religion correspondent for The New York Times and co-author of The Fall of Roe: The Rise of a New America.",
-    image: "/images/news-generic-2.jpg",
-  },
-  {
-    slug: "branksome-hall-hosts-200-women-canadian-premiere",
-    title: "Branksome Hall Hosts '200 Women' Canadian Premiere",
-    category: "News",
-    topic: "Arts",
-    readTime: "2 min read",
-    excerpt:
-      "This fall, Branksome Hall proudly hosts the Canadian premiere of 200 Women: Who Will Change the Way You See the World, celebrating the global portrait exhibition's 10th anniversary.",
-    image: "/images/news-generic-1.jpg",
-  },
-  {
-    slug: "noodle-program-evolves",
-    title: "Branksome's Noodle Program Evolves: From Selling Fast to Solving Problems",
-    category: "News",
-    topic: "Clubs",
-    readTime: "4 min read",
-    excerpt:
-      "Now anchored in its new headquarters in iCAST, Noodle is introducing some of its most significant changes yet, moving participants from high-volume product sales to developing true entrepreneurial and design thinking.",
-    image: "/images/innovation-studio.jpg",
-  },
-  {
-    slug: "2026-installation-speech",
-    title: "2026 Installation Speech",
-    category: "News",
-    readTime: "6 min read",
-    excerpt:
-      "Today, we do something important. We formally recognize those who have chosen to step forward and lead, and remember someone who understood deeply what it means to use your voice.",
+      "A warm welcome to every returning family and every new family joining Marvelous Greatness Schools this term. Our staff have been preparing classrooms, lesson plans and activities so that learning begins the moment our pupils arrive.",
     image: "/images/students-collaborating.jpg",
   },
   {
-    slug: "mirvish-production-13-going-on-30",
-    title: "Branksome Arts Students Cast in Mirvish Production of 13 Going on 30: The Musical",
+    slug: "motto-in-focus-towards-greatness",
+    title: "Motto in Focus: What 'Towards Greatness' Means to Us",
     category: "News",
-    topic: "Arts",
+    topic: "Character & Values",
     readTime: "3 min read",
     excerpt:
-      "Two Branksome Hall students are stepping into the spotlight on a major professional stage, cast in the upcoming Mirvish production running December 2026 to January 2027.",
+      "Our motto is not a promise of instant success. It describes a direction — the daily choice to improve, to behave with integrity and to take one more step forward than yesterday.",
     image: "/images/news-generic-1.jpg",
   },
   {
-    slug: "k-12-centre-for-girls-in-stem",
-    title: "Branksome Hall Opens Canada's First K–12 Centre for Girls in STEM, Innovation, Entrepreneurship and the Arts",
+    slug: "discipline-is-a-habit-not-a-punishment",
+    title: "Discipline Is a Habit, Not a Punishment",
     category: "News",
-    topic: "Arts",
-    readTime: "5 min read",
-    excerpt:
-      "What if a student could learn physics by working backstage in a theatre, develop a business idea down the hall, or move from coding a robot to producing a podcast, all in the same school day?",
-    image: "/images/innovation-studio.jpg",
-  },
-  {
-    slug: "welcoming-kathryn-barnes-deputy-principal",
-    title: "A Branksome Homecoming: Welcoming Kathryn Barnes, Deputy Principal",
-    category: "News",
+    topic: "Character & Values",
     readTime: "3 min read",
     excerpt:
-      "Kathryn Barnes has officially started her role as Branksome's new Deputy Principal, marking a meaningful return for an educator whose roots run deep within the school's community.",
-    image: "/images/students-collaborating.jpg",
-  },
-  {
-    slug: "remembering-aija-zommers",
-    title: "Remembering Aija Zommers, History Teacher and Head Debate Coach",
-    category: "News",
-    readTime: "2 min read",
-    excerpt:
-      "Branksome Hall remembers former educator and debate coach Aija Zommers, celebrating her decades of dedication to public speaking, critical thought and student mentorship.",
+      "Punctuality, neatness, courtesy and focused effort are learned habits. Here is how our teachers build those habits gently and consistently across the school day.",
     image: "/images/classroom-science.jpg",
   },
   {
-    slug: "principaled-wins-case-award",
-    title: "PrincipalED Podcast Wins Silver 2026 CASE Circle of Excellence Award",
-    category: "Awards",
-    topic: "Innovation",
-    readTime: "2 min read",
+    slug: "reading-culture-at-home-and-school",
+    title: "Building a Reading Culture at Home and at School",
+    category: "News",
+    topic: "Academics",
+    readTime: "4 min read",
     excerpt:
-      "Branksome Hall has won a Silver 2026 Circle of Excellence Award from The Council for Advancement and Support of Education (CASE) for the PrincipalED podcast.",
+      "Reading is the foundation of every subject. Simple routines — a short reading time each evening, asking questions about the story, and letting children choose their own books — make a lasting difference.",
     image: "/images/news-generic-2.jpg",
   },
   {
-    slug: "kristin-mckinnon05-fifa-world-cup",
-    title: "Kristin McKINNON'05 is Shaping Toronto's World Cup",
+    slug: "how-we-use-feedback-to-improve-learning",
+    title: "How We Use Feedback to Improve Learning",
     category: "News",
+    topic: "Academics",
     readTime: "3 min read",
     excerpt:
-      "Kristin McKINNON'05 is part of the communications team behind the City of Toronto's FIFA World Cup events.",
+      "Assessment is only useful when it changes what happens next. Our teachers use short checks, marked work and conversation to decide which pupils need support and which are ready for a greater challenge.",
+    image: "/images/classroom-science.jpg",
+  },
+  {
+    slug: "co-curricular-activities-return",
+    title: "Co-Curricular Activities: Learning Beyond the Classroom",
+    category: "Announcements",
+    topic: "Student Life",
+    readTime: "2 min read",
+    excerpt:
+      "Clubs, sports, creative activities and service opportunities give pupils a chance to discover what they enjoy, practise teamwork and grow in confidence outside the classroom.",
+    image: "/images/student-life-sports.jpg",
+  },
+  {
+    slug: "parents-as-partners-in-learning",
+    title: "Parents as Partners in Learning",
+    category: "News",
+    topic: "Community",
+    readTime: "3 min read",
+    excerpt:
+      "Home and school achieve more together. We share practical ways families can support the routines, reading habits and good conduct that are encouraged at MGGS.",
+    image: "/images/giving-community.jpg",
+  },
+  {
+    slug: "preparing-pupils-for-a-changing-world",
+    title: "Preparing Pupils for a Changing World",
+    category: "News",
+    topic: "Academics",
+    readTime: "4 min read",
+    excerpt:
+      "Strong literacy, numeracy and reasoning remain essential — but so do curiosity, communication and the confidence to solve unfamiliar problems. Our approach works on both at once.",
+    image: "/images/innovation-studio.jpg",
+  },
+  {
+    slug: "celebrating-effort-and-good-conduct",
+    title: "Celebrating Effort and Good Conduct",
+    category: "Announcements",
+    topic: "Character & Values",
+    readTime: "2 min read",
+    excerpt:
+      "Some of the most important achievements in school are quiet ones: steady improvement, kindness towards a classmate, honesty when it is difficult. We make a point of noticing and celebrating them.",
+    image: "/images/news-generic-1.jpg",
+  },
+  {
+    slug: "open-day-invitation",
+    title: "You Are Invited: Visit MGGS",
+    category: "Announcements",
+    topic: "Admissions",
+    readTime: "2 min read",
+    excerpt:
+      "Choosing a school is a big decision, and the best way to decide is to see the school for yourself. Prospective families are welcome to book a visit and meet our teachers.",
+    image: "/images/admissions-student.png",
+  },
+  {
+    slug: "supporting-pupils-wellbeing",
+    title: "Supporting Every Pupil's Wellbeing",
+    category: "News",
+    topic: "Student Life",
+    readTime: "3 min read",
+    excerpt:
+      "Children learn best when they feel safe, known and valued. Our teachers and pastoral staff work closely with families so that concerns are noticed early and addressed with care.",
     image: "/images/campus-courtyard.jpg",
   },
   {
-    slug: "a-new-middle-school-experience",
-    title: "A New Middle School Experience",
+    slug: "teachers-who-keep-learning",
+    title: "Teachers Who Keep Learning",
     category: "News",
-    topic: "IB/Academics",
+    topic: "Academics",
     readTime: "3 min read",
     excerpt:
-      "The Middle School model is distinctly designed for the unique social, cognitive and well-being needs of Grades 7 and 8 students, bridging Junior School and Senior School with confidence.",
-    image: "/images/classroom-science.jpg",
-  },
-  {
-    slug: "scrubbing-in-medical-leaders",
-    title: "Scrubbing In: Innovative New Program Empowers Next Generation of Female Medical Leaders",
-    category: "News",
-    topic: "IB/Academics",
-    readTime: "5 min read",
-    excerpt:
-      "Twenty-two Branksome Hall students traded their kilts for surgical scrubs at St. Michael's Hospital, exploring a bold new pipeline for future medical leaders.",
-    image: "/images/classroom-science.jpg",
+      "Dedicated educators are at the heart of a good school. Regular training, shared planning and honest review of what is working help our teachers keep improving their practice.",
+    image: "/images/students-collaborating.jpg",
   },
 ];
 
-export const newsTypes = ["News", "Awards"];
-export const newsTopics = ["Community Engagement", "Arts", "Clubs", "Innovation", "IB/Academics"];
+export const newsTypes = ["News", "Announcements"];
+export const newsTopics = [
+  "Academics",
+  "Character & Values",
+  "Student Life",
+  "Community",
+  "Admissions",
+];

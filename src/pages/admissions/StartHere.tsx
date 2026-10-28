@@ -4,7 +4,7 @@ import { Timeline } from "@/components/sections/Timeline";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { PageMenu } from "@/components/layout/PageMenu";
 import { LinkButton } from "@/components/ui/Button";
-import { importantDates } from "@/data/site";
+import { admissionsSteps, siteInfo } from "@/data/site";
 
 export default function StartHere() {
   return (
@@ -12,7 +12,7 @@ export default function StartHere() {
       <InteriorHero
         eyebrow="Admissions"
         title="Start Here"
-        description="Toronto's Only Independent IB World School for Girls."
+        description={`Everything a family needs to begin the conversation about joining ${siteInfo.name}.`}
         trail={[{ label: "Admissions", to: "/admissions/start-here" }, { label: "Start Here" }]}
         tone="coral"
         image="/images/students-collaborating.jpg"
@@ -21,45 +21,44 @@ export default function StartHere() {
 
       <PageMenu
         items={[
-          { id: "why-branksome", label: "Why Choose Branksome" },
-          { id: "programs", label: "Our Programs" },
-          { id: "dates", label: "Important Dates" },
+          { id: "why-mggs", label: "Why Choose MGGS" },
+          { id: "programs", label: "What We Offer" },
+          { id: "process", label: "How Admissions Works" },
         ]}
       />
 
       <ImageTextSplit
-        id="why-branksome"
-        eyebrow="Why choose Branksome Hall"
-        title="Toronto's Only Independent IB World School for Girls"
+        id="why-mggs"
+        eyebrow="Why choose Marvelous Greatness Schools"
+        title="A School That Takes Your Child's Future Seriously"
         image="/images/classroom-science.jpg"
-        imageAlt="A teacher helping students with an interactive classroom activity."
+        imageAlt="A teacher helping pupils with an interactive classroom activity."
       >
         <p>
-          As Toronto's only independent school for girls offering the IB curriculum from JK to Grade 12,
-          including more than 40 Boarding students from around the world, we're giving our students the
-          confidence to take their futures by storm — making us proud to say: "A Branksome girl did that."
+          Choosing a school is one of the most important decisions a family makes. At MGGS, that decision is
+          supported by clear expectations, committed teachers and a school culture built on discipline,
+          dedication and excellent performance.
         </p>
         <p>
-          As an IB World School, Branksome Hall values multiple perspectives, welcoming students from many
-          different countries, cultures and backgrounds. We are committed to international-mindedness, fostering
-          an innovation mindset and putting collaborative learning into action.
+          We keep our promises modest and specific: your child will be taught well, known well and encouraged
+          to grow in character as well as attainment. Families are treated as partners in that work.
         </p>
       </ImageTextSplit>
 
       <section id="programs" className="scroll-mt-24 bg-brand-green-100/50 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <h2 className="font-display text-center text-2xl font-extrabold text-brand-green-900 sm:text-3xl">
-            Our Programs
+            What We Offer
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-ink/70 sm:text-base">
-            We prepare students to lead in an ever-changing world, emphasizing critical, creative and
-            collaborative thinking, diverse perspectives and effective communication in a global context.
+            Quality education, moral instruction, co-curricular opportunity and a close partnership with
+            families — brought together in one supportive learning environment.
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
             {[
-              { title: "Our Branksome Difference", to: "/about/the-branksome-difference" },
-              { title: "Our IB Advantage", to: "/learning/our-ib-advantage" },
-              { title: "Boarding Program", to: "/admissions/boarding-program" },
+              { title: "The MGGS Difference", to: "/about/the-mggs-difference" },
+              { title: "Our Academic Approach", to: "/academics/our-academic-approach" },
+              { title: "Parent Partnership", to: "/admissions/parent-partnership" },
             ].map((p) => (
               <div key={p.title} className="rounded-lg bg-white p-6 shadow-sm">
                 <h3 className="font-display text-lg font-bold text-brand-green-900">{p.title}</h3>
@@ -72,12 +71,18 @@ export default function StartHere() {
         </div>
       </section>
 
-      <Timeline id="dates" eyebrow="Plan ahead" title="Important Dates" items={importantDates.map((d) => ({ title: d.title, detail: d.detail }))} />
+      <Timeline
+        id="process"
+        eyebrow="Plan ahead"
+        title="How Admissions Works"
+        description="Our process is deliberately simple. The school office will confirm dates, requirements and any assessment arrangements directly with your family."
+        items={admissionsSteps}
+      />
 
       <CTABanner
         tone="coral"
-        title="Her Future Starts Here"
-        description="At Branksome Hall, innovation powers learning. Through cutting-edge programs, global opportunities, and creative problem-solving, we nurture bold thinkers who will shape the future."
+        title="Your Child's Future Starts Here"
+        description="At MGGS, learning is purposeful and personal. Through careful teaching, moral guidance and a supportive community, we help every pupil grow into a confident, capable young person."
         actions={<LinkButton to="/admissions/how-to-apply" variant="outline-white">How to Apply</LinkButton>}
       />
     </>

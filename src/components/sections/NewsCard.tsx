@@ -5,7 +5,7 @@ import type { NewsArticle } from "@/data/news";
 export function NewsCard({ article }: { article: NewsArticle }) {
   return (
     <article data-reveal className="flex h-full flex-col overflow-hidden rounded-lg border border-black/5 bg-white shadow-sm transition-shadow hover:shadow-md">
-      <Link to={`/branksome-news/${article.slug}`} className="focus-ring block" aria-label={article.title}>
+      <Link to={`/mggs-news/${article.slug}`} className="focus-ring block" aria-label={article.title}>
         <div className="aspect-[16/10] w-full overflow-hidden bg-brand-green-100">
           <img src={article.image} alt="" className="h-full w-full object-cover" loading="lazy" />
         </div>
@@ -17,13 +17,13 @@ export function NewsCard({ article }: { article: NewsArticle }) {
           <span className="ml-auto text-xs font-medium text-ink/70">{article.readTime}</span>
         </div>
         <h3 className="font-display mt-3 text-base font-bold leading-snug text-brand-green-900">
-          <Link to={`/branksome-news/${article.slug}`} className="focus-ring hover:text-brand-coral-ink">
+          <Link to={`/mggs-news/${article.slug}`} className="focus-ring hover:text-brand-coral-ink">
             {article.title}
           </Link>
         </h3>
         <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink/70">{article.excerpt}</p>
         <Link
-          to={`/branksome-news/${article.slug}`}
+          to={`/mggs-news/${article.slug}`}
           className="focus-ring mt-4 inline-flex items-center gap-1 text-sm font-bold text-brand-coral-ink hover:underline"
         >
           Read More

@@ -47,7 +47,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
       <div className="motion-overlay absolute inset-0 bg-brand-green-900/70" onClick={onClose} aria-hidden="true" />
       <div className="motion-menu relative mx-auto mt-24 w-[92%] max-w-2xl rounded-xl bg-white p-6 shadow-2xl sm:p-8">
         <div className="mb-3 flex items-center justify-between">
-          <h2 className="font-display text-lg font-bold text-brand-green-900">Search Branksome Hall (reconstruction)</h2>
+          <h2 className="font-display text-lg font-bold text-brand-green-900">Search Marvelous Greatness Schools</h2>
           <button
             type="button"
             onClick={onClose}
@@ -69,7 +69,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
             type="search"
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            placeholder="Search news, programs, admissions…"
+            placeholder="Search news, admissions, academics…"
             className="focus-ring w-full rounded border border-brand-green-900/20 px-4 py-3 text-base"
           />
           <button
@@ -80,8 +80,8 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
           </button>
         </form>
         <p className="mt-3 text-xs text-ink/60">
-          This searches the content modelled in this reconstruction (news, programs, admissions pages) client-side —
-          it is not connected to Branksome Hall's real backend search service.
+          This searches the pages and notices published on this site. If you cannot find what you need, please
+          contact the school office and we will help.
         </p>
       </div>
     </div>

@@ -36,29 +36,31 @@ export function Footer() {
         <div className="grid gap-10 border-b border-white/15 pb-10 lg:grid-cols-[1.2fr_2.8fr]">
           <div>
             <Link to="/" className="focus-ring inline-flex items-center gap-2.5">
-              <span className="font-display flex h-10 w-10 items-center justify-center rounded-full bg-white text-sm font-extrabold text-brand-green-900">
-                BH
+              <span className="font-display flex h-10 w-10 items-center justify-center rounded-full bg-white text-[10px] font-extrabold tracking-tight text-brand-green-900 sm:text-[11px]">
+                {siteInfo.monogram}
               </span>
               <span className="font-display text-sm font-extrabold uppercase tracking-wide">
-                Branksome Hall
+                {siteInfo.name}
               </span>
             </Link>
             <address className="mt-4 text-sm not-italic leading-relaxed text-white/75">
-              {siteInfo.address.street}
+              {siteInfo.address.line1}
               <br />
-              {siteInfo.address.city} {siteInfo.address.postal}
+              {siteInfo.address.line2}
               <br />
-              {siteInfo.address.neighbourhood}, Toronto
+              {siteInfo.address.country}
             </address>
+            <p className="mt-2 max-w-xs text-xs leading-relaxed text-white/55">
+              Street address, telephone and email to be confirmed by the school office.
+            </p>
             <p className="mt-4 text-sm text-white/75">
               <Link to="/about/contact-us" className="focus-ring underline decoration-white/40 underline-offset-4 hover:decoration-white">
                 School Contacts
               </Link>
             </p>
             <p className="mt-6 max-w-xs text-xs leading-relaxed text-white/60">
-              Land Acknowledgement: this reconstruction exists on land that is the traditional territory
-              of many nations, including the Mississaugas of the Credit, the Anishnabeg, the Chippewa, the
-              Haudenosaunee and the Wendat peoples.
+              “{siteInfo.motto}” — our motto is a daily commitment for our pupils, our teachers and our
+              families.
             </p>
           </div>
 
@@ -98,10 +100,10 @@ export function Footer() {
             ))}
           </div>
           <p className="text-xs text-white/60">
-            © {new Date().getFullYear()} Design-study reconstruction informed by publicly observable content at
-            branksome.on.ca. Not the official Branksome Hall website.{" "}
+            © {new Date().getFullYear()} {siteInfo.name} ({siteInfo.shortName}), {siteInfo.location.area},{" "}
+            {siteInfo.location.city}, {siteInfo.location.state}. All rights reserved.{" "}
             <Link to="/about/contact-us" className="underline hover:text-white">
-              Accessibility
+              Contact &amp; accessibility
             </Link>
           </p>
         </div>

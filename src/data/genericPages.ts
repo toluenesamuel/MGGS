@@ -1,8 +1,8 @@
-// Lightweight, honestly-scoped content for long-tail nav routes that don't
-// have a bespoke template in this pass (see docs/route-inventory.md "🟡"
-// rows). Labels and cross-links are real (drawn from the verified nav/link
-// graph); the descriptive copy is a short, neutral summary of the section's
-// purpose rather than invented statistics, testimonials or dates.
+// Short, honestly-scoped content for the long-tail navigation routes. Each
+// entry describes the purpose of the section in neutral wording that reflects
+// Marvelous Greatness Schools' stated values. No dates, fees, statistics,
+// facilities or results are invented — where a detail is still to be confirmed
+// the copy says so plainly.
 
 export interface GenericPageContent {
   trailLabel: string;
@@ -21,25 +21,26 @@ export const genericPages: Record<string, GenericPageContent> = {
     title: "Leadership & Governance",
     tone: "green",
     summary:
-      "Branksome Hall is guided by its Principal, Senior Leadership Team and an independent Board of Governors responsible for the school's strategic direction, financial oversight and long-term vision.",
+      "Marvelous Greatness Schools is led by its school leadership team, which is responsible for academic standards, staff development, pastoral care and the day-to-day running of the school. Leadership works in close partnership with teachers and families so that decisions are made in the best interests of our pupils.",
     relatedLabel: "Related pages",
     related: [
-      { label: "The Branksome Difference", to: "/about/the-branksome-difference" },
-      { label: "Meet Our Principal", to: "/about/meet-our-principal" },
-      { label: "Our History", to: "/about/our-history" },
+      { label: "The MGGS Difference", to: "/about/the-mggs-difference" },
+      { label: "Our Story", to: "/about/our-story" },
+      { label: "Career Opportunities", to: "/about/career-opportunities" },
     ],
   },
-  "/about/meet-our-principal": {
+  "/about/community-and-belonging": {
     trailLabel: "About",
     section: "About",
-    title: "Meet Our Principal",
-    tone: "coral",
+    title: "Community & Belonging",
+    tone: "gold",
     summary:
-      "Branksome Hall's Principal leads the school's academic vision and community culture, and co-hosts PrincipalED, a podcast and video series featuring conversations with students, alums and educators.",
+      "Every child should feel known, safe and valued at school. At MGGS we build that sense of belonging through respectful relationships between teachers and pupils, close communication with families and a school culture in which every learner is encouraged to take part.",
     relatedLabel: "Related pages",
     related: [
-      { label: "Leadership & Governance", to: "/about/leadership-and-governance" },
-      { label: "Branksome News", to: "/branksome-news" },
+      { label: "Parents & Families", to: "/community/parents-and-families" },
+      { label: "Student Support", to: "/academics/student-support" },
+      { label: "Our Values", to: "/about/our-values" },
     ],
   },
   "/about/career-opportunities": {
@@ -48,24 +49,11 @@ export const genericPages: Record<string, GenericPageContent> = {
     title: "Career Opportunities",
     tone: "sky",
     summary:
-      "Branksome Hall employs a diverse community of educators and professionals across teaching, student support, innovation, athletics, arts and operations roles.",
+      "MGGS looks for educators and school professionals who are disciplined, dedicated and committed to excellent performance in the classroom. Current vacancies will be listed here as they are confirmed by the school office.",
     relatedLabel: "Related pages",
     related: [
-      { label: "The Branksome Difference", to: "/about/the-branksome-difference" },
+      { label: "Our Educators", to: "/community/educators" },
       { label: "Contact Us", to: "/about/contact-us" },
-    ],
-  },
-  "/about/community-inclusion-belonging": {
-    trailLabel: "About",
-    section: "About",
-    title: "Community, Inclusion & Belonging",
-    tone: "gold",
-    summary:
-      "Branksome Hall embraces community, inclusion and belonging as core values, working to create a welcoming environment where every individual feels valued, respected and empowered.",
-    relatedLabel: "Related pages",
-    related: [
-      { label: "The Branksome Difference", to: "/about/the-branksome-difference" },
-      { label: "Student Support", to: "/learning/student-support" },
     ],
   },
   "/admissions/connect-with-admissions": {
@@ -74,7 +62,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     title: "Connect with Admissions",
     tone: "coral",
     summary:
-      "Have questions about applying to Branksome Hall? Our Admissions team is ready to help with everything from entry points and tuition to financial assistance and Boarding.",
+      "Have a question about joining Marvelous Greatness Schools? Share a few details about your child and our school office will follow up with the information you need.",
     relatedLabel: "Related pages",
     related: [
       { label: "Start Here", to: "/admissions/start-here" },
@@ -82,251 +70,257 @@ export const genericPages: Record<string, GenericPageContent> = {
       { label: "Visit Us", to: "/admissions/visit-us" },
     ],
   },
-  "/admissions/tuition-and-financial-support/financial-assistance": {
-    trailLabel: "Tuition & Financial Support",
-    section: "Admissions",
-    title: "Financial Assistance",
-    tone: "sky",
-    summary:
-      "Branksome Hall offers financial support (bursaries) to students in the Senior & Middle School through its Financial Assistance Program, partnering with families to finance a Branksome education from Grades 7 to 12.",
-    relatedLabel: "Related pages",
-    related: [
-      { label: "Tuition & Other Costs", to: "/admissions/tuition-and-financial-support" },
-      { label: "Scholarships", to: "/admissions/tuition-and-financial-support/scholarships" },
-    ],
-  },
-  "/admissions/tuition-and-financial-support/scholarships": {
-    trailLabel: "Tuition & Financial Support",
-    section: "Admissions",
-    title: "Scholarships",
-    tone: "gold",
-    summary:
-      "Branksome offers a variety of entrance merit scholarships for new day or Boarding students in Grades 7–11.",
-    relatedLabel: "Related pages",
-    related: [
-      { label: "Financial Assistance", to: "/admissions/tuition-and-financial-support/financial-assistance" },
-      { label: "How to Apply", to: "/admissions/how-to-apply" },
-    ],
-  },
-  "/learning/student-life/arts": {
-    trailLabel: "Student Life",
-    section: "Learning",
-    title: "Arts",
-    tone: "gold",
-    summary:
-      "At Branksome, the arts come alive through music, film, theatre and student-led productions — from Dance and Drama to Visual Arts including fashion, textiles, animation, photography and architecture.",
-    relatedLabel: "Related pages",
-    related: [
-      { label: "Student Life", to: "/learning/student-life" },
-      { label: "Athletics", to: "/learning/student-life/athletics" },
-    ],
-  },
-  "/learning/student-life/athletics": {
-    trailLabel: "Student Life",
-    section: "Learning",
-    title: "Athletics",
-    tone: "sky",
-    summary:
-      "The Athletics program provides diverse opportunities to develop physical fitness, sport-specific skills, teamwork, commitment, resilience and an appreciation for lifelong active living.",
-    relatedLabel: "Related pages",
-    related: [
-      { label: "Student Life", to: "/learning/student-life" },
-      { label: "Clubs & Co-Curriculars", to: "/learning/student-life/clubs-and-co-curriculars" },
-    ],
-  },
-  "/learning/student-life/clubs-and-co-curriculars": {
-    trailLabel: "Student Life",
-    section: "Learning",
-    title: "Clubs & Co-Curriculars",
-    tone: "coral",
-    summary:
-      "Clubs are student-led groups formed around a shared interest, hobby or cause, with regular meetings and activities aimed at fostering community, skill development and personal growth.",
-    relatedLabel: "Related pages",
-    related: [
-      { label: "Student Life", to: "/learning/student-life" },
-      { label: "Arts", to: "/learning/student-life/arts" },
-    ],
-  },
-  "/learning/student-support": {
-    trailLabel: "Learning",
-    section: "Learning",
-    title: "Student Support",
+  "/academics/our-academic-approach": {
+    trailLabel: "Academics",
+    section: "Academics",
+    title: "Our Academic Approach",
     tone: "green",
     summary:
-      "Branksome's Student Support Team is a diverse group of educators and professionals — School Counsellors, Social Workers, School Nurses, Learning Strategies Teachers, University Counsellors, and the Community, Inclusion & Belonging and Boarding teams.",
+      "Our academic approach combines a well-sequenced curriculum, careful teaching, regular assessment and constructive feedback. We want every pupil to build firm foundations in literacy, numeracy and reasoning, and to grow into a confident, curious lifelong learner.",
     relatedLabel: "Related pages",
     related: [
-      { label: "Student Life", to: "/learning/student-life" },
-      { label: "The Branksome Difference", to: "/about/the-branksome-difference" },
+      { label: "How We Teach", to: "/academics/how-we-teach" },
+      { label: "Moral Instruction & Character", to: "/academics/character-and-moral-instruction" },
+      { label: "Preparing for the Future", to: "/academics/preparing-for-the-future" },
     ],
   },
-  "/learning/how-we-teach": {
-    trailLabel: "Learning",
-    section: "Learning",
+  "/academics/how-we-teach": {
+    trailLabel: "Academics",
+    section: "Academics",
     title: "How We Teach",
     tone: "sky",
     summary:
-      "Branksome's teaching approach centres on inquiry-based learning, regular assessment and feedback, and a globally-minded IB curriculum delivered from Junior Kindergarten through Grade 12.",
+      "Teachers at MGGS explain clearly, practise deliberately and check understanding often. Lessons balance direct teaching with discussion, group work and independent practice, so that pupils learn to think for themselves and to explain their reasoning with confidence.",
     relatedLabel: "Related pages",
     related: [
-      { label: "Our IB Advantage", to: "/learning/our-ib-advantage" },
-      { label: "Meet Our Students", to: "/learning/our-ib-advantage" },
+      { label: "Our Academic Approach", to: "/academics/our-academic-approach" },
+      { label: "Student Support", to: "/academics/student-support" },
     ],
   },
-  "/learning/heading-to-university": {
-    trailLabel: "Learning",
-    section: "Learning",
-    title: "Heading to University",
+  "/academics/character-and-moral-instruction": {
+    trailLabel: "Academics",
+    section: "Academics",
+    title: "Moral Instruction & Character",
     tone: "gold",
     summary:
-      "With today's exponential pace of change, Branksome Hall prepares students who will not only meet the complexities of tomorrow but are already shaping that future, through robust university counselling and an IB foundation recognized worldwide.",
+      "Moral instruction and character formation are part of the school's purpose, not an extra. Through lessons, assemblies, guidance and the everyday example of our teachers, pupils learn honesty, responsibility, respect and self-control, and they are encouraged to practise those qualities at home as well as at school.",
     relatedLabel: "Related pages",
     related: [
-      { label: "Our IB Advantage", to: "/learning/our-ib-advantage" },
-      { label: "Diploma or IB Select 11–12", to: "/learning/our-ib-advantage/ib-pathways-in-grades-11-12" },
+      { label: "Our Values", to: "/about/our-values" },
+      { label: "How We Teach", to: "/academics/how-we-teach" },
+      { label: "Parents & Families", to: "/community/parents-and-families" },
     ],
   },
-  "/innovation/innovation-spaces": {
-    trailLabel: "Innovation",
-    section: "Innovation",
-    title: "Innovation Spaces",
-    tone: "gold",
-    summary:
-      "Community members are empowered to bring their boldest ideas to life with expert training and workshops held in state-of-the-art spaces across campus.",
-    relatedLabel: "Related pages",
-    related: [
-      { label: "iCAST", to: "/innovation/icast" },
-      { label: "Slingshot Innovation Academy", to: "/innovation/slingshot-innovation-academy" },
-    ],
-  },
-  "/innovation/slingshot-innovation-academy": {
-    trailLabel: "Innovation",
-    section: "Innovation",
-    title: "Slingshot Innovation Academy",
+  "/academics/co-curricular-activities": {
+    trailLabel: "Academics",
+    section: "Academics",
+    title: "Co-Curricular Activities",
     tone: "coral",
     summary:
-      "Branksome's entrepreneurship and innovation academy brings together app development, pitch and persuasion training, and venture-lab style programming for students building real ideas.",
+      "Co-curricular activities give pupils the chance to discover what they enjoy, work in a team, take responsibility and build confidence beyond the classroom. The activities offered each term will be published here once confirmed by the school.",
     relatedLabel: "Related pages",
     related: [
-      { label: "iCAST", to: "/innovation/icast" },
-      { label: "Centre for Strategic Leadership", to: "/innovation/centre-for-strategic-leadership" },
+      { label: "Student Life", to: "/student-life" },
+      { label: "Clubs & Societies", to: "/student-life/clubs" },
     ],
   },
-  "/innovation/centre-for-strategic-leadership": {
-    trailLabel: "Innovation",
-    section: "Innovation",
-    title: "Centre for Strategic Leadership",
-    tone: "sky",
-    summary:
-      "The first of its kind in a Canadian JK–Grade 12 school, the CSL empowers employees to develop leadership skills through a strength-based, values-driven approach aligned with the school's mission.",
-    relatedLabel: "Related pages",
-    related: [
-      { label: "iCAST", to: "/innovation/icast" },
-      { label: "Chandaria Research Centre", to: "/innovation/chandaria-research-centre" },
-    ],
-  },
-  "/innovation/chandaria-research-centre": {
-    trailLabel: "Innovation",
-    section: "Innovation",
-    title: "Chandaria Research Centre",
+  "/academics/student-support": {
+    trailLabel: "Academics",
+    section: "Academics",
+    title: "Student Support",
     tone: "green",
     summary:
-      "Opened in 2016, the Chandaria Research Centre is one of the few school-based research centres in Canada and internationally, focused on enhancing teaching, well-being and global perspectives.",
+      "Some pupils need a little more time, a different explanation or extra encouragement. Our teachers identify that early, adapt their teaching and work with families so that every child is supported to make progress at their own pace.",
     relatedLabel: "Related pages",
     related: [
-      { label: "iCAST", to: "/innovation/icast" },
-      { label: "Our IB Advantage", to: "/learning/our-ib-advantage" },
+      { label: "Community & Belonging", to: "/about/community-and-belonging" },
+      { label: "Parents & Families", to: "/community/parents-and-families" },
     ],
   },
-  "/the-campus/virtual-tours": {
-    trailLabel: "The Campus",
-    section: "The Campus",
-    title: "Virtual Tours",
+  "/academics/preparing-for-the-future": {
+    trailLabel: "Academics",
+    section: "Academics",
+    title: "Preparing for the Future",
     tone: "sky",
     summary:
-      "Explore Branksome Hall's 13-acre campus — a mix of heritage mansions and modern structures connected by a ravine woodlot and outdoor classroom — from wherever you are.",
+      "A good education prepares pupils for more than the next examination. We help our pupils develop strong communication, thoughtful decision-making, digital confidence and the resilience to keep learning long after they leave MGGS.",
     relatedLabel: "Related pages",
     related: [
-      { label: "Our Campus", to: "/the-campus/our-campus" },
-      { label: "Visit Us", to: "/admissions/visit-us" },
+      { label: "Our Academic Approach", to: "/academics/our-academic-approach" },
+      { label: "Leadership & Service", to: "/student-life/leadership" },
     ],
   },
-  "/the-campus/branksome-camps": {
-    trailLabel: "The Campus",
-    section: "The Campus",
-    title: "Branksome Camps",
-    tone: "gold",
-    summary:
-      "Branksome Camps bring the school's campus and spirit to life outside the school year, offering day camp programming across sport, arts and enrichment.",
-    relatedLabel: "Related pages",
-    related: [
-      { label: "Our Campus", to: "/the-campus/our-campus" },
-      { label: "Venue Rentals", to: "/the-campus/venue-rentals" },
-    ],
-  },
-  "/the-campus/venue-rentals": {
-    trailLabel: "The Campus",
-    section: "The Campus",
-    title: "Venue Rentals",
+  "/student-life": {
+    trailLabel: "Student Life",
+    section: "Student Life",
+    title: "Student Life",
     tone: "coral",
     summary:
-      "Branksome Hall's heritage and modern spaces are available for rent for community, corporate and private events. Contact the school for fees and availability.",
-    relatedLabel: "Related pages",
+      "School should stretch more than the memory. At MGGS, pupils are encouraged to join activities, take on responsibilities, serve others and discover strengths they did not know they had — all within a caring, well-ordered school community.",
+    relatedLabel: "Explore student life",
     related: [
-      { label: "Contact Us", to: "/about/contact-us" },
-      { label: "Our Campus", to: "/the-campus/our-campus" },
+      { label: "Arts & Culture", to: "/student-life/arts" },
+      { label: "Sports & Fitness", to: "/student-life/sports" },
+      { label: "Clubs & Societies", to: "/student-life/clubs" },
+      { label: "Leadership & Service", to: "/student-life/leadership" },
     ],
   },
-  "/community/alums/alum-stories": {
-    trailLabel: "Community",
-    section: "Community",
-    title: "Alum Stories",
+  "/student-life/arts": {
+    trailLabel: "Student Life",
+    section: "Student Life",
+    title: "Arts & Culture",
     tone: "gold",
     summary:
-      "Snapshots of inspiring Branksome graduates — a generation of trailblazers, change-makers and leaders who are ready to face the world, in their own words.",
+      "Creative work helps pupils observe closely, listen carefully and express themselves clearly. Music, drama, art and cultural activities give our pupils space to imagine, perform and take pride in what they make.",
     relatedLabel: "Related pages",
     related: [
-      { label: "Alums", to: "/community/alums" },
-      { label: "Branksome News", to: "/branksome-news" },
+      { label: "Student Life", to: "/student-life" },
+      { label: "Clubs & Societies", to: "/student-life/clubs" },
+    ],
+  },
+  "/student-life/sports": {
+    trailLabel: "Student Life",
+    section: "Student Life",
+    title: "Sports & Fitness",
+    tone: "sky",
+    summary:
+      "Sport teaches effort, self-discipline and good sportsmanship. Pupils at MGGS take part in physical activity and team games that build fitness, coordination, teamwork and the habit of an active, healthy life.",
+    relatedLabel: "Related pages",
+    related: [
+      { label: "Student Life", to: "/student-life" },
+      { label: "Our Values", to: "/about/our-values" },
+    ],
+  },
+  "/student-life/clubs": {
+    trailLabel: "Student Life",
+    section: "Student Life",
+    title: "Clubs & Societies",
+    tone: "coral",
+    summary:
+      "Clubs and societies give pupils a shared interest to belong to — a place to debate, build, read, code, perform or serve alongside classmates. The club list is confirmed by the school at the start of each session.",
+    relatedLabel: "Related pages",
+    related: [
+      { label: "Student Life", to: "/student-life" },
+      { label: "Co-Curricular Activities", to: "/academics/co-curricular-activities" },
+    ],
+  },
+  "/student-life/leadership": {
+    trailLabel: "Student Life",
+    section: "Student Life",
+    title: "Leadership & Service",
+    tone: "green",
+    summary:
+      "Leadership at MGGS is learned in practice: keeping a commitment, helping a younger pupil, taking responsibility for a class duty and speaking up for what is right. Service is part of our motto, Towards Greatness, and it begins close to home.",
+    relatedLabel: "Related pages",
+    related: [
+      { label: "Student Life", to: "/student-life" },
+      { label: "Moral Instruction & Character", to: "/academics/character-and-moral-instruction" },
+    ],
+  },
+  "/community/parents-and-families": {
+    trailLabel: "Community",
+    section: "Community",
+    title: "Parents & Families",
+    tone: "gold",
+    summary:
+      "Parents and guardians are partners in everything we do. We keep families informed about their child's progress, invite them into the life of the school and work together when a pupil needs encouragement or support.",
+    relatedLabel: "Related pages",
+    related: [
+      { label: "Parent Partnership", to: "/admissions/parent-partnership" },
+      { label: "Community & Belonging", to: "/about/community-and-belonging" },
+      { label: "Contact Us", to: "/about/contact-us" },
+    ],
+  },
+  "/community/stories": {
+    trailLabel: "Community",
+    section: "Community",
+    title: "Student & Alumni Stories",
+    tone: "coral",
+    summary:
+      "Stories of our pupils and former pupils show what a Marvelous Greatness Schools education looks like in real life — steady progress, good character and the confidence to aim higher. New stories will be added as the school shares them.",
+    relatedLabel: "Related pages",
+    related: [
+      { label: "MGGS News", to: "/mggs-news" },
+      { label: "Parents & Families", to: "/community/parents-and-families" },
     ],
   },
   "/community/educators": {
     trailLabel: "Community",
     section: "Community",
-    title: "Educators",
+    title: "Our Educators",
     tone: "sky",
     summary:
-      "Branksome Hall partners with educators beyond its own community through professional learning opportunities, including IB Summer Workshops hosted on campus.",
+      "Our teachers are the strength of the school. They are subject-confident, caring about each pupil's progress and consistently supported with training, shared planning and feedback on their practice.",
     relatedLabel: "Related pages",
     related: [
-      { label: "IB Summer Workshops", to: "/community/educators" },
-      { label: "Chandaria Research Centre", to: "/innovation/chandaria-research-centre" },
+      { label: "How We Teach", to: "/academics/how-we-teach" },
+      { label: "Career Opportunities", to: "/about/career-opportunities" },
     ],
   },
-  "/community/visiting-speakers": {
-    trailLabel: "Community",
-    section: "Community",
-    title: "Visiting Speakers",
-    tone: "coral",
+  "/campus/our-campus": {
+    trailLabel: "Our Campus",
+    section: "Our Campus",
+    title: "Our Campus",
+    tone: "green",
     summary:
-      "Branksome Hall regularly welcomes visiting speakers — authors, researchers, entrepreneurs and alums — to engage directly with students across grades.",
+      "Marvelous Greatness Schools is located in the Akobo–Ojurin area of Ibadan, Oyo State. Our school site is arranged to give pupils an orderly, safe environment for learning, with details of the campus added here as they are confirmed by the school.",
     relatedLabel: "Related pages",
     related: [
-      { label: "Branksome News", to: "/branksome-news" },
-      { label: "Alums", to: "/community/alums" },
+      { label: "Getting to School", to: "/campus/getting-to-school" },
+      { label: "Campus Tours", to: "/campus/campus-tours" },
+      { label: "Contact Us", to: "/about/contact-us" },
     ],
   },
-  "/giving/how-to-give": {
+  "/campus/getting-to-school": {
+    trailLabel: "Our Campus",
+    section: "Our Campus",
+    title: "Getting to School",
+    tone: "sky",
+    summary:
+      "The school is situated in Akobo–Ojurin, Ibadan, within reach of families across the city. Directions, arrival and collection arrangements will be published here once confirmed by the school office.",
+    relatedLabel: "Related pages",
+    related: [
+      { label: "Our Campus", to: "/campus/our-campus" },
+      { label: "Contact Us", to: "/about/contact-us" },
+    ],
+  },
+  "/campus/campus-tours": {
+    trailLabel: "Our Campus",
+    section: "Our Campus",
+    title: "Campus Tours",
+    tone: "gold",
+    summary:
+      "The best way to understand a school is to walk through it. Arrange a tour with the school office, meet our teachers and see the classrooms, resources and routines that shape a typical day at MGGS.",
+    relatedLabel: "Related pages",
+    related: [
+      { label: "Visit Us", to: "/admissions/visit-us" },
+      { label: "Our Campus", to: "/campus/our-campus" },
+    ],
+  },
+  "/giving/donate-now": {
     trailLabel: "Giving",
     section: "Giving",
-    title: "How to Give",
+    title: "Donate Now",
+    tone: "green",
+    summary:
+      "Support from friends of the school helps us keep improving what we offer our pupils. Please contact the school office to discuss a contribution; the form shown here is a demonstration and does not process payments.",
+    relatedLabel: "Related pages",
+    related: [
+      { label: "Ways to Give", to: "/giving/ways-to-give" },
+      { label: "Your Impact", to: "/giving/your-impact" },
+    ],
+  },
+  "/giving/ways-to-give": {
+    trailLabel: "Giving",
+    section: "Giving",
+    title: "Ways to Give",
     tone: "sky",
     summary:
-      "There are many ways to support Branksome Hall, from one-time and monthly gifts to legacy giving and naming opportunities.",
+      "Families, alumni and friends can support Marvelous Greatness Schools through financial contributions, books and learning materials, equipment or professional expertise. The school office will confirm current giving options.",
     relatedLabel: "Related pages",
     related: [
       { label: "Donate Now", to: "/giving/donate-now" },
-      { label: "Giving Opportunities", to: "/giving/giving-opportunities" },
+      { label: "Your Impact", to: "/giving/your-impact" },
     ],
   },
   "/giving/your-impact": {
@@ -335,24 +329,11 @@ export const genericPages: Record<string, GenericPageContent> = {
     title: "Your Impact",
     tone: "gold",
     summary:
-      "Gifts to Branksome Hall support financial assistance, scholarships, innovation spaces like iCAST, and the day-to-day programming that shapes a Branksome education.",
+      "Gifts to the school support the things that make the greatest difference to pupils: teaching resources, learning materials and the upkeep of a safe, well-ordered school environment. Detailed impact reporting will be published here as it becomes available.",
     relatedLabel: "Related pages",
     related: [
       { label: "Donate Now", to: "/giving/donate-now" },
-      { label: "Make Way Campaign", to: "/giving/make-way-campaign" },
-    ],
-  },
-  "/giving/make-way-campaign": {
-    trailLabel: "Giving",
-    section: "Giving",
-    title: "Make Way Campaign",
-    tone: "coral",
-    summary:
-      "The Make Way Campaign is Branksome Hall's fundraising initiative supporting major capital and program priorities, including iCAST — the Karen L. Jurjevich Innovation Centre and Studio Theatre.",
-    relatedLabel: "Related pages",
-    related: [
-      { label: "iCAST", to: "/innovation/icast" },
-      { label: "Donate Now", to: "/giving/donate-now" },
+      { label: "Ways to Give", to: "/giving/ways-to-give" },
     ],
   },
 };

@@ -4,46 +4,47 @@ import { Container } from "@/components/ui/Primitives";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { LinkButton } from "@/components/ui/Button";
 import { cn } from "@/utils/cn";
+import { siteInfo } from "@/data/site";
 
 const tabs = [
   {
-    id: "junior",
-    label: "Junior School (JK–Gr. 6)",
+    id: "before",
+    label: "Before You Apply",
     steps: [
-      "Submit an online application and application fee.",
-      "Attend a Junior School Open House and schedule a playdate/visit.",
-      "Submit school reports and complete any requested assessments.",
-      "Receive your admissions decision on Decision Day.",
+      "Read about our academic approach and the values your child will be taught.",
+      "Arrange a visit so you can see the school at work and meet our teachers.",
+      "Speak with the school office about the class you are considering for your child.",
+      "Ask about fees, payment arrangements and the documents the school will need.",
     ],
   },
   {
-    id: "middle",
-    label: "Middle School (Gr. 7–10)",
+    id: "application",
+    label: "Completing Your Application",
     steps: [
-      "Submit an online application, transcripts and a reference form.",
-      "Attend a Middle School Open House.",
-      "Complete an entrance assessment and a student interview.",
-      "Receive your admissions decision on Decision Day.",
+      "Collect the school's application form from the office, or ask us to guide you through it.",
+      "Complete every section, including details of your child's previous school where applicable.",
+      "Attach the documents requested by the school office.",
+      "Submit your completed application to the office and keep the acknowledgement you are given.",
     ],
   },
   {
-    id: "senior",
-    label: "Senior School (Gr. 11–12)",
+    id: "after",
+    label: "After You Apply",
     steps: [
-      "Submit an online application, transcripts and reference forms.",
-      "Attend a Senior School Open House and plan your IB Diploma or IB Select pathway.",
-      "Complete an interview and any outstanding assessments.",
-      "Receive your admissions decision on Decision Day.",
+      "The school reviews each application carefully and may invite your child for an assessment or conversation.",
+      "Where an assessment is needed, the office will agree a convenient time with your family.",
+      "You will be contacted with the outcome of your child's application.",
+      "Once you accept an offer, the office will explain fees, resumption arrangements and what to prepare.",
     ],
   },
   {
-    id: "boarding",
-    label: "Boarding",
+    id: "visit",
+    label: "Visiting the School",
     steps: [
-      "Boarding applications are accepted on a rolling basis.",
-      "Submit an online application with guardian and health documentation.",
-      "Complete a virtual or in-person interview with the Boarding team.",
-      "Receive your admissions decision and residence placement.",
+      "Contact the school office to agree a day and time that suits your family.",
+      "Bring your child if you can — seeing the school helps them feel at home.",
+      "Come with your questions about teaching, discipline, activities and daily routines.",
+      "Ask us anything. A good decision is an informed one.",
     ],
   },
 ];
@@ -57,14 +58,14 @@ export default function HowToApply() {
       <InteriorHero
         eyebrow="Admissions"
         title="How to Apply"
-        description="Important dates, entry grades and the application process by grade — everything you need to apply to Branksome Hall."
+        description={`A clear, unhurried route into ${siteInfo.name} — from your first enquiry through to your child's first day.`}
         trail={[{ label: "Admissions", to: "/admissions/start-here" }, { label: "How to Apply" }]}
         tone="green"
       />
 
       <section className="py-14 sm:py-20">
         <Container>
-          <div role="tablist" aria-label="Application process by grade" className="flex flex-wrap gap-2">
+          <div role="tablist" aria-label="Application process" className="flex flex-wrap gap-2">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -106,16 +107,21 @@ export default function HowToApply() {
               Connect with Admissions
             </LinkButton>
           </div>
+
+          <p className="mt-6 max-w-2xl text-xs leading-relaxed text-ink/60">
+            Dates, assessment arrangements and document requirements are confirmed by the school office. Please
+            speak with us before submitting an application so that nothing is missed.
+          </p>
         </Container>
       </section>
 
       <CTABanner
         tone="gold"
-        title="Questions about tuition or financial assistance?"
-        description="We offer financial assistance, entrance scholarships and flexible payment plans."
+        title="Questions about fees or financial information?"
+        description="The school office can explain current fees, payment arrangements and any support available to families."
         actions={
-          <LinkButton to="/admissions/tuition-and-financial-support" variant="outline-green">
-            Tuition & Financial Support
+          <LinkButton to="/admissions/fees-and-financial-information" variant="outline-green">
+            Fees & Financial Information
           </LinkButton>
         }
       />

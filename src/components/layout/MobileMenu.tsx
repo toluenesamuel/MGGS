@@ -6,13 +6,13 @@ import { Container } from "@/components/ui/Primitives";
 import { HeaderBrand } from "@/components/layout/HeaderBrand";
 import { cn } from "@/utils/cn";
 
-const quickLinks: NavGroup = { label: "Quick Links", to: "/branksome-news", links: [
-  { label: "Branksome News", to: newsNavLink.to },
+const quickLinks: NavGroup = { label: "Quick Links", to: "/mggs-news", links: [
+  { label: "MGGS News", to: newsNavLink.to },
   { label: "Contact Us", to: "/about/contact-us" },
   { label: "Visit Us", to: "/admissions/visit-us" },
   { label: "How to Apply", to: "/admissions/how-to-apply" },
 ] };
-const order = ["About", "Admissions", "Learning", "Innovation", "Community", "The Campus", "Giving"];
+const order = ["About", "Admissions", "Academics", "Student Life", "Community", "Our Campus", "Giving"];
 const groups = [quickLinks, ...order.flatMap(label => primaryNav.filter(group => group.label === label))];
 
 export function MobileMenu({ open, onClose, onSearch }: { open: boolean; onClose: () => void; onSearch: () => void }) {

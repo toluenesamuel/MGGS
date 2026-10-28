@@ -1,6 +1,6 @@
-// Nav structure reconstructed from the verified link graph extracted from
-// https://branksome.on.ca/ (see docs/route-inventory.md). Labels are taken
-// from the reference site's own footer/nav link text where observed.
+// Navigation for Marvelous Greatness Schools. The interaction model (grouped
+// nav, sub-lists, footer columns) is unchanged from the existing design — only
+// the section labels and destinations have been adapted for MGGS.
 
 export interface NavLink {
   label: string;
@@ -18,132 +18,146 @@ export const primaryNav: NavGroup[] = [
   {
     label: "Admissions",
     to: "/admissions/start-here",
-    description: "Start your journey to Branksome Hall.",
+    description: "Start your child's journey at MGGS.",
     links: [
       { label: "Start Here", to: "/admissions/start-here" },
       { label: "How to Apply", to: "/admissions/how-to-apply" },
       { label: "Visit Us", to: "/admissions/visit-us" },
-      { label: "Tuition & Financial Support", to: "/admissions/tuition-and-financial-support" },
-      { label: "Boarding Program", to: "/admissions/boarding-program" },
+      { label: "Fees & Financial Information", to: "/admissions/fees-and-financial-information" },
+      { label: "Parent Partnership", to: "/admissions/parent-partnership" },
       { label: "Connect with Admissions", to: "/admissions/connect-with-admissions" },
     ],
   },
   {
-    label: "Learning",
-    to: "/learning/our-ib-advantage",
-    description: "Our IB curriculum, JK to Grade 12.",
+    label: "Academics",
+    to: "/academics/our-academic-approach",
+    description: "Quality teaching, strong foundations, measurable progress.",
     links: [
-      { label: "Our IB Advantage", to: "/learning/our-ib-advantage" },
-      { label: "Primary Years Programme JK–6", to: "/learning/our-ib-advantage/primary-years-programme" },
-      { label: "Middle Years Programme 7–10", to: "/learning/our-ib-advantage/middle-years-programme" },
-      { label: "Diploma / IB Select 11–12", to: "/learning/our-ib-advantage/ib-pathways-in-grades-11-12" },
-      { label: "Student Life", to: "/learning/student-life" },
-      { label: "Student Support", to: "/learning/student-support" },
-      { label: "How We Teach", to: "/learning/how-we-teach" },
-      { label: "Heading to University", to: "/learning/heading-to-university" },
+      { label: "Our Academic Approach", to: "/academics/our-academic-approach" },
+      { label: "How We Teach", to: "/academics/how-we-teach" },
+      { label: "Moral Instruction & Character", to: "/academics/character-and-moral-instruction" },
+      { label: "Co-Curricular Activities", to: "/academics/co-curricular-activities" },
+      { label: "Student Support", to: "/academics/student-support" },
+      { label: "Preparing for the Future", to: "/academics/preparing-for-the-future" },
     ],
   },
   {
-    label: "Innovation",
-    to: "/innovation/icast",
-    description: "Where ideas come to life.",
+    label: "Student Life",
+    to: "/student-life",
+    description: "Confidence, curiosity and life beyond the classroom.",
     links: [
-      { label: "iCAST", to: "/innovation/icast" },
-      { label: "Innovation Spaces", to: "/innovation/innovation-spaces" },
-      { label: "Slingshot Innovation Academy", to: "/innovation/slingshot-innovation-academy" },
-      { label: "Centre for Strategic Leadership", to: "/innovation/centre-for-strategic-leadership" },
-      { label: "Chandaria Research Centre", to: "/innovation/chandaria-research-centre" },
+      { label: "Student Life", to: "/student-life" },
+      { label: "Arts & Culture", to: "/student-life/arts" },
+      { label: "Sports & Fitness", to: "/student-life/sports" },
+      { label: "Clubs & Societies", to: "/student-life/clubs" },
+      { label: "Leadership & Service", to: "/student-life/leadership" },
     ],
   },
   {
     label: "Community",
-    to: "/community/alums",
-    description: "Alums, educators and partners.",
+    to: "/community/parents-and-families",
+    description: "Families, educators and friends of the school.",
     links: [
-      { label: "Alums", to: "/community/alums" },
-      { label: "Alum Stories", to: "/community/alums/alum-stories" },
-      { label: "Educators", to: "/community/educators" },
-      { label: "Visiting Speakers", to: "/community/visiting-speakers" },
+      { label: "Parents & Families", to: "/community/parents-and-families" },
+      { label: "Student & Alumni Stories", to: "/community/stories" },
+      { label: "Our Educators", to: "/community/educators" },
     ],
   },
   {
-    label: "The Campus",
-    to: "/the-campus/our-campus",
-    description: "13 acres in the heart of Toronto.",
+    label: "Our Campus",
+    to: "/campus/our-campus",
+    description: "Our home in Akobo–Ojurin, Ibadan.",
     links: [
-      { label: "Our Campus", to: "/the-campus/our-campus" },
-      { label: "Virtual Tours", to: "/the-campus/virtual-tours" },
-      { label: "Branksome Camps", to: "/the-campus/branksome-camps" },
-      { label: "Venue Rentals", to: "/the-campus/venue-rentals" },
+      { label: "Our Campus", to: "/campus/our-campus" },
+      { label: "Getting to School", to: "/campus/getting-to-school" },
+      { label: "Campus Tours", to: "/campus/campus-tours" },
     ],
   },
   {
     label: "Giving",
     to: "/giving/donate-now",
-    description: "Invest in the next generation.",
+    description: "Support our pupils and our school.",
     links: [
       { label: "Donate Now", to: "/giving/donate-now" },
-      { label: "Giving Opportunities", to: "/giving/giving-opportunities" },
-      { label: "How to Give", to: "/giving/how-to-give" },
+      { label: "Ways to Give", to: "/giving/ways-to-give" },
       { label: "Your Impact", to: "/giving/your-impact" },
-      { label: "Make Way Campaign", to: "/giving/make-way-campaign" },
     ],
   },
   {
     label: "About",
-    to: "/about/the-branksome-difference",
-    description: "Our history, leadership and values.",
+    to: "/about/the-mggs-difference",
+    description: "Our story, our values and our people.",
     links: [
-      { label: "The Branksome Difference", to: "/about/the-branksome-difference" },
-      { label: "Our History", to: "/about/our-history" },
+      { label: "The MGGS Difference", to: "/about/the-mggs-difference" },
+      { label: "Our Values", to: "/about/our-values" },
+      { label: "Our Story", to: "/about/our-story" },
       { label: "Leadership & Governance", to: "/about/leadership-and-governance" },
-      { label: "Meet Our Principal", to: "/about/meet-our-principal" },
-      { label: "Community, Inclusion & Belonging", to: "/about/community-inclusion-belonging" },
+      { label: "Community & Belonging", to: "/about/community-and-belonging" },
       { label: "Career Opportunities", to: "/about/career-opportunities" },
       { label: "Contact Us", to: "/about/contact-us" },
     ],
   },
 ];
 
-export const newsNavLink: NavLink = { label: "Branksome News", to: "/branksome-news" };
+export const newsNavLink: NavLink = { label: "MGGS News", to: "/mggs-news" };
 
 export const footerColumns: NavGroup[] = [
   {
     label: "Admissions",
     to: "/admissions/start-here",
     links: [
+      { label: "Start Here", to: "/admissions/start-here" },
       { label: "How to Apply", to: "/admissions/how-to-apply" },
-      { label: "Boarding Program", to: "/admissions/boarding-program" },
-      { label: "Tuition & Financial Support", to: "/admissions/tuition-and-financial-support" },
       { label: "Visit Us", to: "/admissions/visit-us" },
+      { label: "Fees & Financial Information", to: "/admissions/fees-and-financial-information" },
     ],
   },
   {
-    label: "Learning",
-    to: "/learning/our-ib-advantage",
+    label: "Academics",
+    to: "/academics/our-academic-approach",
     links: [
-      { label: "Our IB Advantage", to: "/learning/our-ib-advantage" },
-      { label: "Student Support", to: "/learning/student-support" },
-      { label: "How We Teach", to: "/learning/how-we-teach" },
-      { label: "Heading to University", to: "/learning/heading-to-university" },
+      { label: "Our Academic Approach", to: "/academics/our-academic-approach" },
+      { label: "How We Teach", to: "/academics/how-we-teach" },
+      { label: "Moral Instruction & Character", to: "/academics/character-and-moral-instruction" },
+      { label: "Student Support", to: "/academics/student-support" },
     ],
   },
   {
-    label: "Innovation",
-    to: "/innovation/icast",
+    label: "Student Life",
+    to: "/student-life",
     links: [
-      { label: "iCAST", to: "/innovation/icast" },
-      { label: "Innovation Spaces", to: "/innovation/innovation-spaces" },
-      { label: "Slingshot Innovation Academy", to: "/innovation/slingshot-innovation-academy" },
+      { label: "Student Life", to: "/student-life" },
+      { label: "Arts & Culture", to: "/student-life/arts" },
+      { label: "Sports & Fitness", to: "/student-life/sports" },
+      { label: "Clubs & Societies", to: "/student-life/clubs" },
     ],
   },
   {
     label: "Community",
-    to: "/community/alums",
+    to: "/community/parents-and-families",
     links: [
-      { label: "Alums", to: "/community/alums" },
-      { label: "Educators", to: "/community/educators" },
-      { label: "Visiting Speakers", to: "/community/visiting-speakers" },
+      { label: "Parents & Families", to: "/community/parents-and-families" },
+      { label: "Student & Alumni Stories", to: "/community/stories" },
+      { label: "Our Educators", to: "/community/educators" },
+    ],
+  },
+  {
+    label: "Our Campus",
+    to: "/campus/our-campus",
+    links: [
+      { label: "Our Campus", to: "/campus/our-campus" },
+      { label: "Getting to School", to: "/campus/getting-to-school" },
+      { label: "Campus Tours", to: "/campus/campus-tours" },
+    ],
+  },
+  {
+    label: "About MGGS",
+    to: "/about/the-mggs-difference",
+    links: [
+      { label: "The MGGS Difference", to: "/about/the-mggs-difference" },
+      { label: "Our Values", to: "/about/our-values" },
+      { label: "Our Story", to: "/about/our-story" },
+      { label: "Contact Us", to: "/about/contact-us" },
     ],
   },
   {
@@ -151,27 +165,9 @@ export const footerColumns: NavGroup[] = [
     to: "/giving/donate-now",
     links: [
       { label: "Donate Now", to: "/giving/donate-now" },
-      { label: "Giving Opportunities", to: "/giving/giving-opportunities" },
+      { label: "Ways to Give", to: "/giving/ways-to-give" },
       { label: "Your Impact", to: "/giving/your-impact" },
-    ],
-  },
-  {
-    label: "About Branksome",
-    to: "/about/the-branksome-difference",
-    links: [
-      { label: "The Branksome Difference", to: "/about/the-branksome-difference" },
-      { label: "Our History", to: "/about/our-history" },
-      { label: "Contact Us", to: "/about/contact-us" },
-      { label: "Career Opportunities", to: "/about/career-opportunities" },
-    ],
-  },
-  {
-    label: "The Campus",
-    to: "/the-campus/our-campus",
-    links: [
-      { label: "Our Campus", to: "/the-campus/our-campus" },
-      { label: "Virtual Tours", to: "/the-campus/virtual-tours" },
-      { label: "Venue Rentals", to: "/the-campus/venue-rentals" },
+      { label: "MGGS News", to: "/mggs-news" },
     ],
   },
 ];
