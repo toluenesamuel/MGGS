@@ -13,6 +13,7 @@ export default function OurStory() {
         description={`Marvelous Greatness Schools serves families in ${siteInfo.location.area}, ${siteInfo.location.city}, with one consistent purpose: to help every pupil move towards greatness.`}
         trail={[{ label: "About", to: "/about/the-mggs-difference" }, { label: "Our Story" }]}
         tone="green"
+        image="/images/hero-campus.jpg"
       />
 
       <ImageTextSplit

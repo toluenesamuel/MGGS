@@ -18,6 +18,25 @@ npm run build    # production build (single-file output in dist/)
 npm run preview  # preview the production build
 ```
 
+## Hero media (film + image sequence)
+
+The homepage hero plays the school film first, then crossfades through five
+still frames and loops back to the film. It is driven by `src/data/hero.ts`
+and rendered by `src/components/sections/HeroBackdrop.tsx`.
+
+To add the film:
+
+1. Save it as **`public/media/mggs-hero.mp4`** (H.264/MP4), optionally
+   `public/media/mggs-hero.webm`. See `public/media/README.md` for guidance.
+2. That's all — the hero loads it automatically and moves to the still frames
+   when it ends. Edit `heroFrames` / `heroImageDuration` in `src/data/hero.ts`
+   to change the pictures or timing.
+
+Until the file is present (or if it cannot be decoded), the hero gracefully runs
+the still-frame sequence on its own, so nothing ever renders blank. With
+`prefers-reduced-motion: reduce`, the hero holds on one frame and does not
+autoplay the film. Every interior page also carries a hero image.
+
 ## Where the content lives
 
 | File | Purpose |
@@ -25,7 +44,8 @@ npm run preview  # preview the production build
 | `src/data/site.ts` | School identity, motto, values, location, admissions steps |
 | `src/data/navigation.ts` | Primary navigation, footer columns, news link |
 | `src/data/news.ts` | News and announcement examples, filter types/topics |
-| `src/data/genericPages.ts` | Summary copy for the long-tail navigation routes |
+| `src/data/genericPages.ts` | Summary copy plus hero image for the long-tail navigation routes |
+| `src/data/hero.ts` | Homepage hero film and still-frame sequence |
 | `src/pages/**` | Bespoke page templates (Home, About, Admissions, Values…) |
 
 ## Content still to be supplied by the school
@@ -53,7 +73,11 @@ school confirms them:
 8. **News items** — `src/data/news.ts` contains evergreen example notices with
    no dates, results, fees or statistics. Replace with the school's real news.
 9. **Campus photography** — current images are carried over from the original
-   design. Replace with photographs of the MGGS campus when available.
+   design. Replace with photographs of the MGGS campus when available. Every
+   page hero uses one of these images; swap the `src` values in
+   `src/data/hero.ts` and `src/data/genericPages.ts` to change them.
+10. **Hero film** — the video itself has not been added: save it as
+    `public/media/mggs-hero.mp4`.
 
 ## Notes
 

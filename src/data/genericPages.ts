@@ -10,6 +10,8 @@ export interface GenericPageContent {
   title: string;
   tone: "green" | "coral" | "sky" | "gold";
   summary: string;
+  /** Hero image for the page. Every interior page carries one. */
+  image: string;
   relatedLabel: string;
   related: { label: string; to: string }[];
 }
@@ -20,6 +22,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "About",
     title: "Leadership & Governance",
     tone: "green",
+    image: "/images/campus-courtyard.jpg",
     summary:
       "Marvelous Greatness Schools is led by its school leadership team, which is responsible for academic standards, staff development, pastoral care and the day-to-day running of the school. Leadership works in close partnership with teachers and families so that decisions are made in the best interests of our pupils.",
     relatedLabel: "Related pages",
@@ -34,6 +37,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "About",
     title: "Community & Belonging",
     tone: "gold",
+    image: "/images/giving-community.jpg",
     summary:
       "Every child should feel known, safe and valued at school. At MGGS we build that sense of belonging through respectful relationships between teachers and pupils, close communication with families and a school culture in which every learner is encouraged to take part.",
     relatedLabel: "Related pages",
@@ -48,6 +52,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "About",
     title: "Career Opportunities",
     tone: "sky",
+    image: "/images/students-collaborating.jpg",
     summary:
       "MGGS looks for educators and school professionals who are disciplined, dedicated and committed to excellent performance in the classroom. Current vacancies will be listed here as they are confirmed by the school office.",
     relatedLabel: "Related pages",
@@ -61,6 +66,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Admissions",
     title: "Connect with Admissions",
     tone: "coral",
+    image: "/images/admissions-student.png",
     summary:
       "Have a question about joining Marvelous Greatness Schools? Share a few details about your child and our school office will follow up with the information you need.",
     relatedLabel: "Related pages",
@@ -75,6 +81,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Academics",
     title: "Our Academic Approach",
     tone: "green",
+    image: "/images/classroom-science.jpg",
     summary:
       "Our academic approach combines a well-sequenced curriculum, careful teaching, regular assessment and constructive feedback. We want every pupil to build firm foundations in literacy, numeracy and reasoning, and to grow into a confident, curious lifelong learner.",
     relatedLabel: "Related pages",
@@ -89,6 +96,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Academics",
     title: "How We Teach",
     tone: "sky",
+    image: "/images/students-collaborating.jpg",
     summary:
       "Teachers at MGGS explain clearly, practise deliberately and check understanding often. Lessons balance direct teaching with discussion, group work and independent practice, so that pupils learn to think for themselves and to explain their reasoning with confidence.",
     relatedLabel: "Related pages",
@@ -102,6 +110,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Academics",
     title: "Moral Instruction & Character",
     tone: "gold",
+    image: "/images/news-generic-1.jpg",
     summary:
       "Moral instruction and character formation are part of the school's purpose, not an extra. Through lessons, assemblies, guidance and the everyday example of our teachers, pupils learn honesty, responsibility, respect and self-control, and they are encouraged to practise those qualities at home as well as at school.",
     relatedLabel: "Related pages",
@@ -116,6 +125,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Academics",
     title: "Co-Curricular Activities",
     tone: "coral",
+    image: "/images/student-life-sports.jpg",
     summary:
       "Co-curricular activities give pupils the chance to discover what they enjoy, work in a team, take responsibility and build confidence beyond the classroom. The activities offered each term will be published here once confirmed by the school.",
     relatedLabel: "Related pages",
@@ -129,6 +139,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Academics",
     title: "Student Support",
     tone: "green",
+    image: "/images/giving-community.jpg",
     summary:
       "Some pupils need a little more time, a different explanation or extra encouragement. Our teachers identify that early, adapt their teaching and work with families so that every child is supported to make progress at their own pace.",
     relatedLabel: "Related pages",
@@ -142,6 +153,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Academics",
     title: "Preparing for the Future",
     tone: "sky",
+    image: "/images/innovation-studio.jpg",
     summary:
       "A good education prepares pupils for more than the next examination. We help our pupils develop strong communication, thoughtful decision-making, digital confidence and the resilience to keep learning long after they leave MGGS.",
     relatedLabel: "Related pages",
@@ -155,6 +167,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Student Life",
     title: "Student Life",
     tone: "coral",
+    image: "/images/student-life-sports.jpg",
     summary:
       "School should stretch more than the memory. At MGGS, pupils are encouraged to join activities, take on responsibilities, serve others and discover strengths they did not know they had — all within a caring, well-ordered school community.",
     relatedLabel: "Explore student life",
@@ -170,6 +183,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Student Life",
     title: "Arts & Culture",
     tone: "gold",
+    image: "/images/news-generic-1.jpg",
     summary:
       "Creative work helps pupils observe closely, listen carefully and express themselves clearly. Music, drama, art and cultural activities give our pupils space to imagine, perform and take pride in what they make.",
     relatedLabel: "Related pages",
@@ -183,6 +197,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Student Life",
     title: "Sports & Fitness",
     tone: "sky",
+    image: "/images/student-life-sports.jpg",
     summary:
       "Sport teaches effort, self-discipline and good sportsmanship. Pupils at MGGS take part in physical activity and team games that build fitness, coordination, teamwork and the habit of an active, healthy life.",
     relatedLabel: "Related pages",
@@ -196,6 +211,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Student Life",
     title: "Clubs & Societies",
     tone: "coral",
+    image: "/images/innovation-studio.jpg",
     summary:
       "Clubs and societies give pupils a shared interest to belong to — a place to debate, build, read, code, perform or serve alongside classmates. The club list is confirmed by the school at the start of each session.",
     relatedLabel: "Related pages",
@@ -209,6 +225,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Student Life",
     title: "Leadership & Service",
     tone: "green",
+    image: "/images/students-collaborating.jpg",
     summary:
       "Leadership at MGGS is learned in practice: keeping a commitment, helping a younger pupil, taking responsibility for a class duty and speaking up for what is right. Service is part of our motto, Towards Greatness, and it begins close to home.",
     relatedLabel: "Related pages",
@@ -222,6 +239,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Community",
     title: "Parents & Families",
     tone: "gold",
+    image: "/images/giving-community.jpg",
     summary:
       "Parents and guardians are partners in everything we do. We keep families informed about their child's progress, invite them into the life of the school and work together when a pupil needs encouragement or support.",
     relatedLabel: "Related pages",
@@ -236,6 +254,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Community",
     title: "Student & Alumni Stories",
     tone: "coral",
+    image: "/images/portrait-student-duotone.jpg",
     summary:
       "Stories of our pupils and former pupils show what a Marvelous Greatness Schools education looks like in real life — steady progress, good character and the confidence to aim higher. New stories will be added as the school shares them.",
     relatedLabel: "Related pages",
@@ -249,6 +268,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Community",
     title: "Our Educators",
     tone: "sky",
+    image: "/images/classroom-science.jpg",
     summary:
       "Our teachers are the strength of the school. They are subject-confident, caring about each pupil's progress and consistently supported with training, shared planning and feedback on their practice.",
     relatedLabel: "Related pages",
@@ -262,6 +282,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Our Campus",
     title: "Our Campus",
     tone: "green",
+    image: "/images/hero-campus.jpg",
     summary:
       "Marvelous Greatness Schools is located in the Akobo–Ojurin area of Ibadan, Oyo State. Our school site is arranged to give pupils an orderly, safe environment for learning, with details of the campus added here as they are confirmed by the school.",
     relatedLabel: "Related pages",
@@ -276,6 +297,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Our Campus",
     title: "Getting to School",
     tone: "sky",
+    image: "/images/campus-courtyard.jpg",
     summary:
       "The school is situated in Akobo–Ojurin, Ibadan, within reach of families across the city. Directions, arrival and collection arrangements will be published here once confirmed by the school office.",
     relatedLabel: "Related pages",
@@ -289,6 +311,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Our Campus",
     title: "Campus Tours",
     tone: "gold",
+    image: "/images/aerial-campus.jpg",
     summary:
       "The best way to understand a school is to walk through it. Arrange a tour with the school office, meet our teachers and see the classrooms, resources and routines that shape a typical day at MGGS.",
     relatedLabel: "Related pages",
@@ -302,6 +325,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Giving",
     title: "Donate Now",
     tone: "green",
+    image: "/images/giving-community.jpg",
     summary:
       "Support from friends of the school helps us keep improving what we offer our pupils. Please contact the school office to discuss a contribution; the form shown here is a demonstration and does not process payments.",
     relatedLabel: "Related pages",
@@ -315,6 +339,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Giving",
     title: "Ways to Give",
     tone: "sky",
+    image: "/images/giving-community.jpg",
     summary:
       "Families, alumni and friends can support Marvelous Greatness Schools through financial contributions, books and learning materials, equipment or professional expertise. The school office will confirm current giving options.",
     relatedLabel: "Related pages",
@@ -328,6 +353,7 @@ export const genericPages: Record<string, GenericPageContent> = {
     section: "Giving",
     title: "Your Impact",
     tone: "gold",
+    image: "/images/students-collaborating.jpg",
     summary:
       "Gifts to the school support the things that make the greatest difference to pupils: teaching resources, learning materials and the upkeep of a safe, well-ordered school environment. Detailed impact reporting will be published here as it becomes available.",
     relatedLabel: "Related pages",

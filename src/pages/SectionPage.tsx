@@ -11,6 +11,7 @@ export default function SectionPage({ content }: { content: GenericPageContent }
         title={content.title}
         trail={[{ label: content.trailLabel }]}
         tone={content.tone}
+        image={content.image}
       />
       <section className="py-14 sm:py-20">
         <Container className="max-w-3xl">

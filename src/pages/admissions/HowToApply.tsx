@@ -61,6 +61,7 @@ export default function HowToApply() {
         description={`A clear, unhurried route into ${siteInfo.name} — from your first enquiry through to your child's first day.`}
         trail={[{ label: "Admissions", to: "/admissions/start-here" }, { label: "How to Apply" }]}
         tone="green"
+        image="/images/classroom-science.jpg"
       />
 
       <section className="py-14 sm:py-20">

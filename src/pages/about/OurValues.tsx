@@ -14,6 +14,7 @@ export default function OurValues() {
         description={`Discipline, dedication and excellent performance sit behind our motto, “${siteInfo.motto}”, and behind everything we ask of our pupils.`}
         trail={[{ label: "About", to: "/about/the-mggs-difference" }, { label: "Our Values" }]}
         tone="gold"
+        image="/images/students-collaborating.jpg"
       />
 
       <IconFeatureGrid

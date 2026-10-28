@@ -81,7 +81,15 @@ News article URLs (`/mggs-news/<slug>`) are generated from `src/data/news.ts`.
 - `DonationForm` — NGN currency, school-appropriate designations and preset
   amounts; still a clearly labelled demonstration form.
 - `SectionPage` — the internal “shared content template” note became a
-  school-facing “this page is being completed” note.
+  school-facing “this page is being completed” note, and now passes the
+  page's hero image through.
+- `HeroBackdrop` (new, `src/components/sections/` ) — the homepage hero
+  backdrop plays the school film, then crossfades through five still frames and
+  loops, using the existing `hero-visual` reveal animation plus a new
+  `hero-frame` crossfade/drift defined in `src/index.css`. It falls back to the
+  still frames when no film is available and holds a single frame under
+  reduced-motion. Every interior page hero now receives an image
+  (`content.image` for shared templates, explicit `image` props elsewhere).
 
 ### Tests
 `tests/*.cjs` were updated for the new carousel card names and the

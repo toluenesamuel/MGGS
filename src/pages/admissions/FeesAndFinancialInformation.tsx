@@ -15,6 +15,7 @@ export default function FeesAndFinancialInformation() {
         description="Clear information about school fees and payment, so that families can plan with confidence."
         trail={[{ label: "Admissions", to: "/admissions/start-here" }, { label: "Fees & Financial Information" }]}
         tone="sky"
+        image="/images/campus-courtyard.jpg"
       />
 
       <section className="py-14 sm:py-16">

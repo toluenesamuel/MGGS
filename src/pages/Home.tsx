@@ -5,6 +5,7 @@ import { IconFeatureGrid } from "@/components/sections/IconFeatureGrid";
 import { StoryCarousel } from "@/components/sections/StoryCarousel";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { NewsCard } from "@/components/sections/NewsCard";
+import { HeroBackdrop } from "@/components/sections/HeroBackdrop";
 import { Link } from "@/router/router";
 import { schoolValues, siteInfo } from "@/data/site";
 import { newsArticles } from "@/data/news";
@@ -56,10 +57,7 @@ export default function Home() {
   return (
     <>
       <section className="hero-entrance relative overflow-hidden bg-brand-green-900 text-white">
-        <div className="absolute inset-0">
-          <img src="/images/aerial-campus.jpg" alt="" className="hero-visual h-full w-full object-cover" fetchPriority="high" />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-green-900 via-brand-green-900/70 to-brand-green-900/30" />
-        </div>
+        <HeroBackdrop />
         <Container className="relative flex min-h-[70svh] flex-col justify-end pb-14 pt-24 sm:pb-20 lg:min-h-[78svh]">
           <p className="hero-item hero-eyebrow font-display text-[11px] font-bold uppercase tracking-[0.15em] text-brand-gold sm:text-xs">
             {siteInfo.name}

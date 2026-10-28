@@ -14,6 +14,7 @@ export default function ContactUs() {
         description={`Marvelous Greatness Schools, ${location.area}, ${location.city}, ${location.state}. We are always glad to hear from families.`}
         trail={[{ label: "About", to: "/about/the-mggs-difference" }, { label: "Contact Us" }]}
         tone="sky"
+        image="/images/campus-courtyard.jpg"
       />
 
       <section className="py-14 sm:py-20">
