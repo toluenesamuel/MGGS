@@ -24,37 +24,63 @@ CSS = Path(__file__).resolve().parents[1] / "src/index.css"
 
 # (foreground token, background token, requirement, where it is used)
 PAIRS: list[tuple[str, str, str, str]] = [
-    ("ink", "paper", "normal", "body text on page background"),
-    ("ink", "surface", "normal", "body text on cards"),
-    ("ink-muted", "paper", "normal", "secondary text on page background"),
-    ("ink-muted", "surface", "normal", "secondary text on cards"),
-    ("primary-dark", "paper", "normal", "headings on page background"),
+    # --- body and heading text on light surfaces ---
+    ("text", "background", "normal", "body text on page background"),
+    ("text", "surface", "normal", "body text on cards"),
+    ("text-muted", "background", "normal", "secondary text on page background"),
+    ("text-muted", "surface", "normal", "secondary text on cards"),
+    ("primary-dark", "background", "normal", "headings on page background"),
     ("primary-dark", "surface", "normal", "headings on cards"),
     ("primary-dark", "primary-light", "normal", "headings on tinted panels"),
-    ("on-primary", "primary", "normal", "white text on primary surfaces"),
-    ("on-primary", "primary-dark", "normal", "white text on dark primary"),
-    ("primary", "paper", "normal", "primary text links on page background"),
-    ("primary", "primary-light", "normal", "primary text on tinted panels"),
-    ("on-secondary", "secondary", "normal", "text on secondary surfaces"),
-    ("on-accent", "accent", "normal", "text on accent call-to-action buttons"),
-    ("accent-ink", "surface", "normal", "accent text links on cards"),
-    ("accent-ink", "paper", "normal", "accent text links on page background"),
-    ("on-warning", "warning", "normal", "text on gold notice surfaces"),
-    ("primary", "surface", "ui", "button + input borders on cards"),
-    ("primary", "paper", "ui", "button + input borders on page background"),
-    ("border", "surface", "ui", "card and divider boundaries"),
-    ("border-strong", "paper", "ui", "emphasised dividers"),
-    ("warning", "primary-dark", "ui", "focus ring on dark sections"),
+    ("primary-dark", "brand-sky", "normal", "headings on soft panels"),
+    ("primary-dark", "brand-lime", "normal", "headings on warm panels"),
+    ("brand-coral-ink", "background", "normal", "accent text links on page background"),
+    ("brand-coral-ink", "surface", "normal", "accent text links on cards"),
+    # --- text on filled brand surfaces ---
+    ("on-primary", "primary", "normal", "white text on primary buttons/blocks"),
+    ("brand-green-800", "on-primary", "normal", "hover fill of the primary button"),
+    ("on-primary", "primary-dark", "normal", "white text on dark sections/footer"),
+    ("on-primary", "brand-green-800", "normal", "white text on dark hover"),
+    ("primary-dark", "brand-gold", "normal", "text on gold notice surfaces"),
+    ("brand-gold", "primary-dark", "normal", "gold eyebrow text on dark sections"),
+    ("on-accent", "accent", "normal", "text on the deeper accent"),
+    # --- validation and UI boundaries ---
+    ("danger", "surface", "normal", "form validation messages"),
+    ("control-border", "surface", "ui", "form field boundaries"),
+    ("control-border", "background", "ui", "form field boundaries on paper"),
+    ("border-strong", "surface", "decorative", "card edges and dividers (not state-carrying)"),
+    ("border", "background", "decorative", "hairline dividers"),
+    ("focus", "background", "ui", "focus ring on page background"),
+    ("focus", "surface", "ui", "focus ring on cards"),
+    ("focus", "primary-dark", "ui", "focus ring on dark sections"),
+    ("accent-ink", "surface", "normal", "accent text on cards"),
+    ("accent-ink", "background", "normal", "accent text on page background"),
 ]
-THRESHOLDS = {"normal": 4.5, "large": 3.0, "ui": 3.0}
+THRESHOLDS = {"normal": 4.5, "large": 3.0, "ui": 3.0, "decorative": 0.0}
 
 
 def load_tokens() -> dict[str, str]:
+    """Read every --color-* token, resolving var(...) aliases to their hex value."""
     css = CSS.read_text()
-    tokens = {}
-    for name, value in re.findall(r"--color-([a-z0-9-]+):\s*(#[0-9a-fA-F]{3,8})", css):
-        tokens[name] = value
-    return tokens
+    raw = dict(re.findall(r"--color-([a-z0-9-]+):\s*([^;]+);", css))
+
+    def resolve(name: str, seen: frozenset[str] = frozenset()) -> str | None:
+        value = raw.get(name)
+        if value is None or name in seen:
+            return None
+        value = value.strip()
+        if value.startswith("#"):
+            return value
+        alias = re.fullmatch(r"var\(\s*--color-([a-z0-9-]+)\s*\)", value)
+        if alias:
+            return resolve(alias.group(1), seen | {name})
+        return None
+
+    return {
+        name: hex_value
+        for name, hex_value in ((name, resolve(name)) for name in raw)
+        if hex_value
+    }
 
 
 def rgb(hex_value: str) -> tuple[int, int, int]:

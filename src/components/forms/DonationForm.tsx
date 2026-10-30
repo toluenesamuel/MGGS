@@ -67,8 +67,8 @@ export function DonationForm() {
               className={cn(
                 "focus-ring rounded border py-2.5 text-sm font-bold",
                 amount === value
-                  ? "border-brand-coral bg-brand-coral text-ink"
-                  : "border-brand-green-900/20 text-brand-green-900 hover:border-brand-coral",
+                  ? "border-brand-coral bg-brand-coral text-white"
+                  : "border-control-border text-brand-green-900 hover:border-brand-coral",
               )}
             >
               ₦{value.toLocaleString()}
@@ -89,10 +89,10 @@ export function DonationForm() {
             setAmount(null);
           }}
           placeholder="₦"
-          className="focus-ring mt-1 w-full rounded border border-brand-green-900/20 px-3 py-2 text-sm"
+          className="focus-ring mt-1 w-full rounded border border-control-border px-3 py-2 text-sm"
         />
         {errors.amount && (
-          <p role="alert" className="mt-1 text-xs font-medium text-brand-gold">
+          <p role="alert" className="mt-1 text-xs font-medium text-danger">
             {errors.amount}
           </p>
         )}
@@ -106,7 +106,7 @@ export function DonationForm() {
           id="designation"
           value={designation}
           onChange={(e) => setDesignation(e.target.value)}
-          className="focus-ring w-full rounded border border-brand-green-900/20 px-3 py-2.5 text-sm"
+          className="focus-ring w-full rounded border border-control-border px-3 py-2.5 text-sm"
         >
           {designations.map((d) => (
             <option key={d}>{d}</option>
@@ -124,10 +124,10 @@ export function DonationForm() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             aria-invalid={Boolean(errors.name)}
-            className="focus-ring w-full rounded border border-brand-green-900/20 px-3 py-2.5 text-sm"
+            className="focus-ring w-full rounded border border-control-border px-3 py-2.5 text-sm"
           />
           {errors.name && (
-            <p role="alert" className="mt-1 text-xs font-medium text-brand-gold">
+            <p role="alert" className="mt-1 text-xs font-medium text-danger">
               {errors.name}
             </p>
           )}
@@ -142,10 +142,10 @@ export function DonationForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             aria-invalid={Boolean(errors.email)}
-            className="focus-ring w-full rounded border border-brand-green-900/20 px-3 py-2.5 text-sm"
+            className="focus-ring w-full rounded border border-control-border px-3 py-2.5 text-sm"
           />
           {errors.email && (
-            <p role="alert" className="mt-1 text-xs font-medium text-brand-gold">
+            <p role="alert" className="mt-1 text-xs font-medium text-danger">
               {errors.email}
             </p>
           )}

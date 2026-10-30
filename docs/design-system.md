@@ -1,24 +1,30 @@
-# Design System — Branksome Hall Reconstruction
+# Design System — MGGS
 
-Grounded in verified hex values extracted from the live site's HTML (see `branksome-reference-audit.md`). This is a **reference-informed reconstruction**, not a byte-for-byte clone, and is clearly presented as a design study, not the official Branksome Hall site.
+The layout and component vocabulary were reconstructed from a design reference (see `branksome-reference-audit.md`); the **colour system is the school's own**, derived from the MGGS uniform and documented in [`colour-system.md`](./colour-system.md). This is the official-style site for Marvellous Greatness Group of Schools, Ibadan.
 
-## Color
+## Colour
 
-| Token | Hex | Verified? | Usage |
-|---|---|---|---|
-| `brand-green-900` | `#00491F` | ✅ verified | Header, footer, primary buttons, dark section bands |
-| `brand-green-800` | `#0B3D2C` (derived shade) | derived | hover states, gradients |
-| `brand-coral` | `#F26539` | ✅ verified | Primary CTA accent, hero bands |
-| `brand-coral-light` | `#FF7F57` | ✅ verified | secondary CTA tint |
-| `brand-gold` | `#FCAF17` | ✅ verified | feature bands, tags |
-| `brand-sky` | `#8FE2FF` | ✅ verified | section bands |
-| `brand-sky-deep` | `#14B1E7` | ✅ verified | links/accents on dark bg |
-| `brand-lime` | `#9ACA3C` | ✅ verified | icon grid, tags |
-| `brand-magenta` | `#CF3D96` | ✅ verified | carousel accent only |
-| `ink` | `#1A1A1A` | assumption | body text |
-| `paper` | `#FFFFFF` / `#F7F6F1` | assumption | page/card background |
+The palette is **derived from the MGGS school uniform** (rose-pink blouse, hue 350°,
+over a near-black charcoal skirt/trousers) and organised as semantic design tokens in
+the `@theme` block of `src/index.css`. The full token table, provenance, contrast
+figures and usage rules live in [`colour-system.md`](./colour-system.md); validate
+with `python3 scripts/check-contrast.py --strict`.
 
-Usage rule observed on the reference: **one flat accent color per full-bleed section**, never gradients, never two accents mixed in one band. We follow this rule strictly — no decorative gradients anywhere in the rebuild (this is a deliberate deviation from the starter template's default gradient hero, replaced per the audit).
+| Role | Token | Hex |
+|---|---|---|
+| Primary | `--color-primary` | `#A8324F` |
+| Primary dark | `--color-primary-dark` | `#6E1F38` |
+| Primary light | `--color-primary-light` | `#F7E4EA` |
+| Secondary | `--color-secondary` | `#3A2A31` |
+| Accent | `--color-accent` / `--color-accent-soft` | `#C68A2E` / `#E3B65E` |
+| Background / surface | `--color-background` / `--color-surface` | `#FBF7F7` / `#FFFFFF` |
+| Text | `--color-text` / `--color-text-muted` | `#1E1720` / `#5C4A50` |
+| Borders | `--color-border` / `--color-control-border` | `#E9DCDF` / `#9F8288` |
+
+Usage rule: **one flat colour per full-bleed section**, never gradients, never two
+accents mixed in one band. Most sections use light tints (`primary-light`,
+`surface-muted`); solid `primary` is reserved for CTAs and `primary-dark` for the
+footer and one or two dark bands.
 
 ## Typography
 
@@ -32,14 +38,14 @@ Usage rule observed on the reference: **one flat accent color per full-bleed sec
 - Max content width: `1280px` (`max-w-7xl`) for standard sections, `1600px` for full-bleed media bands that still cap text columns.
 - Section vertical rhythm: `py-16` mobile → `py-24` desktop, consistent across templates.
 - Grid: 12-col implicit via Tailwind `grid-cols-*`; content split patterns are 1-col mobile → 2-col (image/text) or 3–4-col (cards) at `md`/`lg`.
-- Full-bleed alternating color bands between modules (green → blue → orange → gold → white → green…) reproduce the reference's rhythm.
+- Full-bleed alternating colour bands between modules (primary → primary-light → surface-muted → gold → white…) reproduce the reference's rhythm in the school's own palette.
 
 ## Components (see `src/components`)
 
 - `Header` / `MobileMenu` — sticky, mega-menu dropdowns per top-level nav item, search overlay, "Request Info" text link + "Apply Now" solid button, hamburger on mobile with slide-in panel, full keyboard support (Escape closes, focus trap, arrow/Tab order).
 - `Breadcrumbs` — "Home / Section / Page" trail on every interior page.
 - `PageMenu` — collapsible in-page jump-link accordion directly under interior hero, mirroring the reference's "PAGE MENU" control.
-- `Hero` — full-bleed color band + headline + supporting copy + 1–2 CTAs, variant prop for green/coral/sky backgrounds.
+- `Hero` — full-bleed color band + headline + supporting copy + 1–2 CTAs, variant prop for primary/primary-light/surface bands.
 - `StatBlock` — icon + number + label grid ("Branksome by the Numbers" pattern).
 - `StoryCarousel` — horizontally scrollable card carousel with prev/next buttons + dot/progress indicator, keyboard arrow support.
 - `NewsCard` / `NewsGrid` / `NewsFilters` — tag pills, excerpt, read time, checkbox facet filters, client-side filtering + pagination.
@@ -48,7 +54,7 @@ Usage rule observed on the reference: **one flat accent color per full-bleed sec
 - `IconFeatureGrid` — 3–4 col icon+title+copy grid.
 - `CTABanner` — full-bleed colored strip with heading + button, used for "Make a Gift", "Start Your Journey".
 - `Accordion` — generic expand/collapse, used for FAQ-style content and PageMenu.
-- `Footer` — dark green, multi-column link grid + social + accreditation row + legal line, built from the verified link graph.
+- `Footer` — `primary-dark`, multi-column link grid + social + accreditation row + legal line, built from the verified link graph.
 
 ## Motion
 
@@ -57,8 +63,8 @@ Usage rule observed on the reference: **one flat accent color per full-bleed sec
 
 ## Accessibility baseline (target WCAG 2.2 AA)
 
-- Color pairings checked for 4.5:1 body text contrast (white text only on `#00491F`/`#F26539` dark-enough backgrounds; dark ink text on light accent backgrounds like sky/gold/lime).
-- All interactive controls reachable by keyboard, with visible focus rings (`focus-visible` ring in white/green depending on background).
+- All 28 text/UI colour pairings checked for WCAG AA (4.5:1 text, 3:1 borders and focus rings) by `scripts/check-contrast.py --strict`.
+- All interactive controls reachable by keyboard, with visible focus rings (`focus-visible` ring in `--color-focus`, which clears 3:1 on both light and dark surfaces).
 - Menus use `aria-expanded`, `aria-controls`, `aria-haspopup`; mobile menu traps focus and returns focus to the trigger on close.
 - Images carry descriptive `alt` text; decorative SVG icons are `aria-hidden`.
 - Form fields have associated `<label>`s and live validation messages with `aria-live`/`role="alert"`.

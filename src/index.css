@@ -15,24 +15,68 @@
   --font-display: "Archivo", "Inter", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
 
-  --color-brand-green-900: #00491f;
-  --color-brand-green-800: #0b3d2c;
-  --color-brand-green-700: #145236;
-  --color-brand-green-100: #e5efe7;
+  /* ---------------------------------------------------------------------
+     MGGS colour system — derived from the school uniform.
+     Source: scripts/assets/uniform-reference.png (photograph of MGGS pupils).
+     The blouse is a rose pink sampled at hue 350° (#EFCED3 fabric, #E0B2B5 in
+     shade); the skirt/trousers are near-black (#17151A). The palette keeps
+     that hue family and supplies deeper tones the light fabric cannot carry,
+     so headings, buttons and body text stay legible.
+     Every pairing below is checked by scripts/check-contrast.py (WCAG AA).
+     --------------------------------------------------------------------- */
 
-  --color-brand-coral: #f26539;
-  --color-brand-coral-ink: #a83a18;
-  --color-brand-coral-light: #ff7f57;
-  --color-brand-gold: #fcaf17;
-  --color-brand-gold-light: #ffc41d;
-  --color-brand-sky: #8fe2ff;
-  --color-brand-sky-deep: #14b1e7;
-  --color-brand-lime: #9aca3c;
-  --color-brand-lime-light: #c1da6d;
-  --color-brand-magenta: #cf3d96;
+  /* Uniform reference (not used directly in UI chrome) */
+  --color-uniform-pink: #efced3;
+  --color-uniform-rose: #e0b2b5;
+  --color-uniform-charcoal: #17151a;
 
-  --color-ink: #19231d;
-  --color-paper: #fbfaf6;
+  /* Core brand roles — the semantic layer new pages and CMS content should use */
+  --color-primary: #a8324f;
+  --color-primary-dark: #6e1f38;
+  --color-primary-hover: #7e2745;
+  --color-primary-light: #f7e4ea;
+  --color-secondary: #3a2a31;
+  --color-accent: #c68a2e;
+  --color-accent-soft: #e3b65e;
+  --color-accent-ink: #7a5410;
+
+  --color-background: #fbf7f7;
+  --color-surface: #ffffff;
+  --color-surface-muted: #faf1f3;
+  --color-text: #1e1720;
+  --color-text-muted: #5c4a50;
+  --color-on-primary: #ffffff;
+  --color-on-accent: #33180a;
+
+  --color-danger: #9e1b34;
+  --color-danger-soft: #fbe9ed;
+
+  --color-border: #e9dcdf;
+  --color-border-strong: #cbb6bc;
+  --color-control-border: #9f8288;
+  /* One focus colour that clears 3:1 on both light and dark surfaces */
+  --color-focus: #b87f22;
+
+  /* Legacy utility names kept so every existing component re-skins in place.
+     Values now resolve to the roles above. */
+  --color-brand-green-900: var(--color-primary-dark);
+  --color-brand-green-800: #7a2540;
+  --color-brand-green-700: var(--color-primary-hover);
+  --color-brand-green-100: var(--color-primary-light);
+
+  --color-brand-coral: var(--color-primary);
+  --color-brand-coral-ink: #8e2542;
+  --color-brand-coral-light: #bc4a68;
+  --color-brand-gold: var(--color-accent-soft);
+  --color-brand-gold-light: #f0cb88;
+  --color-brand-sky: #f2e6ea;
+  --color-brand-sky-deep: #8c6470;
+  --color-brand-lime: #f3e4d8;
+  --color-brand-lime-light: #f9f0e8;
+  --color-brand-magenta: #7e2748;
+
+  --color-ink: var(--color-text);
+  --color-paper: var(--color-background);
 }
 
 html {
@@ -80,7 +124,7 @@ h4,
   outline: none;
 }
 .focus-ring:focus-visible {
-  outline: 2px solid var(--color-brand-gold);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -160,7 +204,7 @@ h4,
 .site-menu-link { font-family: "Anton", "Archivo", sans-serif; font-size: clamp(2rem, 4vw, 3.6rem); line-height: 1.08; letter-spacing: -.02em; }
 .site-menu-arrow { font-family: Arial, sans-serif; font-size: .65em; font-weight: 400; transition: transform 180ms ease; }
 .site-menu-link:hover .site-menu-arrow, .site-menu-arrow.is-active { transform: translateX(8px); }
-.site-menu-link:hover { color: #ffc41d; }
+.site-menu-link:hover { color: var(--color-accent-soft); }
 .site-menu-image { opacity: .95; }
 @media (prefers-reduced-motion: no-preference) {
   .site-menu-body { animation: site-menu-enter 360ms var(--motion-ease) both; }
@@ -193,11 +237,11 @@ h4,
 .story-controls { display: flex; align-items: center; gap: 1rem; padding: .8rem 1.25rem 0 0; }
 .story-progress { display: flex; flex: 1; min-width: 0; }
 .story-progress-button { display: flex; align-items: center; flex: 1; height: 2.75rem; }
-.story-progress-segment { height: 3px; width: 100%; background: #b4c9bb; transition: background-color 200ms ease; }
+.story-progress-segment { height: 3px; width: 100%; background: var(--color-border-strong); transition: background-color 200ms ease; }
 .story-progress-segment.is-active { background: var(--color-brand-green-900); }
 .story-arrow { display: flex; align-items: center; justify-content: center; height: 2.75rem; width: 2.75rem; flex-shrink: 0; border: 1px solid var(--color-brand-green-900); color: var(--color-brand-green-900); font-size: 1.5rem; transition: background-color 160ms ease, color 160ms ease; }
 .story-arrow:hover:not(:disabled) { background: var(--color-brand-green-900); color: white; }
-.story-arrow:disabled { background: #b4c9bb; border-color: #b4c9bb; color: #fff; }
+.story-arrow:disabled { background: var(--color-border-strong); border-color: var(--color-border-strong); color: var(--color-on-primary); }
 @media (min-width: 900px) { .story-layout { grid-template-columns: minmax(270px, 34%) minmax(0, 1fr); gap: 2rem; } .story-intro { padding-top: .2rem; } .story-track { --story-width: 20rem; } }
 @media (max-width: 599px) { .story-card { height: 27rem; } .story-track { gap: .8rem; } .story-card-panel { transform: scale(.88); } .story-card-panel.is-active { transform: scale(1); } }
 @media (prefers-reduced-motion: reduce) { .story-card-panel, .story-card-link span, .story-progress-segment, .story-arrow { transition: none; } }

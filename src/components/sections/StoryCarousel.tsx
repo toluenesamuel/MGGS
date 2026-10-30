@@ -19,7 +19,7 @@ const toneClasses: Record<StoryCard["tone"], string> = {
   sky: "bg-brand-sky text-brand-green-900",
   gold: "bg-brand-gold-light text-brand-green-900",
   lime: "bg-brand-lime text-brand-green-900",
-  coral: "bg-brand-coral text-ink",
+  coral: "bg-brand-coral text-white",
   green: "bg-brand-green-900 text-white",
 };
 

@@ -78,7 +78,7 @@ export default function HowToApply() {
                 className={cn(
                   "focus-ring rounded-full border px-4 py-2 text-sm font-semibold transition-colors",
                   active === tab.id
-                    ? "border-brand-coral bg-brand-coral text-ink"
+                    ? "border-brand-coral bg-brand-coral text-white"
                     : "border-brand-green-900/20 text-brand-green-900 hover:border-brand-coral",
                 )}
               >

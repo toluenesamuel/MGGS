@@ -5,7 +5,7 @@ import { cn } from "@/utils/cn";
 
 const toneClasses: Record<string, string> = {
   green: "bg-brand-green-900 text-white",
-  coral: "bg-brand-coral text-ink",
+  coral: "bg-brand-coral text-white",
   sky: "bg-brand-sky text-brand-green-900",
   gold: "bg-brand-gold text-brand-green-900",
 };

@@ -18,7 +18,7 @@ export function CTABanner({
   image?: string;
 }) {
   const toneClasses: Record<string, string> = {
-    coral: "bg-brand-coral text-ink",
+    coral: "bg-brand-coral text-white",
     green: "bg-brand-green-900 text-white",
     gold: "bg-brand-gold text-brand-green-900",
   };

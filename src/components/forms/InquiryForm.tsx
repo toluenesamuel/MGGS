@@ -52,7 +52,7 @@ export function InquiryForm({
 
   if (submitted) {
     return (
-      <div role="status" className="rounded-lg border border-brand-green-900/20 bg-brand-green-100 p-8 text-center">
+      <div role="status" className="rounded-lg border border-control-border bg-brand-green-100 p-8 text-center">
         <p className="font-display text-xl font-bold text-brand-green-900">Thank you!</p>
         <p className="mt-2 text-sm text-ink/75">
           This is a demonstration form — no data was sent and no real inquiry was submitted. In a production
@@ -118,7 +118,7 @@ export function InquiryForm({
               value={values[f.id] ?? ""}
               onChange={(e) => update(f.id, e.target.value)}
               aria-invalid={Boolean(errors[f.id])}
-              className="focus-ring w-full rounded border border-brand-green-900/20 px-3 py-2.5 text-sm"
+              className="focus-ring w-full rounded border border-control-border px-3 py-2.5 text-sm"
             >
               <option value="">Select…</option>
               {f.options?.map((o) => (
@@ -142,7 +142,7 @@ export function InquiryForm({
               value={values[f.id] ?? ""}
               onChange={(e) => update(f.id, e.target.value)}
               aria-invalid={Boolean(errors[f.id])}
-              className="focus-ring w-full rounded border border-brand-green-900/20 px-3 py-2.5 text-sm"
+              className="focus-ring w-full rounded border border-control-border px-3 py-2.5 text-sm"
             />
             {errors[f.id] && (
               <p role="alert" className="mt-1 text-xs font-medium text-brand-coral-ink">
@@ -187,7 +187,7 @@ function Field({
         onChange={(e) => onChange(id, e.target.value)}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${id}-error` : undefined}
-        className="focus-ring w-full rounded border border-brand-green-900/20 px-3 py-2.5 text-sm"
+        className="focus-ring w-full rounded border border-control-border px-3 py-2.5 text-sm"
       />
       {error && (
         <p id={`${id}-error`} role="alert" className="mt-1 text-xs font-medium text-brand-coral-ink">

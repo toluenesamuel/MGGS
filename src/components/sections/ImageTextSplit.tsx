@@ -27,7 +27,7 @@ export function ImageTextSplit({
     white: "bg-paper text-ink",
     green: "bg-brand-green-900 text-white",
     sky: "bg-brand-sky text-brand-green-900",
-    coral: "bg-brand-coral text-ink",
+    coral: "bg-brand-coral text-white",
     gold: "bg-brand-gold text-brand-green-900",
   };
   return (

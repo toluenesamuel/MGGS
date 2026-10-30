@@ -91,7 +91,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <section data-reveal className="admissions-feature overflow-hidden bg-[#1db8e0] text-brand-green-900">
+      <section data-reveal className="admissions-feature overflow-hidden bg-brand-sky text-brand-green-900">
         <Container className="grid items-end gap-5 pt-12 md:grid-cols-2 md:gap-10 md:pt-16">
           <div className="admissions-visual order-2 mx-auto w-full max-w-md md:order-1">
             <img src="/images/admissions-cutout.png" alt="" className="block h-72 w-full object-contain object-bottom sm:h-96 md:h-[32rem]" loading="lazy" />

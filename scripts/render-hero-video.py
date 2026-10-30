@@ -29,11 +29,13 @@ HOLD_SECONDS = 4.0
 MOVE_SECONDS = 11.0
 DURATION = MOVE_SECONDS + HOLD_SECONDS
 
-GREEN = (0, 73, 31)
-GREEN_DEEP = (0, 54, 23)
-GOLD = (252, 175, 23)
+# Colours are sampled from the MGGS uniform (rose-pink blouse over charcoal
+# skirt/trousers) and mirror the design tokens in src/index.css.
+PRIMARY = (168, 50, 79)        # --color-primary  #A8324F
+PRIMARY_DEEP = (46, 15, 26)    # scrim built from --color-primary-dark
+GOLD = (227, 182, 94)          # --color-accent-soft #E3B65E
 WHITE = (255, 255, 255)
-CORAL = (242, 101, 57)
+ACCENT_INK = (51, 24, 10)      # --color-on-accent #33180A
 
 FONT_DISPLAY = "/tmp/fonts/Archivo-ExtraBold.ttf"
 FONT_SEMI = "/tmp/fonts/Archivo-SemiBold.ttf"
@@ -45,8 +47,23 @@ SCHOOL_LOCATION = "AKOBO–OJURIN · IBADAN, OYO STATE"
 SCHOOL_MOTTO = "Towards Greatness."
 
 
-def font(path: str, size: int) -> ImageFont.FreeTypeFont:
-    return ImageFont.truetype(path, size)
+def font(path: str, size: int, weight: int | None = None) -> ImageFont.FreeTypeFont:
+    """Load a font, selecting a named weight axis when the file is variable."""
+    face = ImageFont.truetype(path, size)
+    if weight is not None:
+        try:
+            axes = face.get_variation_axes()
+            values = []
+            for axis in axes:
+                name = axis["name"] if isinstance(axis, dict) else axis.name
+                lo = axis["minimum"] if isinstance(axis, dict) else axis.minimum
+                hi = axis["maximum"] if isinstance(axis, dict) else axis.maximum
+                values.append(min(hi, max(lo, weight)) if "eight" in str(name).lower()
+                              else (axis["default"] if isinstance(axis, dict) else axis.default))
+            face.set_variation_by_axes(values)
+        except Exception:
+            pass
+    return face
 
 
 def ease(t: float) -> float:
@@ -73,21 +90,21 @@ def camera_frame(source: Image.Image, progress: float) -> Image.Image:
 
 
 def draw_badge(canvas: Image.Image, cx: int, cy: int, radius: int, scale: float = 1.0) -> None:
-    """Circular MGGS badge: deep green disc, gold ring, white monogram."""
+    """Circular MGGS badge: uniform-rose disc, gold ring, white monogram."""
     size = int(radius * 2 * scale)
     if size < 24:
         return
     badge = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     d = ImageDraw.Draw(badge)
     pad = max(2, size // 22)
-    d.ellipse((pad, pad, size - pad, size - pad), fill=GREEN + (255,))
+    d.ellipse((pad, pad, size - pad, size - pad), fill=PRIMARY + (255,))
     ring = max(3, size // 26)
     d.ellipse((pad, pad, size - pad, size - pad), outline=GOLD + (255,), width=ring)
     inner = pad + ring * 1.7
     if size - 2 * inner > 2:
         d.ellipse((inner, inner, size - inner, size - inner), outline=WHITE + (110,), width=max(1, int(ring * 0.6)))
 
-    f = font(FONT_DISPLAY, max(8, int(size * 0.185)))
+    f = font(FONT_DISPLAY, max(8, int(size * 0.185)), weight=800)
     text = "MGGS"
     l, t, r, b = d.textbbox((0, 0), text, font=f)
     d.text(((size - (r - l)) / 2 - l, (size - (b - t)) / 2 - t - size * 0.075), text, font=f, fill=WHITE + (255,))
@@ -123,17 +140,17 @@ def draw_identity(canvas: Image.Image, reveal: float) -> None:
     sd = ImageDraw.Draw(scrim)
     for y in range(0, int(H * 0.62)):
         a = int(150 * (1 - y / (H * 0.62)) ** 1.35 * ease_rev)
-        sd.line([(int(W * 0.42), y), (W, y)], fill=GREEN_DEEP + (a,))
+        sd.line([(int(W * 0.42), y), (W, y)], fill=PRIMARY_DEEP + (a,))
     scrim = scrim.filter(ImageFilter.GaussianBlur(60))
     overlay.alpha_composite(scrim)
 
     slide = int(26 * (1 - ease_rev))
     text_right = right - slide
 
-    name1 = font(FONT_DISPLAY, 78)
-    name2 = font(FONT_DISPLAY, 58)
-    loc = font(FONT_SEMI, 23)
-    motto = font(FONT_BODY, 31)
+    name1 = font(FONT_DISPLAY, 78, weight=800)
+    name2 = font(FONT_DISPLAY, 58, weight=800)
+    loc = font(FONT_SEMI, 23, weight=600)
+    motto = font(FONT_BODY, 31, weight=400)
     alpha = int(255 * ease_rev)
 
     y = top
@@ -144,17 +161,17 @@ def draw_identity(canvas: Image.Image, reveal: float) -> None:
     d.text((text_right - d.textlength(SCHOOL_LOCATION, font=loc), y), SCHOOL_LOCATION, font=loc, fill=WHITE + (int(210 * ease_rev),))
     y += 44
 
-    # motto in a coral pill, right aligned
+    # motto in a soft-gold pill, right aligned
     m_w = d.textlength(SCHOOL_MOTTO, font=motto)
     pill_pad_x, pill_pad_y = 26, 14
     pill_w = m_w + pill_pad_x * 2
     d.rounded_rectangle(
         (text_right - pill_w, y, text_right, y + 62),
         radius=31,
-        fill=CORAL + (alpha,),
+        fill=GOLD + (alpha,),
     )
     d.text((text_right - pill_w + pill_pad_x, y + pill_pad_y + 1), SCHOOL_MOTTO, font=motto,
-           fill=(25, 35, 29, alpha))
+           fill=ACCENT_INK + (alpha,))
 
     # badge sits beneath the lockup, right aligned
     badge_r = 62

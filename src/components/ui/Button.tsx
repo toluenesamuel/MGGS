@@ -7,7 +7,7 @@ type Size = "sm" | "md";
 
 const variantClasses: Record<Variant, string> = {
   "solid-coral":
-    "bg-brand-coral text-ink hover:bg-brand-coral-light focus-visible:ring-brand-green-900",
+    "bg-brand-coral text-white hover:bg-brand-coral-light focus-visible:ring-brand-green-900",
   "solid-green":
     "bg-brand-green-900 text-white hover:bg-brand-green-700 focus-visible:ring-brand-gold",
   "outline-white":
