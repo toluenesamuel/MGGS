@@ -20,7 +20,12 @@ export interface HeroFrame {
 }
 
 export const heroVideo = "/media/mggs-hero.mp4";
-export const heroVideoWebm = "/media/mggs-hero.webm";
+/**
+ * Optional WebM version. Leave as `null` unless the file really exists in
+ * public/media — a missing alternative source can make the browser abandon the
+ * film before it ever tries the MP4.
+ */
+export const heroVideoWebm: string | null = null;
 /** Shown while the video loads, and used as the backdrop if the video fails. */
 export const heroVideoPoster = "/media/mggs-hero-poster.jpg";
 /** How long each still frame stays on screen (milliseconds). */

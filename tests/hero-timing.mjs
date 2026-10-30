@@ -128,7 +128,35 @@ function activeFrame(doc) {
   check(!doc.querySelector("video"), "save-data: video element should not be rendered");
 }
 
-// 6. A media error (unsupported codec) falls back.
+// 6a. An error bubbling up from an alternative <source> must NOT drop the film.
+// (Previously a missing .webm source fired this and the MP4 was never tried.)
+{
+  const { window, document: doc } = boot();
+  await wait(400);
+  const video = doc.querySelector("video");
+  const source = doc.createElement("source"); // stand-in for a failed alternative
+  source.setAttribute("src", "/media/does-not-exist.webm");
+  source.setAttribute("type", "video/webm");
+  video.appendChild(source);
+  source.dispatchEvent(new window.Event("error", { bubbles: true }));
+  await wait(150);
+  check(!!doc.querySelector("video"), "source error: film must stay usable");
+  check(activeFrame(doc) === "video", `source error: film should stay active (got ${activeFrame(doc)})`);
+}
+
+// 6b. The film must only use sources that are actually configured, so a missing
+// alternative file can never be requested first.
+{
+  const { document: doc } = boot();
+  await wait(300);
+  const sources = [...doc.querySelectorAll("video source")].map((s) => s.getAttribute("src"));
+  check(
+    sources.length === 1 && sources[0].endsWith(".mp4"),
+    `sources: expected only the MP4, got ${JSON.stringify(sources)}`,
+  );
+}
+
+// 7. A media error (unsupported codec) falls back.
 {
   const { window, document: doc } = boot();
   await wait(400);

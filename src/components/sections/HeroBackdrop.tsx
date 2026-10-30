@@ -23,9 +23,13 @@ function connectionIsConstrained(): boolean {
 
 /**
  * Cinematic hero backdrop: the school film plays first, then the component
- * crossfades through still frames and loops back to the film. Every stage is
- * progressive enhancement — with reduced motion, or if the video is missing,
- * the section still renders a complete, static hero.
+ * crossfades through still frames and loops back to the film.
+ *
+ * The film is only abandoned when it genuinely cannot be played — a media error
+ * on the video element itself, a 404/5xx for the file, or nothing downloaded at
+ * all after a long grace period. A failed alternative <source> must never count
+ * as a film failure, so sources are rendered only when they are configured and
+ * error handling ignores events that do not originate from the video element.
  */
 export function HeroBackdrop({ className }: { className?: string }) {
   const [videoUsable, setVideoUsable] = useState(() => !connectionIsConstrained());
@@ -38,10 +42,16 @@ export function HeroBackdrop({ className }: { className?: string }) {
   /** Milliseconds of the film actually watched during this showing. */
   const filmWatchedMs = useRef(0);
   const lastFilmTime = useRef(0);
+  /** Ensures the "retry on first interaction" listeners are only added once. */
+  const retryQueued = useRef(false);
 
   const slides: Slide[] = videoUsable
     ? [{ kind: "video" }, ...heroFrames.map((_, index) => ({ kind: "image" as const, index }))]
     : heroFrames.map((_, index) => ({ kind: "image" as const, index }));
+
+  const current = slides[Math.min(active, slides.length - 1)];
+  const currentKind = current?.kind;
+  const currentImage = current?.kind === "image" ? current.index : -1;
 
   useEffect(() => {
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -52,7 +62,6 @@ export function HeroBackdrop({ className }: { className?: string }) {
   }, []);
 
   // Honour data-saver / very slow connections: show the still frames only.
-  // (This is the one case where the film is deliberately skipped up front.)
   useEffect(() => {
     if (!connectionIsConstrained()) return;
     setVideoUsable(false);
@@ -60,8 +69,8 @@ export function HeroBackdrop({ className }: { className?: string }) {
   }, []);
 
   // Only fall back when the film genuinely cannot be used. A slow start must
-  // never cut the film short, so this only runs on a real error or when nothing
-  // at all has arrived after a generous grace period.
+  // never cut the film short, so this only runs on a real 404/5xx or when
+  // nothing at all has arrived after a generous grace period.
   useEffect(() => {
     if (!videoUsable) return;
     let cancelled = false;
@@ -74,7 +83,7 @@ export function HeroBackdrop({ className }: { className?: string }) {
         .then((response) => {
           if (response.status === 404 || response.status >= 500) fallBack();
         })
-        .catch(() => undefined); // network/proxy refusal is not proof the film is missing
+        .catch(() => undefined); // a refused request is not proof the film is missing
     }
     const timer = window.setTimeout(() => {
       const video = videoRef.current;
@@ -86,10 +95,6 @@ export function HeroBackdrop({ className }: { className?: string }) {
       window.clearTimeout(timer);
     };
   }, [videoUsable]);
-
-  const current = slides[Math.min(active, slides.length - 1)];
-  const currentKind = current?.kind;
-  const currentImage = current?.kind === "image" ? current.index : -1;
 
   /** Called each time the film reports a new playback position. */
   function trackFilmTime() {
@@ -103,6 +108,32 @@ export function HeroBackdrop({ className }: { className?: string }) {
   }
 
   /**
+   * Start the film, coping with autoplay restrictions: if the browser blocks
+   * playback, try again on the visitor's first interaction rather than
+   * abandoning the film.
+   */
+  function attemptPlay() {
+    const video = videoRef.current;
+    if (!video || reducedMotion) return;
+    const attempt = video.play();
+    if (!attempt || typeof attempt.catch !== "function") return;
+    attempt.catch(() => {
+      if (retryQueued.current) return;
+      retryQueued.current = true;
+      const retry = () => {
+        retryQueued.current = false;
+        const element = videoRef.current;
+        if (!element) return;
+        const again = element.play();
+        if (again && typeof again.catch === "function") again.catch(() => undefined);
+      };
+      window.addEventListener("pointerdown", retry, { once: true, passive: true });
+      window.addEventListener("keydown", retry, { once: true });
+      window.addEventListener("touchstart", retry, { once: true, passive: true });
+    });
+  }
+
+  /**
    * The film advances the hero only once it has been watched for the minimum
    * duration; a shorter clip repeats instead of cutting the sequence short.
    */
@@ -113,8 +144,7 @@ export function HeroBackdrop({ className }: { className?: string }) {
     if (!reducedMotion && filmWatchedMs.current < heroMinFilmDuration) {
       lastFilmTime.current = 0;
       video.currentTime = 0;
-      const attempt = video.play();
-      if (attempt && typeof attempt.catch === "function") attempt.catch(() => undefined);
+      attemptPlay();
       return;
     }
     if (current) advance(current);
@@ -125,11 +155,15 @@ export function HeroBackdrop({ className }: { className?: string }) {
     const video = videoRef.current;
     if (!video) return;
     window.setTimeout(() => {
-      if (video.paused && currentKind === "video") {
-        const attempt = video.play();
-        if (attempt && typeof attempt.catch === "function") attempt.catch(() => undefined);
-      }
+      if (video.paused && currentKind === "video") attemptPlay();
     }, 1500);
+  }
+
+  /** Only a failure of the video element itself means the film is unusable. */
+  function handleFilmError(event: React.SyntheticEvent<HTMLVideoElement>) {
+    if (event.target !== event.currentTarget) return;
+    setVideoUsable(false);
+    setActive(0);
   }
 
   function advance(from: Slide) {
@@ -162,10 +196,18 @@ export function HeroBackdrop({ className }: { className?: string }) {
     video.currentTime = 0;
     filmWatchedMs.current = 0;
     lastFilmTime.current = 0;
-    if (!reducedMotion) {
-      const attempt = video.play();
-      if (attempt && typeof attempt.catch === "function") attempt.catch(() => undefined);
-    }
+    attemptPlay();
+    // Some browsers block autoplay without throwing; nudge the film once it is
+    // buffered enough to start, so the hero is never left on a frozen frame.
+    const nudge = window.setTimeout(() => {
+      const element = videoRef.current;
+      if (element && element.paused && element.currentTime === 0 && element.readyState >= 2) {
+        attemptPlay();
+      }
+    }, 2500);
+    return () => window.clearTimeout(nudge);
+    // attemptPlay only reads refs and state from this render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentKind, reducedMotion, videoUsable]);
 
   return (
@@ -183,12 +225,9 @@ export function HeroBackdrop({ className }: { className?: string }) {
             onTimeUpdate={trackFilmTime}
             onWaiting={handleFilmWaiting}
             onPlaying={() => setVideoReady(true)}
-            onError={() => {
-              setVideoUsable(false);
-              setActive(0);
-            }}
+            onError={handleFilmError}
           >
-            <source src={heroVideoWebm} type="video/webm" />
+            {heroVideoWebm && <source src={heroVideoWebm} type="video/webm" />}
             <source src={heroVideo} type="video/mp4" />
           </video>
         </div>

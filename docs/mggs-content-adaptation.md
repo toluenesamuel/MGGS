@@ -90,6 +90,13 @@ News article URLs (`/mggs-news/<slug>`) are generated from `src/data/news.ts`.
 - `usePageTitle` (new) — sets a per-route document title derived from the page's
   own `<h1>`, falling back to the MGGS abbreviation so titles stay under ~62
   characters; `index.html` also carries Open Graph/Twitter link-preview tags.
+- Fixed: a WebM `<source>` listed before the MP4 pointed at a file that did not
+  exist. The dev/preview server answers unknown paths with `200 text/html`, so
+  the browser reported a source error, React's capture-phase `onError` caught it
+  and the film was dropped before the MP4 was ever requested. `heroVideoWebm`
+  now defaults to `null`, alternative sources render only when configured, and
+  `onError` ignores events that do not originate from the video element itself.
+  Autoplay refusals now retry on first interaction instead of giving up.
 - `HeroBackdrop` skips the film entirely on data-saver / 2G connections and uses
   the still frames instead. It measures how long the film has actually played and
   will not crossfade to the still frames before `heroMinFilmDuration` (10s) has
@@ -118,7 +125,9 @@ only.
 ### Checks added later
 - `tests/hero-timing.mjs` — asserts the 10-second film rule and all fallback
   paths (full-length film, short repeating film, rejected `HEAD`, 404, media
-  error, data-saver).
+  error, data-saver), plus regressions for the missing-source bug: a bubbling
+  `<source>` error must not disable the film, and only the MP4 may be listed as
+  a source.
 - `tests/content-check.mjs` — walks every route in jsdom and fails on missing
   headings, missing/duplicate/overlong page titles, outdated organisation copy,
   missing images or links to unknown routes. (It caught an 82-character news

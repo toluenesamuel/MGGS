@@ -26,6 +26,9 @@ crossfades through five still frames and loops back to the film. It is driven by
 `src/data/hero.ts` and rendered by `src/components/sections/HeroBackdrop.tsx`.
 
 - Film: `public/media/mggs-hero.mp4`, poster `public/media/mggs-hero-poster.jpg`.
+- Only sources that actually exist are listed. `heroVideoWebm` is `null` by
+  default: pointing the film at a missing alternative file makes the browser
+  report an error and abandon playback before the MP4 is tried.
 - **The film always plays for at least 10 seconds** before the hero moves on to
   the still frames (`heroMinFilmDuration` in `src/data/hero.ts`). A shorter clip
   simply repeats until that much footage has played. Slow loading never cuts the
@@ -36,7 +39,9 @@ crossfades through five still frames and loops back to the film. It is driven by
   (`public/images/mggs-logo.png`) used by the header/footer and the favicon.
 - To use the school's own footage instead, replace the MP4 — no code changes.
 - If the film is missing or cannot be decoded, the hero runs the still-frame
-  sequence on its own, so nothing ever renders blank. Under
+  sequence on its own, so nothing ever renders blank. If the browser blocks
+  autoplay, the film retries on the visitor's first tap/click. Set
+  `heroVideoWebm` in `src/data/hero.ts` only once that file really exists. Under
   `prefers-reduced-motion: reduce` the hero holds one frame and does not
   autoplay. Every interior page also carries a hero image.
 
