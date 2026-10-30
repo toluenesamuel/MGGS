@@ -26,6 +26,11 @@ crossfades through five still frames and loops back to the film. It is driven by
 `src/data/hero.ts` and rendered by `src/components/sections/HeroBackdrop.tsx`.
 
 - Film: `public/media/mggs-hero.mp4`, poster `public/media/mggs-hero-poster.jpg`.
+- **The film always plays for at least 10 seconds** before the hero moves on to
+  the still frames (`heroMinFilmDuration` in `src/data/hero.ts`). A shorter clip
+  simply repeats until that much footage has played. Slow loading never cuts the
+  film short: the still frames are only used if the file is genuinely missing
+  (404), fails to decode, or the visitor is on a data-saver/2G connection.
 - Rebuild it with `python3 scripts/render-hero-video.py` (see
   `public/media/README.md`); the same script generates the MGGS badge
   (`public/images/mggs-logo.png`) used by the header/footer and the favicon.
@@ -87,12 +92,14 @@ npx tsc --noEmit            # types
 npm run build               # production build
 
 # content regression (all routes: headings, page titles, no outdated copy,
-# image + internal link integrity) — needs jsdom, installed on demand:
+# image + internal link integrity) and hero-film timing — need jsdom, installed
+# on demand:
 npm install --no-save jsdom@25.0.1
 npx esbuild src/main.tsx --bundle --format=iife --outfile=/tmp/app.js \
   --loader:.css=text --jsx=automatic --alias:@=./src \
   --define:process.env.NODE_ENV='"production"'
 node tests/content-check.mjs /tmp/app.js
+node tests/hero-timing.mjs /tmp/app.js
 ```
 
 ## Notes
@@ -101,7 +108,8 @@ node tests/content-check.mjs /tmp/app.js
   (see `docs/mggs-content-adaptation.md` for what changed). The screenshots in
   `docs/screenshots/` were captured **before** the content adaptation and show
   the earlier school name; they document the animation/interaction work only.
-- `tests/` holds optional checks. `content-check.mjs` needs `jsdom`;
+- `tests/` holds optional checks. `content-check.mjs` and `hero-timing.mjs`
+  need `jsdom`;
   `browser.cjs`, `menu.cjs` and `story-carousel.cjs` need `playwright-core`,
   `@axe-core/playwright` and a Chromium binary (`CHROMIUM_PATH`, default
   `/tmp/chromium`). None are installed by default.

@@ -91,7 +91,13 @@ News article URLs (`/mggs-news/<slug>`) are generated from `src/data/news.ts`.
   own `<h1>`, falling back to the MGGS abbreviation so titles stay under ~62
   characters; `index.html` also carries Open Graph/Twitter link-preview tags.
 - `HeroBackdrop` skips the film entirely on data-saver / 2G connections and uses
-  the still frames instead.
+  the still frames instead. It measures how long the film has actually played and
+  will not crossfade to the still frames before `heroMinFilmDuration` (10s) has
+  elapsed — shorter clips repeat instead. The previous 6-second load timer and
+  strict `HEAD` content-type check could drop the film before it played at all;
+  fallback now happens only on a 404/5xx, a media error or 30s with nothing
+  downloaded, and a rejected `HEAD` (e.g. by a proxy) is ignored. Stalls are
+  retried automatically.
 - `scripts/render-hero-video.py` (new) renders the hero film, poster, badge and
   favicon from `scripts/assets/hero-aerial.png`.
 - `HeroBackdrop` (new, `src/components/sections/` ) — the homepage hero
@@ -110,6 +116,9 @@ still show the earlier school name; they document motion/interaction behaviour
 only.
 
 ### Checks added later
+- `tests/hero-timing.mjs` — asserts the 10-second film rule and all fallback
+  paths (full-length film, short repeating film, rejected `HEAD`, 404, media
+  error, data-saver).
 - `tests/content-check.mjs` — walks every route in jsdom and fails on missing
   headings, missing/duplicate/overlong page titles, outdated organisation copy,
   missing images or links to unknown routes. (It caught an 82-character news

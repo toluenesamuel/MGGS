@@ -3,6 +3,7 @@ import { cn } from "@/utils/cn";
 import {
   heroFrames,
   heroImageDuration,
+  heroMinFilmDuration,
   heroVideo,
   heroVideoPoster,
   heroVideoWebm,
@@ -34,6 +35,9 @@ export function HeroBackdrop({ className }: { className?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   /** Guards against re-advancing when the same media is on screen. */
   const advancedFor = useRef<string | null>(null);
+  /** Milliseconds of the film actually watched during this showing. */
+  const filmWatchedMs = useRef(0);
+  const lastFilmTime = useRef(0);
 
   const slides: Slide[] = videoUsable
     ? [{ kind: "video" }, ...heroFrames.map((_, index) => ({ kind: "image" as const, index }))]
@@ -47,43 +51,86 @@ export function HeroBackdrop({ className }: { className?: string }) {
     return () => query.removeEventListener?.("change", sync);
   }, []);
 
-  // If the film cannot be loaded (missing file, unsupported codec), fall back
-  // to the still-frame sequence rather than showing an empty hero.
+  // Honour data-saver / very slow connections: show the still frames only.
+  // (This is the one case where the film is deliberately skipped up front.)
   useEffect(() => {
+    if (!connectionIsConstrained()) return;
+    setVideoUsable(false);
+    setActive(0);
+  }, []);
+
+  // Only fall back when the film genuinely cannot be used. A slow start must
+  // never cut the film short, so this only runs on a real error or when nothing
+  // at all has arrived after a generous grace period.
+  useEffect(() => {
+    if (!videoUsable) return;
     let cancelled = false;
     const fallBack = () => {
-      if (cancelled) return;
-      setVideoUsable(false);
-      setActive(0);
+      if (!cancelled) setVideoUsable(false);
     };
-    // A dev/preview server may answer a missing file with an HTML page, which
-    // the <video> element will not report as an error — so check it up front.
-    if (connectionIsConstrained()) {
-      fallBack();
-      return;
-    }
     if (typeof window.fetch === "function") {
       window
         .fetch(heroVideo, { method: "HEAD" })
         .then((response) => {
-          const type = response.headers.get("content-type") ?? "";
-          if (!response.ok || !type.startsWith("video/")) fallBack();
+          if (response.status === 404 || response.status >= 500) fallBack();
         })
-        .catch(fallBack);
+        .catch(() => undefined); // network/proxy refusal is not proof the film is missing
     }
     const timer = window.setTimeout(() => {
       const video = videoRef.current;
-      if (video && video.readyState < 2) fallBack();
-    }, 6000);
+      // readyState 0 means nothing at all downloaded — treat that as unusable.
+      if (video && video.readyState === 0) fallBack();
+    }, 30000);
     return () => {
       cancelled = true;
       window.clearTimeout(timer);
     };
-  }, []);
+  }, [videoUsable]);
 
   const current = slides[Math.min(active, slides.length - 1)];
   const currentKind = current?.kind;
   const currentImage = current?.kind === "image" ? current.index : -1;
+
+  /** Called each time the film reports a new playback position. */
+  function trackFilmTime() {
+    const video = videoRef.current;
+    if (!video) return;
+    const position = video.currentTime;
+    const delta = position - lastFilmTime.current;
+    // Ignore the jump back to zero when the film restarts or loops.
+    if (delta > 0 && delta < 5) filmWatchedMs.current += delta * 1000;
+    lastFilmTime.current = position;
+  }
+
+  /**
+   * The film advances the hero only once it has been watched for the minimum
+   * duration; a shorter clip repeats instead of cutting the sequence short.
+   */
+  function handleFilmEnded() {
+    const video = videoRef.current;
+    if (!video) return;
+    trackFilmTime();
+    if (!reducedMotion && filmWatchedMs.current < heroMinFilmDuration) {
+      lastFilmTime.current = 0;
+      video.currentTime = 0;
+      const attempt = video.play();
+      if (attempt && typeof attempt.catch === "function") attempt.catch(() => undefined);
+      return;
+    }
+    if (current) advance(current);
+  }
+
+  /** Resume if the film stalls (flaky connections, media proxies). */
+  function handleFilmWaiting() {
+    const video = videoRef.current;
+    if (!video) return;
+    window.setTimeout(() => {
+      if (video.paused && currentKind === "video") {
+        const attempt = video.play();
+        if (attempt && typeof attempt.catch === "function") attempt.catch(() => undefined);
+      }
+    }, 1500);
+  }
 
   function advance(from: Slide) {
     const key = from.kind === "video" ? "video" : `image-${from.index}`;
@@ -113,6 +160,8 @@ export function HeroBackdrop({ className }: { className?: string }) {
       return;
     }
     video.currentTime = 0;
+    filmWatchedMs.current = 0;
+    lastFilmTime.current = 0;
     if (!reducedMotion) {
       const attempt = video.play();
       if (attempt && typeof attempt.catch === "function") attempt.catch(() => undefined);
@@ -129,13 +178,15 @@ export function HeroBackdrop({ className }: { className?: string }) {
             poster={heroVideoPoster}
             muted
             playsInline
-            preload="metadata"
-            onEnded={() => current && advance(current)}
+            preload="auto"
+            onEnded={handleFilmEnded}
+            onTimeUpdate={trackFilmTime}
+            onWaiting={handleFilmWaiting}
+            onPlaying={() => setVideoReady(true)}
             onError={() => {
               setVideoUsable(false);
               setActive(0);
             }}
-            onPlaying={() => setVideoReady(true)}
           >
             <source src={heroVideoWebm} type="video/webm" />
             <source src={heroVideo} type="video/mp4" />

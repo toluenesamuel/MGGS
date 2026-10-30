@@ -26,6 +26,13 @@ export const heroVideoPoster = "/media/mggs-hero-poster.jpg";
 /** How long each still frame stays on screen (milliseconds). */
 export const heroImageDuration = 7000;
 
+/**
+ * The film must be watched for at least this long before the hero moves on to
+ * the still frames. If a shorter clip is supplied (or the film is replaced by a
+ * brief loop), it simply repeats until this much footage has played.
+ */
+export const heroMinFilmDuration = 10000;
+
 export const heroFrames: HeroFrame[] = [
   {
     src: "/images/hero-campus.jpg",
