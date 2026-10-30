@@ -4,6 +4,7 @@ import {
   heroFrames,
   heroImageDuration,
   heroMinFilmDuration,
+  heroPushDuration,
   heroVideo,
   heroVideoPoster,
   heroVideoWebm,
@@ -22,8 +23,10 @@ function connectionIsConstrained(): boolean {
 }
 
 /**
- * Cinematic hero backdrop: the school film plays first, then the component
- * crossfades through still frames and loops back to the film.
+ * Cinematic hero backdrop: the school film plays first, then the hero slides
+ * through still frames — each new picture sweeps in diagonally from the
+ * top-left corner towards the bottom-right over the one it replaces — and loops
+ * back to the film.
  *
  * The film is only abandoned when it genuinely cannot be played — a media error
  * on the video element itself, a 404/5xx for the file, or nothing downloaded at
@@ -36,6 +39,10 @@ export function HeroBackdrop({ className }: { className?: string }) {
   const [videoReady, setVideoReady] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [active, setActive] = useState(0);
+  /** Index of the frame currently being covered by the incoming picture. */
+  const [leaving, setLeaving] = useState<number | null>(null);
+  /** Mirrors `active` so the timers always advance from the picture on screen. */
+  const activeIndex = useRef(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   /** Guards against re-advancing when the same media is on screen. */
   const advancedFor = useRef<string | null>(null);
@@ -52,6 +59,32 @@ export function HeroBackdrop({ className }: { className?: string }) {
   const current = slides[Math.min(active, slides.length - 1)];
   const currentKind = current?.kind;
   const currentImage = current?.kind === "image" ? current.index : -1;
+  const leavingSlide = leaving === null ? null : slides[Math.min(leaving, slides.length - 1)];
+
+  /** Move to the next frame, holding the one on screen while it is covered. */
+  function pushNext() {
+    if (slides.length < 2) return;
+    const from = activeIndex.current;
+    const next = (from + 1) % slides.length;
+    activeIndex.current = next;
+    setLeaving(from);
+    setActive(next);
+  }
+
+  /** Jump back to the first frame (used when the film turns out to be unusable). */
+  function resetToFirstFrame() {
+    activeIndex.current = 0;
+    setLeaving(null);
+    setActive(0);
+  }
+
+  // Once the incoming picture covers the hero, the old frame is parked off-screen
+  // again and the leaving marker can be cleared.
+  useEffect(() => {
+    if (leaving === null) return;
+    const timer = window.setTimeout(() => setLeaving(null), heroPushDuration + 60);
+    return () => window.clearTimeout(timer);
+  }, [leaving, active]);
 
   useEffect(() => {
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -65,7 +98,7 @@ export function HeroBackdrop({ className }: { className?: string }) {
   useEffect(() => {
     if (!connectionIsConstrained()) return;
     setVideoUsable(false);
-    setActive(0);
+    resetToFirstFrame();
   }, []);
 
   // Only fall back when the film genuinely cannot be used. A slow start must
@@ -163,14 +196,14 @@ export function HeroBackdrop({ className }: { className?: string }) {
   function handleFilmError(event: React.SyntheticEvent<HTMLVideoElement>) {
     if (event.target !== event.currentTarget) return;
     setVideoUsable(false);
-    setActive(0);
+    resetToFirstFrame();
   }
 
   function advance(from: Slide) {
     const key = from.kind === "video" ? "video" : `image-${from.index}`;
     if (advancedFor.current === key) return;
     advancedFor.current = key;
-    setActive((value) => (value + 1) % slides.length);
+    pushNext();
   }
 
   // Still frames advance on a timer; the film drives its own advance on "ended".
@@ -180,7 +213,7 @@ export function HeroBackdrop({ className }: { className?: string }) {
     if (advancedFor.current === null) advancedFor.current = key;
     const timer = window.setTimeout(() => {
       advancedFor.current = key;
-      setActive((value) => (value + 1) % slides.length);
+      pushNext();
     }, heroImageDuration);
     return () => window.clearTimeout(timer);
   }, [currentKind, currentImage, reducedMotion, slides.length]);
@@ -213,7 +246,13 @@ export function HeroBackdrop({ className }: { className?: string }) {
   return (
     <div className={cn("hero-backdrop hero-visual absolute inset-0 overflow-hidden", className)} aria-hidden="true">
       {videoUsable && (
-        <div className={cn("hero-frame", current?.kind === "video" && "is-active")}>
+        <div
+          className={cn(
+            "hero-frame",
+            current?.kind === "video" && "is-active",
+            leavingSlide?.kind === "video" && "is-leaving",
+          )}
+        >
           <video
             ref={videoRef}
             className="h-full w-full object-cover"
@@ -236,7 +275,11 @@ export function HeroBackdrop({ className }: { className?: string }) {
       {heroFrames.map((frame, index) => (
         <div
           key={frame.src}
-          className={cn("hero-frame", current?.kind === "image" && current.index === index && "is-active")}
+          className={cn(
+            "hero-frame",
+            current?.kind === "image" && current.index === index && "is-active",
+            leavingSlide?.kind === "image" && leavingSlide.index === index && "is-leaving",
+          )}
         >
           <img
             src={frame.src}

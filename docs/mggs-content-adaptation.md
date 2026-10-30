@@ -99,7 +99,7 @@ News article URLs (`/mggs-news/<slug>`) are generated from `src/data/news.ts`.
   Autoplay refusals now retry on first interaction instead of giving up.
 - `HeroBackdrop` skips the film entirely on data-saver / 2G connections and uses
   the still frames instead. It measures how long the film has actually played and
-  will not crossfade to the still frames before `heroMinFilmDuration` (10s) has
+  will not slide to the still frames before `heroMinFilmDuration` (10s) has
   elapsed — shorter clips repeat instead. The previous 6-second load timer and
   strict `HEAD` content-type check could drop the film before it played at all;
   fallback now happens only on a 404/5xx, a media error or 30s with nothing
@@ -108,9 +108,9 @@ News article URLs (`/mggs-news/<slug>`) are generated from `src/data/news.ts`.
 - `scripts/render-hero-video.py` (new) renders the hero film, poster, badge and
   favicon from `scripts/assets/hero-aerial.png`.
 - `HeroBackdrop` (new, `src/components/sections/` ) — the homepage hero
-  backdrop plays the school film, then crossfades through five still frames and
+  backdrop plays the school film, then slides through five still frames and
   loops, using the existing `hero-visual` reveal animation plus a new
-  `hero-frame` crossfade/drift defined in `src/index.css`. It falls back to the
+  `hero-frame` diagonal slide-in / drift defined in `src/index.css`. It falls back to the
   still frames when no film is available and holds a single frame under
   reduced-motion. Every interior page hero now receives an image
   (`content.image` for shared templates, explicit `image` props elsewhere).

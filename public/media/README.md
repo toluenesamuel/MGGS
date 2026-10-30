@@ -30,7 +30,7 @@ Replace `public/media/mggs-hero.mp4` with the real film (H.264/MP4, ideally
 8–20 s, 1920×1080, no audio, under ~6 MB), optionally add
 `public/media/mggs-hero.webm`, and update `heroVideoPoster` in
 `src/data/hero.ts` if you want a new poster frame. No layout or animation code
-needs to change: the hero plays the film, then crossfades through the still
+needs to change: the hero plays the film, then slides through the still
 frames listed in `heroFrames` and loops back.
 
 If the file is missing or cannot be decoded, the hero falls back to the

@@ -22,7 +22,7 @@ npm run preview  # preview the production build
 
 The homepage hero plays a 15-second school film — a slow aerial push-in over
 the campus that resolves on the MGGS badge, the school name and the motto — then
-crossfades through five still frames and loops back to the film. It is driven by
+slides through five still frames (each sweeping in diagonally from the top-left corner towards the bottom-right) and loops back to the film. It is driven by
 `src/data/hero.ts` and rendered by `src/components/sections/HeroBackdrop.tsx`.
 
 - Film: `public/media/mggs-hero.mp4`, poster `public/media/mggs-hero-poster.jpg`.

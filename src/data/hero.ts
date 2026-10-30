@@ -1,6 +1,6 @@
 // Hero media for Marvellous Greatness Group of Schools.
 //
-// The hero plays a short school film first, then crossfades through a sequence
+// The hero plays a short school film first, then slides through a sequence
 // of still frames and loops. To use the school's own video:
 //
 //   1. Save the file as `public/media/mggs-hero.mp4` (H.264/MP4 is the most
@@ -30,6 +30,13 @@ export const heroVideoWebm: string | null = null;
 export const heroVideoPoster = "/media/mggs-hero-poster.jpg";
 /** How long each still frame stays on screen (milliseconds). */
 export const heroImageDuration = 7000;
+
+/**
+ * Length of the slide between frames (milliseconds) — each new picture sweeps in
+ * from the top-left corner towards the bottom-right. Keep in step with
+ * `--hero-push-duration` in `src/index.css`.
+ */
+export const heroPushDuration = 1000;
 
 /**
  * The film must be watched for at least this long before the hero moves on to

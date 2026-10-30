@@ -2,7 +2,7 @@
  * Hero film timing check.
  *
  * Verifies the rule "the film plays for at least 10 seconds before the hero
- * crossfades to the still frames", including the two failure modes that
+ * slides to the still frames", including the two failure modes that
  * previously cut the film short:
  *   - a slow/absent HEAD response must not force the fallback
  *   - a genuinely missing film (404 or a media error) must fall back
@@ -163,6 +163,30 @@ function activeFrame(doc) {
   doc.querySelector("video").dispatchEvent(new window.Event("error"));
   await wait(150);
   check(activeFrame(doc) === "hero-campus.jpg", `media error: still frames should show (got ${activeFrame(doc)})`);
+}
+
+// 8. Every change of picture is a diagonal slide from the top-left corner: the
+//    frame on screen is marked `is-leaving` (held underneath) while the incoming
+//    frame is `is-active` (it sweeps in towards the bottom-right).
+{
+  const { window, document: doc, setPosition } = boot();
+  await wait(400);
+  for (const t of [1, 5, 10, 14, 15]) {
+    setPosition(t);
+    doc.querySelector("video").dispatchEvent(new window.Event("timeupdate"));
+    await wait(20);
+  }
+  doc.querySelector("video").dispatchEvent(new window.Event("ended"));
+  await wait(60);
+  const leaving = [...doc.querySelectorAll(".hero-frame.is-leaving")];
+  check(leaving.length === 1, `slide: exactly one frame should be leaving (got ${leaving.length})`);
+  check(!!leaving[0]?.querySelector("video"), "slide: the outgoing frame should be the film");
+  check(activeFrame(doc) === "hero-campus.jpg", `slide: the next still should be active (got ${activeFrame(doc)})`);
+  await wait(1200);
+  check(
+    doc.querySelectorAll(".hero-frame.is-leaving").length === 0,
+    "slide: the leaving marker should be cleared once the slide finishes",
+  );
 }
 
 if (failures.length) {

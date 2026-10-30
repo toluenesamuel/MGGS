@@ -135,6 +135,8 @@ h4,
   --motion-menu: 240ms;
   --motion-reveal: 600ms;
   --motion-ease: cubic-bezier(.22, 1, .36, 1);
+  /* Hero push transition. Keep in step with `heroPushDuration` in src/data/hero.ts. */
+  --hero-push-duration: 1000ms;
 }
 @media (prefers-reduced-motion: no-preference) {
   .hero-visual { animation: motion-visual 800ms var(--motion-ease) both; }
@@ -175,28 +177,50 @@ h4,
 }
 @keyframes campus-reveal { from { opacity: 0; } to { opacity: 1; } }
 
-/* Hero media sequence: film first, then still frames, crossfading and looping. */
+/* Hero media sequence: film first, then still frames, looping.
+   Every change of picture is a diagonal slide-in: the incoming frame sweeps
+   across the hero from the top-left corner towards the bottom-right, while the
+   frame it replaces stays put underneath until it is fully covered (moving it
+   as well would tear a gap open in the opposite corner, so it is held instead). */
 .hero-backdrop { background-color: var(--color-brand-green-900); }
 .hero-frame {
   position: absolute;
   inset: 0;
-  opacity: 0;
-  transition: opacity 1200ms var(--motion-ease);
-  will-change: opacity;
+  /* Idle frames wait off-screen to the bottom-right: out of sight, and where a
+     frame is parked again once the slide has covered it, so nothing jumps. */
+  transform: translate(101%, 101%);
 }
-.hero-frame.is-active { opacity: 1; }
+.hero-frame.is-active {
+  z-index: 2;
+  animation: hero-slide-in var(--hero-push-duration) var(--motion-ease) both;
+  will-change: transform;
+}
+/* Held in place under the incoming frame for the length of the slide. */
+.hero-frame.is-leaving {
+  z-index: 1;
+  transform: translate(0, 0);
+}
 .hero-frame > img,
 .hero-frame > video { display: block; width: 100%; height: 100%; object-fit: cover; }
+@keyframes hero-slide-in {
+  from { transform: translate(-101%, -101%); }
+  to { transform: translate(0, 0); }
+}
 @media (prefers-reduced-motion: no-preference) {
-  .hero-frame.is-active > img { animation: hero-drift 9000ms ease-out both; }
+  /* The drift is declared for entering and leaving frames alike so the slow
+     zoom carries on (instead of snapping) while a frame is covered. */
+  .hero-frame.is-active > img,
+  .hero-frame.is-leaving > img { animation: hero-drift 9000ms ease-out both; }
 }
 @keyframes hero-drift {
   from { transform: scale(1.06); }
   to { transform: scale(1); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-frame { transition: none; }
-  /* Reduced motion holds on the poster/first frame and never auto-advances. */
+  .hero-frame { animation: none; transition: none; }
+  /* Reduced motion swaps frames instantly; there is no travel to follow. */
+  .hero-frame.is-active { transform: translate(0, 0); }
+  .hero-frame.is-leaving { transform: translate(101%, 101%); }
   .hero-frame.is-active > img { animation: none; }
 }
 
