@@ -1,4 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { usePageTitle } from "@/hooks/usePageTitle";
 import { RouterProvider, useRouter, Link } from "@/router/router";
 import { Layout } from "@/components/layout/Layout";
 import { InteriorHero } from "@/components/sections/InteriorHero";
@@ -37,6 +38,7 @@ const pages: Record<string, () => React.JSX.Element> = {
 function SiteContent() {
   const { path, query } = useRouter();
   useScrollReveal(path);
+  usePageTitle(path);
   const Page = pages[path];
   if (Page) return <Page />;
   if (path === "/mggs-news") return <><InteriorHero title="MGGS News" trail={[{ label: "News" }]} tone="gold" image="/images/news-generic-1.jpg" /><NewsFilterableGrid /></>;

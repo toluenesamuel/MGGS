@@ -80,12 +80,32 @@ school confirms them:
     official logo artwork when available (`public/media/mggs-hero.mp4`,
     `public/images/mggs-logo.png`).
 
+## Checks
+
+```bash
+npx tsc --noEmit            # types
+npm run build               # production build
+
+# content regression (all routes: headings, page titles, no outdated copy,
+# image + internal link integrity) — needs jsdom, installed on demand:
+npm install --no-save jsdom@25.0.1
+npx esbuild src/main.tsx --bundle --format=iife --outfile=/tmp/app.js \
+  --loader:.css=text --jsx=automatic --alias:@=./src \
+  --define:process.env.NODE_ENV='"production"'
+node tests/content-check.mjs /tmp/app.js
+```
+
 ## Notes
 
 - `docs/` contains research and motion notes from the original design study
   (see `docs/mggs-content-adaptation.md` for what changed). The screenshots in
   `docs/screenshots/` were captured **before** the content adaptation and show
   the earlier school name; they document the animation/interaction work only.
-- `tests/` holds optional browser checks. They require `playwright-core`,
+- `tests/` holds optional checks. `content-check.mjs` needs `jsdom`;
+  `browser.cjs`, `menu.cjs` and `story-carousel.cjs` need `playwright-core`,
   `@axe-core/playwright` and a Chromium binary (`CHROMIUM_PATH`, default
-  `/tmp/chromium`), which are not installed by default.
+  `/tmp/chromium`). None are installed by default.
+- Page titles follow the route: the homepage leads with the school name,
+  interior pages lead with the page (e.g. `Our Values | MGGS`), keeping every
+  title under ~62 characters. Social preview (Open Graph/Twitter) tags live in
+  `index.html` and use the hero poster as the share image.

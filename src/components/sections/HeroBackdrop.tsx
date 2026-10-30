@@ -10,6 +10,16 @@ import {
 
 type Slide = { kind: "video" } | { kind: "image"; index: number };
 
+/** Respect data-saver / very slow connections — the film is a few megabytes. */
+function connectionIsConstrained(): boolean {
+  const connection = (navigator as Navigator & {
+    connection?: { saveData?: boolean; effectiveType?: string };
+  }).connection;
+  if (!connection) return false;
+  if (connection.saveData) return true;
+  return connection.effectiveType === "slow-2g" || connection.effectiveType === "2g";
+}
+
 /**
  * Cinematic hero backdrop: the school film plays first, then the component
  * crossfades through still frames and loops back to the film. Every stage is
@@ -17,7 +27,7 @@ type Slide = { kind: "video" } | { kind: "image"; index: number };
  * the section still renders a complete, static hero.
  */
 export function HeroBackdrop({ className }: { className?: string }) {
-  const [videoUsable, setVideoUsable] = useState(true);
+  const [videoUsable, setVideoUsable] = useState(() => !connectionIsConstrained());
   const [videoReady, setVideoReady] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [active, setActive] = useState(0);
@@ -48,6 +58,10 @@ export function HeroBackdrop({ className }: { className?: string }) {
     };
     // A dev/preview server may answer a missing file with an HTML page, which
     // the <video> element will not report as an error — so check it up front.
+    if (connectionIsConstrained()) {
+      fallBack();
+      return;
+    }
     if (typeof window.fetch === "function") {
       window
         .fetch(heroVideo, { method: "HEAD" })

@@ -87,6 +87,11 @@ News article URLs (`/mggs-news/<slug>`) are generated from `src/data/news.ts`.
   in the header and footer, plus a favicon; the header wordmark is two lines
   ("Marvellous Greatness" / "Group of Schools") to fit the longer official name,
   and the homepage hero eyebrow wraps on narrow screens.
+- `usePageTitle` (new) — sets a per-route document title derived from the page's
+  own `<h1>`, falling back to the MGGS abbreviation so titles stay under ~62
+  characters; `index.html` also carries Open Graph/Twitter link-preview tags.
+- `HeroBackdrop` skips the film entirely on data-saver / 2G connections and uses
+  the still frames instead.
 - `scripts/render-hero-video.py` (new) renders the hero film, poster, badge and
   favicon from `scripts/assets/hero-aerial.png`.
 - `HeroBackdrop` (new, `src/components/sections/` ) — the homepage hero
@@ -103,6 +108,12 @@ News article URLs (`/mggs-news/<slug>`) are generated from `src/data/news.ts`.
 removed. The screenshots under `docs/screenshots/` predate this adaptation and
 still show the earlier school name; they document motion/interaction behaviour
 only.
+
+### Checks added later
+- `tests/content-check.mjs` — walks every route in jsdom and fails on missing
+  headings, missing/duplicate/overlong page titles, outdated organisation copy,
+  missing images or links to unknown routes. (It caught an 82-character news
+  title, now fixed.)
 
 ## Verification performed
 
