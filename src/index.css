@@ -175,26 +175,41 @@ h4,
 }
 @keyframes campus-reveal { from { opacity: 0; } to { opacity: 1; } }
 
-/* "Join the MGGS Family" band: the picture slides in from the left while the
-   copy slides in from the right, meeting in the middle. The section clips its
+/* "Join the MGGS Family" band: the whole composition transits diagonally from
+   the top-left corner towards the bottom-right. Picture and copy travel on the
+   same vector, the picture a beat ahead of the words, so the band reads as one
+   sweep rather than two panels meeting in the middle. The section clips its
    overflow, so the travel never widens the page. */
-.admissions-feature { --admissions-slide: 4.5rem; }
-@media (max-width: 767px) { .admissions-feature { --admissions-slide: 2.25rem; } }
+.admissions-feature {
+  --admissions-shift-x: 5rem;
+  --admissions-shift-y: 4rem;
+}
+@media (max-width: 767px) {
+  .admissions-feature {
+    --admissions-shift-x: 2.5rem;
+    --admissions-shift-y: 2rem;
+  }
+}
 @media (prefers-reduced-motion: no-preference) {
   .admissions-feature.is-revealed .admissions-visual {
-    animation: admissions-slide-in-left 800ms var(--motion-ease) 90ms both;
+    animation: admissions-diagonal-in 900ms var(--motion-ease) both;
   }
   .admissions-feature.is-revealed .admissions-copy {
-    animation: admissions-slide-in-right 750ms var(--motion-ease) both;
+    animation: admissions-diagonal-in 900ms var(--motion-ease) 80ms both;
   }
 }
-@keyframes admissions-slide-in-left {
-  from { opacity: .9; transform: translateX(calc(var(--admissions-slide) * -1)); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes admissions-slide-in-right {
-  from { opacity: .9; transform: translateX(var(--admissions-slide)); }
-  to { opacity: 1; transform: translateX(0); }
+@keyframes admissions-diagonal-in {
+  from {
+    opacity: .85;
+    transform: translate(
+      calc(var(--admissions-shift-x) * -1),
+      calc(var(--admissions-shift-y) * -1)
+    );
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
 }
 
 /* Hero media sequence: film first, then still frames, looping.
