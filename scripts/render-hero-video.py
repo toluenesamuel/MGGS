@@ -20,6 +20,9 @@ import imageio_ffmpeg
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "scripts/assets/hero-aerial.png"
+# Official crest (crop of the school's logo). Used in the film/poster lockup and
+# as the site's logo asset; never redrawn.
+CREST = ROOT / "public/images/mggs-mark.png"
 OUT_MP4 = ROOT / "public/media/mggs-hero.mp4"
 OUT_POSTER = ROOT / "public/media/mggs-hero-poster.jpg"
 
@@ -173,25 +176,28 @@ def draw_identity(canvas: Image.Image, reveal: float) -> None:
     d.text((text_right - pill_w + pill_pad_x, y + pill_pad_y + 1), SCHOOL_MOTTO, font=motto,
            fill=ACCENT_INK + (alpha,))
 
-    # badge sits beneath the lockup, right aligned
-    badge_r = 62
-    badge_layer = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
-    draw_badge(badge_layer, text_right - badge_r, y + 62 + 26 + badge_r, badge_r, scale=max(0.001, ease_rev))
-    overlay.alpha_composite(badge_layer)
+    # The official crest sits beneath the lockup, right aligned. It is placed on a
+    # white plate so it reads against the photograph.
+    crest_h = int(124 * ease_rev)
+    if crest_h > 4 and CREST.exists():
+        crest = Image.open(CREST).convert("RGBA")
+        crest = crest.resize((int(crest.width * crest_h / crest.height), crest_h), Image.LANCZOS)
+        plate = Image.new("RGBA", (crest.width + 24, crest.height + 20), (255, 255, 255, int(255 * ease_rev)))
+        plate.alpha_composite(crest, (12, 10))
+        overlay.alpha_composite(plate, (int(text_right - plate.width), int(y + 62 + 30)))
 
     canvas.alpha_composite(overlay)
 
 
 def write_logo_assets() -> None:
-    """Standalone transparent badge + favicon, used by the site header/footer."""
-    size = 1024
-    logo = Image.new("RGBA", (size, size), (0, 0, 0, 0))
-    draw_badge(logo, size / 2, size / 2, size / 2, scale=1.0)
-    (ROOT / "public/images").mkdir(parents=True, exist_ok=True)
-    logo.save(ROOT / "public/images/mggs-logo.png", optimize=True)
-    logo.resize((180, 180), Image.LANCZOS).save(ROOT / "public/favicon.png", optimize=True)
-    logo.resize((32, 32), Image.LANCZOS).save(ROOT / "public/favicon-32.png", optimize=True)
-    print("wrote public/images/mggs-logo.png, public/favicon.png, public/favicon-32.png")
+    """The logo and favicons now come from the school's own artwork.
+
+    Nothing is generated here: rewriting them from a drawn badge would replace
+    the official crest. Kept as a no-op so the render pipeline stays unchanged.
+    """
+    for path in ("public/images/mggs-logo.png", "public/images/mggs-mark.png"):
+        if not (ROOT / path).exists():
+            raise SystemExit(f"missing brand asset: {path}")
 
 
 def main() -> None:

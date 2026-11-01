@@ -83,9 +83,10 @@ News article URLs (`/mggs-news/<slug>`) are generated from `src/data/news.ts`.
 - `SectionPage` — the internal “shared content template” note became a
   school-facing “this page is being completed” note, and now passes the
   page's hero image through.
-- Brand lockups now use the generated MGGS badge (`public/images/mggs-logo.png`)
-  in the header and footer, plus a favicon; the header wordmark is two lines
-  ("Marvellous Greatness" / "Group of Schools") to fit the longer official name,
+- Brand lockups use the school's official crest (`public/images/mggs-mark.png`,
+  cropped from `scripts/assets/school-logo.jpg`) in the header and footer, plus a
+  favicon; the header wordmark is real text in two lines ("Marvellous Greatness"
+  / "Group of Schools") so the longer official name stays sharp and selectable,
   and the homepage hero eyebrow wraps on narrow screens.
 - `usePageTitle` (new) — sets a per-route document title derived from the page's
   own `<h1>`, falling back to the MGGS abbreviation so titles stay under ~62

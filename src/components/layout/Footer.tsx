@@ -35,12 +35,15 @@ export function Footer() {
       <Container className="py-14">
         <div className="grid gap-10 pb-12 lg:grid-cols-[1.2fr_2.8fr]">
           <div>
-            <Link to="/" className="focus-ring inline-flex items-center gap-2.5">
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white p-0.5">
-                <img src="/images/mggs-logo.png" alt="" width={40} height={40} className="h-full w-full rounded-full" />
+            <Link to="/" className="focus-ring inline-flex items-center gap-3">
+              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-md bg-white p-1.5">
+                <img src="/images/mggs-mark.png" alt="" width={44} height={39} className="h-full w-auto" />
               </span>
-              <span className="font-display text-sm font-extrabold uppercase tracking-wide">
+              <span className="font-display text-sm font-extrabold uppercase leading-snug tracking-wide">
                 {siteInfo.name}
+                <span className="mt-1 block text-[11px] font-semibold normal-case tracking-normal text-brand-gold">
+                  {siteInfo.motto}
+                </span>
               </span>
             </Link>
             <address className="mt-4 text-sm not-italic leading-relaxed text-white/75">

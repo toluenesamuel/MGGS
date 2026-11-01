@@ -19,10 +19,10 @@ pip install pillow imageio-ffmpeg fonttools brotli   # one-off
 python3 scripts/render-hero-video.py
 ```
 
-The script also regenerates the brand assets:
-
-- `public/images/mggs-logo.png` — transparent MGGS badge (header, footer)
-- `public/favicon.png`, `public/favicon-32.png` — favicon
+The script composites the official crest into the film's identity lockup. It no
+longer generates brand assets: the logo (`public/images/mggs-logo.png` full
+lockup, `public/images/mggs-mark.png` crest, `public/favicon*.png`) comes from the
+school's own artwork in `scripts/assets/school-logo.jpg`.
 
 ## Using the school's own footage instead
 

@@ -107,7 +107,7 @@ and their hover/active/disabled states, links and inline CTAs, cards and story
 carousel, values and feature grids, news list and filters, forms (labels, fields,
 validation, submit), footer, breadcrumbs, page menu accordion and focus rings.
 
-Generated media (`public/media/mggs-hero.mp4`, `mggs-hero-poster.jpg`,
-`public/images/mggs-logo.png`, favicons) is rendered by
-`scripts/render-hero-video.py`, which uses the same rose/gold values, so the film and
-badge stay in step with the tokens.
+Generated media (`public/media/mggs-hero.mp4`, `mggs-hero-poster.jpg`) is
+rendered by `scripts/render-hero-video.py` using the same rose/gold values, so the
+film stays in step with the tokens. The logo and favicons are the school's own
+artwork and are never recoloured.

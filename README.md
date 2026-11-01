@@ -35,8 +35,8 @@ slides through five still frames (each sweeping in diagonally from the top-left 
   film short: the still frames are only used if the file is genuinely missing
   (404), fails to decode, or the visitor is on a data-saver/2G connection.
 - Rebuild it with `python3 scripts/render-hero-video.py` (see
-  `public/media/README.md`); the same script generates the MGGS badge
-  (`public/images/mggs-logo.png`) used by the header/footer and the favicon.
+  `public/media/README.md`). The film composites the official school crest
+  (`public/images/mggs-mark.png`); the script no longer generates brand assets.
 - To use the school's own footage instead, replace the MP4 — no code changes.
 - If the film is missing or cannot be decoded, the hero runs the still-frame
   sequence on its own, so nothing ever renders blank. If the browser blocks
@@ -85,10 +85,10 @@ school confirms them:
    design. Replace with photographs of the MGGS campus when available. Every
    page hero uses one of these images; swap the `src` values in
    `src/data/hero.ts` and `src/data/genericPages.ts` to change them.
-10. **Hero film and logo** — the current film, campus image and MGGS badge are
-    placeholders produced for this build. Supply the school's own footage and
-    official logo artwork when available (`public/media/mggs-hero.mp4`,
-    `public/images/mggs-logo.png`).
+10. **Hero film** — the current film and campus image are placeholders produced
+    for this build. Supply the school's own footage when available
+    (`public/media/mggs-hero.mp4`). The logo is now the school's official
+    artwork (`scripts/assets/school-logo.jpg`), not a placeholder.
 
 ## Checks
 
