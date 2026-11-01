@@ -175,36 +175,41 @@ h4,
 }
 @keyframes campus-reveal { from { opacity: 0; } to { opacity: 1; } }
 
-/* "Join the MGGS Family" band: the whole composition — picture and copy — transits
-   diagonally, sweeping in from the top-left corner towards the bottom-right, the
-   same direction the hero pictures travel. The offsets are percentages of the
-   band's own size, so the movement stays proportional on every screen. The
-   section clips its overflow, so the sweep never widens the page. */
+/* "Join the MGGS Family" band: a diagonal reveal sweeps across the band from the
+   top-left corner to the bottom-right corner. The picture and the copy are
+   uncovered progressively, corner first, while drifting a little on the same
+   diagonal, so the band arrives along one axis instead of everything fading in
+   at once. The section clips its overflow, so the reveal never widens the page. */
 .admissions-feature {
-  --admissions-from-x: -32%;
-  --admissions-from-y: -22%;
-  --admissions-sweep: 1050ms;
+  --admissions-sweep: 1100ms;
 }
 @media (max-width: 767px) {
-  .admissions-feature {
-    --admissions-from-x: -22%;
-    --admissions-from-y: -14%;
-    --admissions-sweep: 900ms;
-  }
+  .admissions-feature { --admissions-sweep: 900ms; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .admissions-feature.is-revealed .admissions-body {
-    animation: admissions-sweep-in var(--admissions-sweep) var(--motion-ease) both;
+    animation: admissions-diagonal-reveal var(--admissions-sweep) var(--motion-ease) both;
   }
 }
-@keyframes admissions-sweep-in {
+@keyframes admissions-diagonal-reveal {
+  /* `inset(top right bottom left)`: nothing is visible except the top-left
+     corner, then the visible box grows until it covers the whole band. */
   from {
-    opacity: .35;
-    transform: translate(var(--admissions-from-x), var(--admissions-from-y));
+    clip-path: inset(0 100% 100% 0);
+    transform: translate(-1.75rem, -1.25rem);
   }
   to {
-    opacity: 1;
+    clip-path: inset(0 0 0 0);
     transform: translate(0, 0);
+  }
+}
+/* Without scripting (or with reduced motion) the band is simply present: the
+   keyframes only apply while `.is-revealed` is set. */
+@media (prefers-reduced-motion: reduce) {
+  .admissions-feature.is-revealed .admissions-body {
+    animation: none;
+    clip-path: none;
+    transform: none;
   }
 }
 
