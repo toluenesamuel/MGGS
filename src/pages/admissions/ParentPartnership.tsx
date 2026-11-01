@@ -40,10 +40,10 @@ export default function ParentPartnership() {
         eyebrow="What you can expect"
         title="Our Commitment to Families"
         features={[
-          { icon: "📬", title: "Clear Communication", description: "Updates on progress, conduct and school events through the channels the school confirms." },
-          { icon: "🤝", title: "Accessible Teachers", description: "Opportunities to speak with the people who teach your child." },
-          { icon: "🧭", title: "Consistent Standards", description: "The same expectations applied fairly to every pupil, every day." },
-          { icon: "🌟", title: "Encouragement", description: "Recognition of effort and good conduct, not only of high marks." },
+          { icon: "communication", title: "Clear Communication", description: "Updates on progress, conduct and school events through the channels the school confirms." },
+          { icon: "partnership", title: "Accessible Teachers", description: "Opportunities to speak with the people who teach your child." },
+          { icon: "compass", title: "Consistent Standards", description: "The same expectations applied fairly to every pupil, every day." },
+          { icon: "greatness", title: "Encouragement", description: "Recognition of effort and good conduct, not only of high marks." },
         ]}
       />
 

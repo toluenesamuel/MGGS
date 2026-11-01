@@ -59,10 +59,7 @@ export default function Home() {
       <section className="hero-entrance relative overflow-hidden bg-brand-green-900 text-white">
         <HeroBackdrop />
         <Container className="relative flex min-h-[70svh] flex-col justify-end pb-14 pt-24 sm:pb-20 lg:min-h-[78svh]">
-          <p className="hero-item hero-eyebrow font-display max-w-[20ch] text-[10px] font-bold uppercase leading-snug tracking-[0.1em] text-brand-gold sm:text-xs sm:tracking-[0.14em]">
-            {siteInfo.name}
-          </p>
-          <h1 className="hero-item hero-heading font-display mt-3 max-w-3xl text-5xl font-extrabold uppercase leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
+          <h1 className="hero-item hero-heading font-display max-w-3xl text-5xl font-extrabold uppercase leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
             Building Greatness in Every Child
           </h1>
           <p className="hero-item hero-copy mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
@@ -80,12 +77,12 @@ export default function Home() {
         </Container>
       </section>
 
-      <section data-reveal className="bg-paper py-16 sm:py-20">
+      <section data-reveal className="bg-paper py-16 sm:py-24">
         <Container className="max-w-3xl text-center">
           <SectionHeading
             eyebrow={`Welcome to ${siteInfo.name}`}
             title="A School Where Every Pupil Moves Towards Greatness"
-            description="We believe that a good education develops the whole child. Our pupils are taught to think clearly, work hard, conduct themselves well and keep learning for life — supported by dedicated teachers and families who share those expectations."
+            description="We believe that a good education develops the whole child. Our pupils are taught to think clearly, work hard, conduct themselves well and keep learning for life, supported by dedicated teachers and families who share those expectations."
             align="center"
           />
         </Container>
@@ -127,7 +124,7 @@ export default function Home() {
         </p>
         <p>
           High expectations are matched with genuine support. Pupils are encouraged to ask questions, explain
-          their thinking and take pride in work done well — the habits that carry a learner through school and
+          their thinking and take pride in work done well: the habits that carry a learner through school and
           beyond it.
         </p>
       </ImageTextSplit>
@@ -151,7 +148,7 @@ export default function Home() {
       <IconFeatureGrid
         eyebrow="What we stand for"
         title="Our Guiding Values"
-        description={`Motto: “${siteInfo.motto}” — the standard our pupils, teachers and families work towards together.`}
+        description={`Motto: “${siteInfo.motto}”. The standard our pupils, teachers and families work towards together.`}
         features={schoolValues}
         tone="green"
       />
@@ -175,18 +172,18 @@ export default function Home() {
           something bigger than themselves.
         </p>
         <p>
-          Our teachers know their pupils well, so encouragement is specific and support arrives early — the
+          Our teachers know their pupils well, so encouragement is specific and support arrives early: the
           foundation of a happy, confident learner.
         </p>
       </ImageTextSplit>
 
       <StoryCarousel
         title="Towards Greatness"
-        description="The values our pupils live out every day — in class, on the field and at home."
+        description="The values our pupils live out every day, in class, on the field and at home."
         cards={storyCards}
       />
 
-      <section data-reveal className="bg-paper py-16 sm:py-20">
+      <section data-reveal className="bg-paper py-16 sm:py-24">
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <SectionHeading eyebrow="MGGS news" title="News & Announcements" />

@@ -26,7 +26,7 @@ export function CTABanner({
     <section data-reveal className={cn(toneClasses[tone])}>
       <Container className={cn("grid items-center gap-8 py-14 sm:py-16", image && "lg:grid-cols-[1.4fr_1fr]")}>
         <div>
-          {eyebrow && <p className="font-display text-xs font-bold uppercase tracking-[0.18em] opacity-80">{eyebrow}</p>}
+          {eyebrow && <p className="font-display text-[13px] font-semibold opacity-80">{eyebrow}</p>}
           <h2 className="font-display mt-2 text-2xl font-extrabold leading-tight sm:text-3xl lg:text-4xl">{title}</h2>
           {description && <p className="mt-3 max-w-xl text-sm leading-relaxed opacity-90 sm:text-base">{description}</p>}
           <div className="mt-6 flex flex-wrap gap-3">{actions}</div>

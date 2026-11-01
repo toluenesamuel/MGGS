@@ -69,3 +69,37 @@ footer and one or two dark bands.
 - Images carry descriptive `alt` text; decorative SVG icons are `aria-hidden`.
 - Form fields have associated `<label>`s and live validation messages with `aria-live`/`role="alert"`.
 - Touch targets ≥ 44×44px on mobile nav and buttons.
+
+## Interaction and motion conventions
+
+| Convention | What it does |
+|---|---|
+| `.press` | Every pressable control scales to 0.98 on `:active` (160ms, ease-out). Money-free feedback that the press registered. |
+| `.hover-lift` | Cards rise 3px on hover, gated behind `@media (hover: hover) and (pointer: fine)` so touch devices never inherit a sticky hover. |
+| `.reveal-stagger` | Children of a revealed block fade up 18px in sequence (80ms apart) rather than arriving at once. |
+| `.split-visual` / `.split-copy` | Split layouts slide their picture and copy in from opposite sides; add `.split-reverse` on the grid to flip the directions. |
+| `[data-reveal]` | Reveals once when the block enters the viewport. `data-reveal="repeat"` replays on every entry. |
+| `--motion-ease` | `cubic-bezier(.23, 1, .32, 1)` — strong ease-out for anything entering or reacting. `--motion-ease-in-out` and `--motion-ease-drawer` cover on-screen movement and drawers. |
+
+Hover and press transitions stay under 200ms; content entrances sit at 600–900ms. Movement animates `transform`, `opacity` or `clip-path` only, and every one of them is disabled under `prefers-reduced-motion: reduce`.
+
+## Browser surfaces
+
+Selection, caret and scrollbars are themed from the palette rather than left at
+browser defaults: `::selection` uses `primary-light` on `primary-dark`, the caret
+is `primary`, and scrollbars are thin with a `border-strong` thumb.
+
+## Icons
+
+`src/components/ui/Icon.tsx` holds the drawn icon set — 24×24 stroke icons at
+1.6 weight on round caps, inheriting `currentColor`. Content refers to an icon by
+name (`"discipline"`, `"partnership"`, `"learning"`), never by emoji, so a new CMS
+entry renders in the site's icon language and unknown names fall back to a
+neutral mark instead of an empty box.
+
+## Elevation
+
+One elevation rule: surfaces separate from the page by a tone step
+(`surface` on `background`), not by border plus shadow. Shadows are reserved for
+things that genuinely float over content — the sticky header, the search overlay,
+the mobile menu.

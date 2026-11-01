@@ -45,7 +45,7 @@ export default function StartHere() {
         </p>
       </ImageTextSplit>
 
-      <section id="programs" className="scroll-mt-24 bg-brand-green-100/50 py-16 sm:py-20">
+      <section id="programs" className="scroll-mt-24 bg-brand-green-100/50 py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <h2 className="font-display text-center text-2xl font-extrabold text-brand-green-900 sm:text-3xl">
             What We Offer
@@ -60,7 +60,7 @@ export default function StartHere() {
               { title: "Our Academic Approach", to: "/academics/our-academic-approach" },
               { title: "Parent Partnership", to: "/admissions/parent-partnership" },
             ].map((p) => (
-              <div key={p.title} className="rounded-lg bg-white p-6 shadow-sm">
+              <div key={p.title} className="rounded-lg bg-surface p-6">
                 <h3 className="font-display text-lg font-bold text-brand-green-900">{p.title}</h3>
                 <LinkButton to={p.to} variant="text" className="mt-3">
                   Learn more →

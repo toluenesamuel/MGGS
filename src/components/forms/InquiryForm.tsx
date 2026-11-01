@@ -55,7 +55,7 @@ export function InquiryForm({
       <div role="status" className="rounded-lg border border-control-border bg-brand-green-100 p-8 text-center">
         <p className="font-display text-xl font-bold text-brand-green-900">Thank you!</p>
         <p className="mt-2 text-sm text-ink/75">
-          This is a demonstration form — no data was sent and no real inquiry was submitted. In a production
+          This is a demonstration form. No data was sent and no real inquiry was submitted. In a production
           deployment this would route to the admissions team.
         </p>
         <Button
@@ -75,7 +75,7 @@ export function InquiryForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-5 rounded-lg border border-black/5 bg-white p-6 shadow-sm sm:p-8">
+    <form onSubmit={handleSubmit} noValidate className="space-y-5 rounded-xl bg-surface p-6 sm:p-8">
       <div>
         <h3 className="font-display text-xl font-bold text-brand-green-900">{heading}</h3>
         {description && <p className="mt-1 text-sm text-ink/70">{description}</p>}

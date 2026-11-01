@@ -7,3 +7,7 @@ __pycache__/
 
 # local tooling
 .cache/
+
+# The skills installer writes a full copy of the skill tree per harness. Keep the
+# canonical .agents/skills version; symlink-based harness paths are committed.
+agent/

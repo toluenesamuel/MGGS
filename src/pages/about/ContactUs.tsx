@@ -27,7 +27,7 @@ export default function ContactUs() {
             </p>
             <p className="mt-3 text-sm leading-relaxed text-ink/75 sm:text-base">
               <span className="font-semibold text-brand-green-900">Street address:</span>{" "}
-              <span className="rounded bg-brand-green-100/70 px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-brand-green-900">
+              <span className="rounded bg-brand-green-100/70 px-1.5 py-0.5 text-[13px] font-semibold text-brand-green-900">
                 To be confirmed
               </span>
             </p>
@@ -51,28 +51,28 @@ export default function ContactUs() {
           </div>
 
           <div className="space-y-8">
-            <div className="rounded-lg border border-black/5 bg-white p-6 shadow-sm">
+            <div className="rounded-xl bg-surface p-6">
               <h3 className="font-display text-lg font-bold text-brand-green-900">School Office</h3>
               <p className="mt-2 text-sm text-ink/70">
                 Telephone: {" "}
-                <span className="rounded bg-brand-green-100/70 px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-brand-green-900">
+                <span className="rounded bg-brand-green-100/70 px-1.5 py-0.5 text-[13px] font-semibold text-brand-green-900">
                   {contact.phonePlaceholder}
                 </span>
               </p>
               <p className="mt-2 text-sm text-ink/70">
                 Email: {" "}
-                <span className="rounded bg-brand-green-100/70 px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-brand-green-900">
+                <span className="rounded bg-brand-green-100/70 px-1.5 py-0.5 text-[13px] font-semibold text-brand-green-900">
                   {contact.emailPlaceholder}
                 </span>
               </p>
               <p className="mt-2 text-sm text-ink/70">
                 Office hours: {" "}
-                <span className="rounded bg-brand-green-100/70 px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-brand-green-900">
+                <span className="rounded bg-brand-green-100/70 px-1.5 py-0.5 text-[13px] font-semibold text-brand-green-900">
                   {contact.hoursPlaceholder}
                 </span>
               </p>
             </div>
-            <div className="rounded-lg border border-black/5 bg-white p-6 shadow-sm">
+            <div className="rounded-xl bg-surface p-6">
               <h3 className="font-display text-lg font-bold text-brand-green-900">Admissions Enquiries</h3>
               <p className="mt-2 text-sm text-ink/70">
                 Questions about joining the school?{" "}
@@ -86,7 +86,7 @@ export default function ContactUs() {
                 .
               </p>
             </div>
-            <div className="rounded-lg border border-black/5 bg-white p-6 shadow-sm">
+            <div className="rounded-xl bg-surface p-6">
               <h3 className="font-display text-lg font-bold text-brand-green-900">Careers</h3>
               <p className="mt-2 text-sm text-ink/70">
                 Teachers and school professionals who share our values are always welcome to introduce
@@ -101,7 +101,7 @@ export default function ContactUs() {
         </Container>
       </section>
 
-      <section className="border-t border-brand-green-900/10 bg-paper py-14 sm:py-16">
+      <section className="bg-surface-muted py-16 sm:py-24">
         <Container className="max-w-2xl">
           <InquiryForm
             heading="Send us a message"

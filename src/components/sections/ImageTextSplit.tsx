@@ -31,7 +31,7 @@ export function ImageTextSplit({
     gold: "bg-brand-gold text-brand-green-900",
   };
   return (
-    <section data-reveal id={id} className={cn("py-16 sm:py-20 scroll-mt-24", toneClasses[tone])}>
+    <section data-reveal id={id} className={cn("py-16 sm:py-24 scroll-mt-24", toneClasses[tone])}>
       <Container>
         <div className={cn("grid items-center gap-10 lg:grid-cols-2", reverse && "split-reverse lg:[&>*:first-child]:order-2")}>
           <div className="split-visual overflow-hidden rounded-lg">

@@ -33,7 +33,7 @@ export function Footer() {
   return (
     <footer className="bg-brand-green-900 text-white">
       <Container className="py-14">
-        <div className="grid gap-10 border-b border-white/15 pb-10 lg:grid-cols-[1.2fr_2.8fr]">
+        <div className="grid gap-10 pb-12 lg:grid-cols-[1.2fr_2.8fr]">
           <div>
             <Link to="/" className="focus-ring inline-flex items-center gap-2.5">
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white p-0.5">
@@ -59,7 +59,7 @@ export function Footer() {
               </Link>
             </p>
             <p className="mt-6 max-w-xs text-xs leading-relaxed text-white/60">
-              “{siteInfo.motto}” — our motto is a daily commitment for our pupils, our teachers and our
+              “{siteInfo.motto}”. Our motto is a daily commitment for our pupils, our teachers and our
               families.
             </p>
           </div>
@@ -67,7 +67,7 @@ export function Footer() {
           <nav aria-label="Footer" className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
             {footerColumns.map((col) => (
               <div key={col.label}>
-                <h3 className="font-display text-xs font-bold uppercase tracking-wide text-brand-gold">
+                <h3 className="font-display text-[13px] font-semibold text-brand-gold">
                   {col.label}
                 </h3>
                 <ul className="mt-3 space-y-2">

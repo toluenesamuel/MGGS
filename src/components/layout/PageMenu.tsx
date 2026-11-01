@@ -16,14 +16,14 @@ export function PageMenu({ items }: { items: PageMenuItem[] }) {
   }
 
   return (
-    <div className="border-b border-brand-green-900/10 bg-white">
+    <div className="bg-white">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <button
           type="button"
           aria-expanded={open}
           aria-controls="page-menu-panel"
           onClick={() => setOpen((v) => !v)}
-          className="focus-ring flex items-center gap-2 py-3 text-xs font-bold uppercase tracking-wide text-brand-green-900"
+          className="focus-ring flex items-center gap-2 py-3.5 text-[13px] font-semibold text-brand-green-900"
         >
           <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M4 7h16M4 12h16M4 17h10" strokeLinecap="round" />

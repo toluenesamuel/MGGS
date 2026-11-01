@@ -45,7 +45,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
   return (
     <div ref={dialogRef} className={`fixed inset-0 z-50 ${!open ? "motion-closing pointer-events-none" : ""}`} inert={!open} aria-hidden={!open} role="dialog" aria-modal={open ? "true" : undefined} aria-label="Search the site">
       <div className="motion-overlay absolute inset-0 bg-brand-green-900/70" onClick={onClose} aria-hidden="true" />
-      <div className="motion-menu relative mx-auto mt-24 w-[92%] max-w-2xl rounded-xl bg-white p-6 shadow-2xl sm:p-8">
+      <div className="motion-menu relative mx-auto mt-24 w-[92%] max-w-2xl rounded-xl bg-white p-6 shadow-2xl /* taste-skill-ignore: real modal overlay */ sm:p-8">
         <div className="mb-3 flex items-center justify-between">
           <h2 className="font-display text-lg font-bold text-brand-green-900">Search Marvellous Greatness Group of Schools</h2>
           <button

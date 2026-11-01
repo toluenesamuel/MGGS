@@ -4,7 +4,7 @@ import type { NewsArticle } from "@/data/news";
 
 export function NewsCard({ article }: { article: NewsArticle }) {
   return (
-    <article data-reveal className="flex h-full flex-col overflow-hidden rounded-lg border border-black/5 bg-white shadow-sm transition-shadow hover:shadow-md">
+    <article data-reveal className="hover-lift flex h-full flex-col overflow-hidden rounded-xl bg-surface">
       <Link to={`/mggs-news/${article.slug}`} className="focus-ring block" aria-label={article.title}>
         <div className="aspect-[16/10] w-full overflow-hidden bg-brand-green-100">
           <img src={article.image} alt="" className="h-full w-full object-cover" loading="lazy" />

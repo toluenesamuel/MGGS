@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Link, useRouter } from "@/router/router";
 import { HeaderBrand } from "@/components/layout/HeaderBrand";
 import { LinkButton } from "@/components/ui/Button";
+import { Icon } from "@/components/ui/Icon";
 import { Container } from "@/components/ui/Primitives";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { SearchOverlay } from "@/components/layout/SearchOverlay";
@@ -16,17 +17,17 @@ export function Header() {
 
   useEffect(() => { setMenuOpen(false); }, [path]);
 
-  return <header className="sticky top-0 z-40 bg-white shadow-sm">
+  return <header className="sticky top-0 z-40 bg-white shadow-[0_1px_16px_rgba(30,23,32,0.07)] /* taste-skill-ignore: sticky bar */">
     <Container className="flex h-18 items-center justify-between gap-3 py-3 lg:h-24">
       <HeaderBrand />
       <div className="flex shrink-0 items-center gap-2 sm:gap-4 lg:gap-7">
         <button type="button" onClick={openSearch} className="focus-ring flex h-11 w-11 items-center justify-center rounded-full text-brand-green-900 hover:bg-brand-green-100" aria-label="Open search">
-          <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" strokeLinecap="round"/></svg>
+          <Icon name="search" className="h-5 w-5" strokeWidth={1.9} />
         </button>
         <Link to="/admissions/connect-with-admissions" className="focus-ring hidden text-sm font-bold uppercase tracking-wide text-brand-green-900 hover:underline md:block">Request Info</Link>
         <LinkButton to="/admissions/how-to-apply" variant="solid-green" size="sm" className="hidden sm:inline-flex">Apply Now</LinkButton>
         <button type="button" onClick={() => setMenuOpen(true)} className="focus-ring flex h-11 items-center gap-2 px-2 text-sm font-bold uppercase text-ink" aria-label="Menu" aria-haspopup="dialog" aria-expanded={menuOpen} aria-controls="site-menu">
-          <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round"/></svg><span className="hidden min-[400px]:inline">Menu</span>
+          <Icon name="menu" className="h-6 w-6" strokeWidth={1.9} /><span className="hidden min-[400px]:inline">Menu</span>
         </button>
       </div>
     </Container>

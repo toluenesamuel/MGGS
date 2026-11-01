@@ -111,6 +111,27 @@ h4,
   }
 }
 
+/* ---------------------------------------------------------------------------
+   Browser surfaces. Selection, caret and scrollbars ship with defaults that
+   belong to no design system, so they are themed from the palette here.
+   --------------------------------------------------------------------------- */
+::selection {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+html {
+  caret-color: var(--color-primary);
+  scrollbar-color: var(--color-border-strong) transparent;
+  scrollbar-width: thin;
+}
+/* Long-form copy sets ragged-right; headings balance their lines. */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+
 /* Hide scrollbar for carousel tracks while keeping scroll functionality */
 .scrollbar-none {
   scrollbar-width: none;
@@ -118,6 +139,33 @@ h4,
 }
 .scrollbar-none::-webkit-scrollbar {
   display: none;
+}
+
+/* Press feedback: every pressable control acknowledges the press. */
+.press {
+  transition: transform var(--motion-fast) var(--motion-ease);
+}
+.press:active {
+  transform: scale(.98);
+}
+/* A card that responds to a real pointer pointer only (never on touch). */
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift {
+    transition: transform 220ms var(--motion-ease);
+  }
+  .hover-lift:hover {
+    transform: translateY(-3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .press,
+  .hover-lift {
+    transition: none;
+  }
+  .press:active,
+  .hover-lift:hover {
+    transform: none;
+  }
 }
 
 .focus-ring {
@@ -134,7 +182,13 @@ h4,
   --motion-fast: 160ms;
   --motion-menu: 240ms;
   --motion-reveal: 600ms;
-  --motion-ease: cubic-bezier(.22, 1, .36, 1);
+  /* Strong ease-out: fast start, settles quickly. Used for anything entering or
+     reacting to the visitor (Emil Kowalski's UI default). */
+  --motion-ease: cubic-bezier(.23, 1, .32, 1);
+  /* Symmetric curve for movement already on screen. */
+  --motion-ease-in-out: cubic-bezier(.77, 0, .175, 1);
+  /* Drawers and sheets: decelerating, no overshoot. */
+  --motion-ease-drawer: cubic-bezier(.32, .72, 0, 1);
   /* Hero push transition. Keep in step with `heroPushDuration` in src/data/hero.ts. */
   --hero-push-duration: 1000ms;
 }
@@ -150,7 +204,7 @@ h4,
   .motion-overlay { animation: motion-fade var(--motion-menu) ease both; }
   .motion-drawer { animation: motion-drawer-in 300ms var(--motion-ease) both; }
   @media (hover: hover) {
-    article img { transition: transform 500ms var(--motion-ease); }
+    article img { transition: transform 320ms var(--motion-ease); }
     article:hover img { transform: scale(1.025); }
   }
 }
@@ -325,7 +379,8 @@ h4,
 .story-card { width: var(--story-width); height: 30.25rem; display: flex; align-items: end; }
 .story-card-panel { position: relative; overflow: hidden; width: 100%; height: 100%; transform: scale(.78); transform-origin: bottom left; transition: transform 450ms var(--motion-ease); }
 .story-card-panel.is-active { transform: scale(1); }
-.story-portrait { position: absolute; width: 76%; height: 70%; top: 4%; right: -3%; object-fit: contain; object-position: center bottom; filter: drop-shadow(2px 0 0 white) drop-shadow(-2px 0 0 white) drop-shadow(0 2px 0 white) drop-shadow(0 -2px 0 white); }
+/* The white outline keeps the cut-out portrait crisp on any card colour. */
+.story-portrait { /* taste-skill-ignore: cut-out alpha edge */ position: absolute; width: 76%; height: 70%; top: 4%; right: -3%; object-fit: contain; object-position: center bottom; filter: drop-shadow(2px 0 0 white) drop-shadow(-2px 0 0 white) drop-shadow(0 2px 0 white) drop-shadow(0 -2px 0 white); }
 .story-card-content { position: absolute; z-index: 1; bottom: 0; left: 0; width: 100%; padding: 0 1.2rem 1.5rem; }
 .story-card-title { font-family: "Anton", "Archivo", sans-serif; font-size: clamp(3.4rem, 4vw, 4.4rem); line-height: .97; text-transform: uppercase; overflow-wrap: anywhere; }
 .story-card-copy { max-width: 18rem; margin-top: 1.05rem; font-size: .85rem; line-height: 1.4; }

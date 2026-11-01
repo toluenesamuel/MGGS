@@ -10,10 +10,10 @@ export function HeaderBrand({ onClick }: { onClick?: () => void }) {
       className="h-10 w-10 shrink-0 rounded-full sm:h-11 sm:w-11"
     />
     <span className="font-display leading-tight">
-      <span className="block text-[10px] font-extrabold uppercase tracking-[0.05em] text-brand-green-900 sm:text-xs">
+      <span className="block text-[11px] font-extrabold uppercase leading-tight tracking-[0.04em] text-brand-green-900 sm:text-[13px]">
         Marvellous Greatness
       </span>
-      <span className="block text-[9px] font-semibold uppercase tracking-[0.1em] text-brand-coral-ink sm:text-[10px]">
+      <span className="block text-[10px] font-semibold uppercase leading-tight tracking-[0.08em] text-brand-coral-ink sm:text-[11px]">
         Group of Schools
       </span>
     </span>

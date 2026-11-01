@@ -44,7 +44,7 @@ export function NewsFilterableGrid({ initialQuery = "" }: { initialQuery?: strin
       <div className="grid gap-10 lg:grid-cols-[260px_1fr]">
         <aside aria-label="Filters" className="space-y-8">
           <div>
-            <label htmlFor="news-filter-query" className="font-display block text-xs font-bold uppercase tracking-wide text-brand-green-900">
+            <label htmlFor="news-filter-query" className="font-display block text-[13px] font-semibold text-brand-green-900">
               Keyword
             </label>
             <input
@@ -60,7 +60,7 @@ export function NewsFilterableGrid({ initialQuery = "" }: { initialQuery?: strin
             />
           </div>
           <fieldset>
-            <legend className="font-display text-xs font-bold uppercase tracking-wide text-brand-green-900">Type</legend>
+            <legend className="font-display text-[13px] font-semibold text-brand-green-900">Type</legend>
             <div className="mt-3 space-y-2">
               {newsTypes.map((t) => (
                 <label key={t} className="flex items-center gap-2 text-sm text-ink/80">
@@ -76,7 +76,7 @@ export function NewsFilterableGrid({ initialQuery = "" }: { initialQuery?: strin
             </div>
           </fieldset>
           <fieldset>
-            <legend className="font-display text-xs font-bold uppercase tracking-wide text-brand-green-900">Topic</legend>
+            <legend className="font-display text-[13px] font-semibold text-brand-green-900">Topic</legend>
             <div className="mt-3 space-y-2">
               {newsTopics.map((t) => (
                 <label key={t} className="flex items-center gap-2 text-sm text-ink/80">

@@ -34,7 +34,7 @@ export function InteriorHero({
         <div className={cn("mt-6 grid gap-8", image && "lg:grid-cols-[1.3fr_1fr] lg:items-center")}>
           <div>
             {eyebrow && (
-              <p className="font-display text-xs font-bold uppercase tracking-[0.18em] opacity-80">{eyebrow}</p>
+              <p className="font-display text-[13px] font-semibold opacity-80">{eyebrow}</p>
             )}
             <h1 className="font-display mt-2 text-4xl font-extrabold uppercase leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
               {title}

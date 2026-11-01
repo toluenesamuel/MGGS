@@ -292,7 +292,7 @@ export function HeroBackdrop({ className }: { className?: string }) {
         </div>
       ))}
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-green-900 via-brand-green-900/70 to-brand-green-900/30" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-green-900 via-brand-green-900/70 to-brand-green-900/30 /* taste-skill-ignore: scrim under the hero copy */" />
       <div
         className={cn(
           "pointer-events-none absolute inset-0 bg-brand-green-900 transition-opacity duration-700",

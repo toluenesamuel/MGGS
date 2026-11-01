@@ -27,7 +27,7 @@ export default function FeesAndFinancialInformation() {
           </p>
           <div className="mt-6 rounded-lg border border-dashed border-brand-green-900/25 bg-brand-green-100/60 p-5">
             <p className="font-display text-sm font-bold uppercase tracking-wide text-brand-green-900">
-              Fee schedule — awaiting confirmation
+              Fee schedule: awaiting confirmation
             </p>
             <p className="mt-2 text-sm leading-relaxed text-ink/70">
               The school will publish its fee schedule, payment terms and any additional costs (such as

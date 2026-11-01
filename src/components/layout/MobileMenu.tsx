@@ -53,7 +53,7 @@ export function MobileMenu({ open, onClose, onSearch }: { open: boolean; onClose
       </Container>
     </div>
     <div className="site-menu-body relative flex-1 overflow-y-auto bg-brand-green-900 text-white">
-      <div className="site-menu-image pointer-events-none absolute inset-y-0 right-0 hidden w-[42%] overflow-hidden md:block" aria-hidden="true"><img src="/images/menu-community-cropped.png" alt="" className="h-full w-full object-contain object-right-bottom"/><div className="absolute inset-0 bg-gradient-to-r from-brand-green-900 via-transparent to-transparent" /></div>
+      <div className="site-menu-image pointer-events-none absolute inset-y-0 right-0 hidden w-[42%] overflow-hidden md:block" aria-hidden="true"><img src="/images/menu-community-cropped.png" alt="" className="h-full w-full object-contain object-right-bottom"/><div className="absolute inset-0 bg-gradient-to-r from-brand-green-900 via-transparent to-transparent /* taste-skill-ignore: scrim over the photograph */" /></div>
       <Container className="relative min-h-full py-7 sm:py-9">
         <nav aria-label="Main navigation" className="relative md:flex md:gap-12">
           <ul className="site-menu-list relative z-10 w-full max-w-sm shrink-0">
@@ -69,8 +69,8 @@ export function MobileMenu({ open, onClose, onSearch }: { open: boolean; onClose
               </li>;
             })}
           </ul>
-          {openGroup && <div key={openGroup} className="site-menu-submenu relative z-10 hidden max-w-sm self-start border-l border-white/25 bg-brand-green-900/95 px-8 py-3 md:block">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-gold">Explore {openGroup}</p>
+          {openGroup && <div key={openGroup} className="site-menu-submenu relative z-10 hidden max-w-sm self-start rounded-lg bg-white/8 px-8 py-4 md:block">
+            <p className="text-[13px] font-semibold text-brand-gold">Explore {openGroup}</p>
             <ul className="mt-5 space-y-3">{groups.find(group => group.label === openGroup)?.links.map(link => <li key={link.to}><Link to={link.to} onClick={onClose} className="focus-ring inline-block py-1 text-lg font-semibold leading-snug text-white hover:text-brand-gold">{link.label}</Link></li>)}</ul>
           </div>}
         </nav>

@@ -11,7 +11,7 @@ export default function MGGSDifference() {
       <InteriorHero
         eyebrow="About MGGS"
         title="The MGGS Difference"
-        description="Marvellous Greatness Group of Schools combines academic seriousness with moral instruction and character formation — so that pupils leave us well prepared for further study, for work and for life."
+        description="Marvellous Greatness Group of Schools combines academic seriousness with moral instruction and character formation, so that pupils leave us well prepared for further study, for work and for life."
         trail={[{ label: "The MGGS Difference" }]}
         tone="coral"
         image="/images/students-collaborating.jpg"
@@ -27,10 +27,10 @@ export default function MGGSDifference() {
       <IconFeatureGrid
         title="Our Difference: A Summary"
         features={[
-          { icon: "📚", title: "Quality Education", description: "A well-planned curriculum taught with care and high expectations." },
-          { icon: "🎯", title: "Excellent Performance", description: "Regular assessment and feedback that keep progress honest and visible." },
-          { icon: "🧭", title: "Discipline", description: "An orderly, respectful school culture where learning can flourish." },
-          { icon: "🤝", title: "Family Partnership", description: "Close communication between school and home at every stage." },
+          { icon: "learning", title: "Quality Education", description: "A well-planned curriculum taught with care and high expectations." },
+          { icon: "target", title: "Excellent Performance", description: "Regular assessment and feedback that keep progress honest and visible." },
+          { icon: "compass", title: "Discipline", description: "An orderly, respectful school culture where learning can flourish." },
+          { icon: "partnership", title: "Family Partnership", description: "Close communication between school and home at every stage." },
         ]}
       />
 
@@ -48,7 +48,7 @@ export default function MGGSDifference() {
       >
         <p>
           We believe that academic development and personal growth belong together. Alongside strong literacy,
-          numeracy and reasoning, our pupils are guided in honesty, respect, responsibility and self-control —
+          numeracy and reasoning, our pupils are guided in honesty, respect, responsibility and self-control,
           qualities that shape the way a young person meets the world.
         </p>
         <p>

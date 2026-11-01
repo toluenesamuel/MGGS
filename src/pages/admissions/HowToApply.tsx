@@ -91,7 +91,7 @@ export default function HowToApply() {
             role="tabpanel"
             id={`panel-${activeTab.id}`}
             aria-labelledby={`tab-${activeTab.id}`}
-            className="mt-8 max-w-2xl rounded-lg border border-black/5 bg-white p-6 shadow-sm sm:p-8"
+            className="mt-8 max-w-2xl rounded-xl bg-surface p-6 sm:p-8"
           >
             <h2 className="font-display text-xl font-bold text-brand-green-900">{activeTab.label}</h2>
             <ol className="mt-4 space-y-3">

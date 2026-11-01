@@ -37,7 +37,7 @@ export function DonationForm() {
       <div role="status" className="rounded-lg border border-white/20 bg-white/10 p-8 text-center text-white">
         <p className="font-display text-2xl font-extrabold">Thank you, {name.split(" ")[0]}!</p>
         <p className="mt-2 text-sm text-white/85">
-          This is a safe, demonstration-only donation form — <strong>no payment was processed</strong> and no real
+          This is a safe, demonstration-only donation form. <strong>No payment was processed</strong> and no real
           transaction occurred. Your simulated gift of ₦{effectiveAmount.toLocaleString()} would have supported{" "}
           {designation}.
         </p>
@@ -49,7 +49,7 @@ export function DonationForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="rounded-lg bg-white p-6 shadow-xl sm:p-8">
+    <form onSubmit={handleSubmit} noValidate className="rounded-xl bg-surface p-6 sm:p-8">
       <p className="font-display text-sm font-bold uppercase tracking-wide text-brand-gold">Make a gift today</p>
       <h3 className="font-display mt-1 text-2xl font-extrabold text-brand-green-900">Support Marvellous Greatness Group of Schools</h3>
 

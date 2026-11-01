@@ -28,7 +28,7 @@ export default function OurStory() {
           responsibility rather than separate ones.
         </p>
         <p>
-          That conviction shapes daily life here — in the standard of work we expect, the courtesy we practise
+          That conviction shapes daily life here: in the standard of work we expect, the courtesy we practise
           and the encouragement we give a pupil who is finding something difficult.
         </p>
       </ImageTextSplit>

@@ -41,25 +41,25 @@ export interface SchoolValue {
 
 export const schoolValues: SchoolValue[] = [
   {
-    icon: "🧭",
+    icon: "compass",
     title: "Discipline",
     description:
       "Order, punctuality and respect for self and others shape a calm, purposeful school day.",
   },
   {
-    icon: "🤝",
+    icon: "partnership",
     title: "Dedication",
     description:
-      "Pupils, teachers and families give their best to the work of learning — every single day.",
+      "Pupils, teachers and families give their best to the work of learning, every single day.",
   },
   {
-    icon: "⭐",
+    icon: "achievement",
     title: "Excellent Performance",
     description:
       "We set high expectations, track steady progress and celebrate genuine achievement.",
   },
   {
-    icon: "🌟",
+    icon: "greatness",
     title: "Towards Greatness",
     description:
       "Our motto is a daily commitment: small, consistent steps that lead to lasting greatness.",

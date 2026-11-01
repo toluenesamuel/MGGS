@@ -58,7 +58,7 @@ export function StoryCarousel({ title, description, cards }: { title: string; de
   }
 
   return (
-    <section data-reveal className="story-section bg-white py-16 sm:py-20" aria-labelledby="story-section-title">
+    <section data-reveal className="story-section bg-white py-16 sm:py-24" aria-labelledby="story-section-title">
       <div className="story-layout">
         <div className="story-intro">
           <h2 id="story-section-title" className="story-section-title">{title}</h2>

@@ -1,3 +1,4 @@
+import { Icon } from "@/components/ui/Icon";
 import { Container, SectionHeading } from "@/components/ui/Primitives";
 import { cn } from "@/utils/cn";
 
@@ -24,7 +25,7 @@ export function IconFeatureGrid({
 }) {
   const isDark = tone === "green";
   return (
-    <section data-reveal id={id} className={cn("scroll-mt-24 py-16 sm:py-20", isDark ? "bg-brand-green-900 text-white" : "bg-paper")}>
+    <section data-reveal id={id} className={cn("scroll-mt-24 py-16 sm:py-24", isDark ? "bg-brand-green-900 text-white" : "bg-paper")}>
       <Container>
         <SectionHeading eyebrow={eyebrow} title={title} description={description} align="center" light={isDark} />
         <div className="reveal-stagger mx-auto mt-12 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -32,12 +33,12 @@ export function IconFeatureGrid({
             <div key={f.title} className="text-center">
               <div
                 className={cn(
-                  "mx-auto flex h-14 w-14 items-center justify-center rounded-full text-2xl",
-                  isDark ? "bg-white/10" : "bg-brand-green-100",
+                  "mx-auto flex h-14 w-14 items-center justify-center rounded-full",
+                  isDark ? "bg-white/10 text-brand-gold" : "bg-brand-green-100 text-brand-green-900",
                 )}
                 aria-hidden="true"
               >
-                {f.icon}
+                <Icon name={f.icon} className="h-7 w-7" />
               </div>
               <h3 className="font-display mt-4 text-base font-bold">{f.title}</h3>
               <p className={cn("mt-2 text-sm leading-relaxed", isDark ? "text-white/75" : "text-ink/70")}>

@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex min-h-screen flex-col bg-paper">
+    <div className="flex min-h-dvh flex-col bg-paper">
       <a
         href="#main-content"
         onClick={(event) => { event.preventDefault(); document.getElementById("main-content")?.focus(); }}
