@@ -175,18 +175,18 @@ h4,
 }
 @keyframes campus-reveal { from { opacity: 0; } to { opacity: 1; } }
 
-/* "Join the MGGS Family" band: a hard-edged diagonal wipe sweeps across the band
-   from the top-left corner towards the bottom-right, in the manner of the
-   reference site's hero transition (measured on its screen recording: a straight
-   slanted edge travelling left to right, no fade and no scaling, ~0.7s).
-   The boundary is steep — the width opens first and the bottom of the band
-   follows — so the band is uncovered corner-first on one diagonal. The section
-   clips its overflow, so the wipe never widens the page. */
-.admissions-feature {
-  --admissions-wipe: 900ms;
-}
+/* "Join the MGGS Family" band: a hard-edged diagonal wipe — the same transition
+   the reference site uses to change its hero picture (measured on the section
+   recording: a straight slanted edge travelling from the top-left corner to the
+   bottom-right corner in about 0.7s, no fade, no scaling).
+
+   A triangle anchored at the top-left corner is grown past twice the band's
+   size, so its hypotenuse stays parallel to itself while it sweeps across: the
+   band is uncovered corner-first along one straight diagonal. The section clips
+   its overflow, so the wipe never widens the page. */
+.admissions-feature { --admissions-wipe: 900ms; }
 @media (max-width: 767px) {
-  .admissions-feature { --admissions-wipe: 760ms; }
+  .admissions-feature { --admissions-wipe: 780ms; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .admissions-feature.is-revealed .admissions-body {
@@ -194,12 +194,8 @@ h4,
   }
 }
 @keyframes admissions-diagonal-wipe {
-  /* `inset(top right bottom left)`: start with nothing visible beyond the
-     top-left corner, then grow the visible box across and down. */
-  0%   { clip-path: inset(0 100% 100% 0); }
-  45%  { clip-path: inset(0 45% 55% 0); }
-  75%  { clip-path: inset(0 0 25% 0); }
-  100% { clip-path: inset(0 0 0 0); }
+  from { clip-path: polygon(0 0, 0 0, 0 0); }
+  to { clip-path: polygon(0 0, 200% 0, 0 200%); }
 }
 /* Without scripting (or with reduced motion) the band is simply present: these
    rules only take effect while `.is-revealed` is set. */
@@ -211,33 +207,33 @@ h4,
 }
 
 /* Hero media sequence: film first, then still frames, looping.
-   Every change of picture is a diagonal slide-in: the incoming frame sweeps
-   across the hero from the top-left corner towards the bottom-right, while the
-   frame it replaces stays put underneath until it is fully covered (moving it
-   as well would tear a gap open in the opposite corner, so it is held instead). */
+   Every change of picture is a hard-edged diagonal wipe, matching the reference
+   site's hero transition: the new picture is uncovered from the top-left corner
+   along a straight slanted edge that travels to the bottom-right corner, while
+   the picture it replaces stays put underneath until it is completely covered. */
 .hero-backdrop { background-color: var(--color-brand-green-900); }
 .hero-frame {
   position: absolute;
   inset: 0;
   /* Idle frames wait off-screen to the bottom-right: out of sight, and where a
-     frame is parked again once the slide has covered it, so nothing jumps. */
+     frame is parked again once the wipe has covered it, so nothing jumps. */
   transform: translate(101%, 101%);
 }
 .hero-frame.is-active {
   z-index: 2;
-  animation: hero-slide-in var(--hero-push-duration) var(--motion-ease) both;
-  will-change: transform;
+  transform: translate(0, 0);
+  animation: hero-diagonal-wipe var(--hero-push-duration) linear both;
 }
-/* Held in place under the incoming frame for the length of the slide. */
+/* Held in place under the incoming picture for the length of the wipe. */
 .hero-frame.is-leaving {
   z-index: 1;
   transform: translate(0, 0);
 }
 .hero-frame > img,
 .hero-frame > video { display: block; width: 100%; height: 100%; object-fit: cover; }
-@keyframes hero-slide-in {
-  from { transform: translate(-101%, -101%); }
-  to { transform: translate(0, 0); }
+@keyframes hero-diagonal-wipe {
+  from { clip-path: polygon(0 0, 0 0, 0 0); }
+  to { clip-path: polygon(0 0, 200% 0, 0 200%); }
 }
 @media (prefers-reduced-motion: no-preference) {
   /* The drift is declared for entering and leaving frames alike so the slow
@@ -250,8 +246,8 @@ h4,
   to { transform: scale(1); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-frame { animation: none; transition: none; }
-  /* Reduced motion swaps frames instantly; there is no travel to follow. */
+  .hero-frame { animation: none; transition: none; clip-path: none; }
+  /* Reduced motion swaps frames instantly; there is no wipe to follow. */
   .hero-frame.is-active { transform: translate(0, 0); }
   .hero-frame.is-leaving { transform: translate(101%, 101%); }
   .hero-frame.is-active > img { animation: none; }
