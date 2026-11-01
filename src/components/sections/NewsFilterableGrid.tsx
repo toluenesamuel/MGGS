@@ -111,7 +111,7 @@ export function NewsFilterableGrid({ initialQuery = "" }: { initialQuery?: strin
               </button>
             </div>
           ) : (
-            <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="reveal-stagger grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
               {pageItems.map((article) => (
                 <NewsCard key={article.slug} article={article} />
               ))}

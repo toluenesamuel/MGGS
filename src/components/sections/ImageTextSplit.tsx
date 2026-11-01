@@ -33,11 +33,11 @@ export function ImageTextSplit({
   return (
     <section data-reveal id={id} className={cn("py-16 sm:py-20 scroll-mt-24", toneClasses[tone])}>
       <Container>
-        <div className={cn("grid items-center gap-10 lg:grid-cols-2", reverse && "lg:[&>*:first-child]:order-2")}>
-          <div className="overflow-hidden rounded-lg">
+        <div className={cn("grid items-center gap-10 lg:grid-cols-2", reverse && "split-reverse lg:[&>*:first-child]:order-2")}>
+          <div className="split-visual overflow-hidden rounded-lg">
             <img src={image} alt={imageAlt} className="h-64 w-full object-cover sm:h-80 lg:h-[26rem]" loading="lazy" />
           </div>
-          <div>
+          <div className="split-copy">
             {eyebrow && <Eyebrow className={tone !== "white" ? "text-current" : undefined}>{eyebrow}</Eyebrow>}
             <h2 className="font-display mt-2 text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl lg:text-4xl">
               {title}

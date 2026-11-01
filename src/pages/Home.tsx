@@ -194,7 +194,7 @@ export default function Home() {
               View All →
             </Link>
           </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="reveal-stagger mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {newsArticles.slice(0, 4).map((article) => (
               <NewsCard key={article.slug} article={article} />
             ))}

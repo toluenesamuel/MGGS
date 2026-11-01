@@ -18,11 +18,11 @@ export function Timeline({
 }) {
   const isDark = tone === "green";
   return (
-    <section id={id} className={`scroll-mt-24 py-16 sm:py-20 ${isDark ? "bg-brand-green-900" : "bg-paper"}`}>
+    <section data-reveal id={id} className={`scroll-mt-24 py-16 sm:py-20 ${isDark ? "bg-brand-green-900" : "bg-paper"}`}>
       <Container className="max-w-3xl">
         <SectionHeading eyebrow={eyebrow} title={title} description={description} light={isDark} />
         <div className="mt-8">
-          <Accordion items={items} dark={isDark} />
+          <Accordion items={items} dark={isDark} className="reveal-stagger" />
         </div>
       </Container>
     </section>

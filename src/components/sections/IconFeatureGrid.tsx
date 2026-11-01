@@ -24,10 +24,10 @@ export function IconFeatureGrid({
 }) {
   const isDark = tone === "green";
   return (
-    <section id={id} className={cn("scroll-mt-24 py-16 sm:py-20", isDark ? "bg-brand-green-900 text-white" : "bg-paper")}>
+    <section data-reveal id={id} className={cn("scroll-mt-24 py-16 sm:py-20", isDark ? "bg-brand-green-900 text-white" : "bg-paper")}>
       <Container>
         <SectionHeading eyebrow={eyebrow} title={title} description={description} align="center" light={isDark} />
-        <div className="mx-auto mt-12 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="reveal-stagger mx-auto mt-12 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((f) => (
             <div key={f.title} className="text-center">
               <div

@@ -23,7 +23,7 @@ export function StatGrid({
             {title}
           </h2>
         )}
-        <dl className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+        <dl className="reveal-stagger grid grid-cols-2 gap-8 sm:grid-cols-4">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col text-center">
               <dt className={`order-2 mt-2 text-sm leading-snug ${isDark ? "text-white/80" : "text-ink/70"}`}>{stat.label}</dt>
