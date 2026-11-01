@@ -175,41 +175,38 @@ h4,
 }
 @keyframes campus-reveal { from { opacity: 0; } to { opacity: 1; } }
 
-/* "Join the MGGS Family" band: a diagonal reveal sweeps across the band from the
-   top-left corner to the bottom-right corner. The picture and the copy are
-   uncovered progressively, corner first, while drifting a little on the same
-   diagonal, so the band arrives along one axis instead of everything fading in
-   at once. The section clips its overflow, so the reveal never widens the page. */
+/* "Join the MGGS Family" band: a hard-edged diagonal wipe sweeps across the band
+   from the top-left corner towards the bottom-right, in the manner of the
+   reference site's hero transition (measured on its screen recording: a straight
+   slanted edge travelling left to right, no fade and no scaling, ~0.7s).
+   The boundary is steep — the width opens first and the bottom of the band
+   follows — so the band is uncovered corner-first on one diagonal. The section
+   clips its overflow, so the wipe never widens the page. */
 .admissions-feature {
-  --admissions-sweep: 1100ms;
+  --admissions-wipe: 900ms;
 }
 @media (max-width: 767px) {
-  .admissions-feature { --admissions-sweep: 900ms; }
+  .admissions-feature { --admissions-wipe: 760ms; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .admissions-feature.is-revealed .admissions-body {
-    animation: admissions-diagonal-reveal var(--admissions-sweep) var(--motion-ease) both;
+    animation: admissions-diagonal-wipe var(--admissions-wipe) linear both;
   }
 }
-@keyframes admissions-diagonal-reveal {
-  /* `inset(top right bottom left)`: nothing is visible except the top-left
-     corner, then the visible box grows until it covers the whole band. */
-  from {
-    clip-path: inset(0 100% 100% 0);
-    transform: translate(-1.75rem, -1.25rem);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0, 0);
-  }
+@keyframes admissions-diagonal-wipe {
+  /* `inset(top right bottom left)`: start with nothing visible beyond the
+     top-left corner, then grow the visible box across and down. */
+  0%   { clip-path: inset(0 100% 100% 0); }
+  45%  { clip-path: inset(0 45% 55% 0); }
+  75%  { clip-path: inset(0 0 25% 0); }
+  100% { clip-path: inset(0 0 0 0); }
 }
-/* Without scripting (or with reduced motion) the band is simply present: the
-   keyframes only apply while `.is-revealed` is set. */
+/* Without scripting (or with reduced motion) the band is simply present: these
+   rules only take effect while `.is-revealed` is set. */
 @media (prefers-reduced-motion: reduce) {
   .admissions-feature.is-revealed .admissions-body {
     animation: none;
     clip-path: none;
-    transform: none;
   }
 }
 
