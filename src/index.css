@@ -175,35 +175,33 @@ h4,
 }
 @keyframes campus-reveal { from { opacity: 0; } to { opacity: 1; } }
 
-/* "Join the MGGS Family" band: the whole composition transits diagonally, in
-   from the top-left corner towards the bottom-right. The picture and the copy
-   move on one vector as a single block, so the band arrives as one sweep; the
-   travel is deliberately large so it reads as movement, not a fade. The
-   section clips its overflow, so the transit never widens the page. */
+/* "Join the MGGS Family" band: the whole composition — picture and copy — transits
+   diagonally, sweeping in from the top-left corner towards the bottom-right, the
+   same direction the hero pictures travel. The offsets are percentages of the
+   band's own size, so the movement stays proportional on every screen. The
+   section clips its overflow, so the sweep never widens the page. */
 .admissions-feature {
-  --admissions-shift-x: 9rem;
-  --admissions-shift-y: 6rem;
+  --admissions-from-x: -32%;
+  --admissions-from-y: -22%;
+  --admissions-sweep: 1050ms;
 }
 @media (max-width: 767px) {
   .admissions-feature {
-    --admissions-shift-x: 3.25rem;
-    --admissions-shift-y: 2.5rem;
+    --admissions-from-x: -22%;
+    --admissions-from-y: -14%;
+    --admissions-sweep: 900ms;
   }
 }
 @media (prefers-reduced-motion: no-preference) {
   .admissions-feature.is-revealed .admissions-body {
-    animation: admissions-diagonal-in 1000ms var(--motion-ease) both;
+    animation: admissions-sweep-in var(--admissions-sweep) var(--motion-ease) both;
   }
 }
-@keyframes admissions-diagonal-in {
+@keyframes admissions-sweep-in {
   from {
-    opacity: .7;
-    transform: translate(
-      calc(var(--admissions-shift-x) * -1),
-      calc(var(--admissions-shift-y) * -1)
-    );
+    opacity: .35;
+    transform: translate(var(--admissions-from-x), var(--admissions-from-y));
   }
-  55% { opacity: 1; }
   to {
     opacity: 1;
     transform: translate(0, 0);
