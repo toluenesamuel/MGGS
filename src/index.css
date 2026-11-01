@@ -172,10 +172,30 @@ h4,
 /* Evidence-led hero sequence: prompt headline first, then the campus image. */
 @media (prefers-reduced-motion: no-preference) {
   .hero-visual { animation: campus-reveal 1100ms ease 200ms both; }
-  .admissions-feature.is-revealed .admissions-visual { animation: motion-rise 650ms var(--motion-ease) 80ms both; }
-  .admissions-feature.is-revealed .admissions-copy { animation: motion-rise 550ms var(--motion-ease) both; }
 }
 @keyframes campus-reveal { from { opacity: 0; } to { opacity: 1; } }
+
+/* "Join the MGGS Family" band: the picture slides in from the left while the
+   copy slides in from the right, meeting in the middle. The section clips its
+   overflow, so the travel never widens the page. */
+.admissions-feature { --admissions-slide: 4.5rem; }
+@media (max-width: 767px) { .admissions-feature { --admissions-slide: 2.25rem; } }
+@media (prefers-reduced-motion: no-preference) {
+  .admissions-feature.is-revealed .admissions-visual {
+    animation: admissions-slide-in-left 800ms var(--motion-ease) 90ms both;
+  }
+  .admissions-feature.is-revealed .admissions-copy {
+    animation: admissions-slide-in-right 750ms var(--motion-ease) both;
+  }
+}
+@keyframes admissions-slide-in-left {
+  from { opacity: .9; transform: translateX(calc(var(--admissions-slide) * -1)); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes admissions-slide-in-right {
+  from { opacity: .9; transform: translateX(var(--admissions-slide)); }
+  to { opacity: 1; transform: translateX(0); }
+}
 
 /* Hero media sequence: film first, then still frames, looping.
    Every change of picture is a diagonal slide-in: the incoming frame sweeps
